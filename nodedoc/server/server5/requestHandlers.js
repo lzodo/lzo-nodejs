@@ -1,7 +1,9 @@
 var querystring = require("querystring"),
   fs = require("fs"),
-  formidable = require("formidable");
-var uppath = '', type = '';
+  formidable = require("formidable"),
+  uppath = '',
+  type = ''; 
+
 function start(response) {
   console.log("Request handler 'start' was called.");
 
@@ -28,6 +30,7 @@ function upload(response, request) {
   console.log("Request handler 'upload' was called.");
 
   var form = new formidable.IncomingForm();
+  form.uploadDir = './nodedoc/file-upload'
   console.log("about to parse");
   form.parse(request, function (error, fields, files) {
     console.log("parsing done");

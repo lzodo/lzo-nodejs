@@ -27,6 +27,12 @@ ws1.write('使用Stream写入文本数据...\n');
 ws1.write('END.');
 ws1.end();
 
+// let acc = new Buffer('使用Stream写入二进制数据...\n');
+const buf = Buffer.alloc(5, 'a');
+var ws2 = fs.createWriteStream('output2.txt');
+ws2.write(buf);
+ws2.end();
+
 
 
 var rsping = fs.createReadStream('./nodedoc/model/copied.txt');
