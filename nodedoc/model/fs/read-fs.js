@@ -17,6 +17,7 @@ fs.readFile("./nodedoc/model/text.txt", "utf-8", function (err, data) {
 });
 
 //异步以二进制形式读取文件
+//异步意思整个程序运行完了才开始读取text文件的过程，读取完成再去执行后面的回调
 fs.readFile("./nodedoc/model/text.txt", function (err, data) {
     if (err) {
         console.log(err);
