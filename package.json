@@ -1,6 +1,6 @@
 {
-  "dependencies": {
-    "formidable": "^1.2.1",
-    "uuid": "^3.3.3"
-  }
+    "dependencies": {
+        "formidable": "^1.2.1",
+        "uuid": "^3.3.3"
+    }
 }
