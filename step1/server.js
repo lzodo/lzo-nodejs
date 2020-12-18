@@ -11,6 +11,7 @@ let server = http.createServer((req, res) => {
     // 	break;
     // }
     //已读取文件方式做一上操作(首先需要一个可以被随便访问的目录 如www)
+    
     console.log(req.url);
     fs.readFile(`www${req.url}`, (err, data) => {
         if (err) {
