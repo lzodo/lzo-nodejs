@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router(); //获取路由实例
-const { User } = require("../db/connect");
+// const { User } = require("../db/connect");
+var User = require("../db/model/userschema");
 
 router.get("/login", (req, res) => {
     //接收参数
