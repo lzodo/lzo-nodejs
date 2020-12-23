@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router(); //获取路由实例
 var Food = require("../db/model/foodschema");
 
+//添加
 router.post("/add", (req, res) => {
     //接收参数
     // let { name, price, typename, typeid, img } = req.query;
@@ -23,6 +24,7 @@ router.post("/add", (req, res) => {
         });
 });
 
+//关键字查询
 router.post("/getInfoByKey", (req, res) => {
     //接收参数
     // let { name, price, typename, typeid, img } = req.query;
@@ -40,6 +42,7 @@ router.post("/getInfoByKey", (req, res) => {
         });
 });
 
+//删除
 router.post("/del", (req, res) => {
     let { _id } = req.body;
 
@@ -53,4 +56,18 @@ router.post("/del", (req, res) => {
 });
 
 //分页查询
+router.post("/getInfoByPage", (req, res) => {
+    let pageSize = req.body.pageSize || 5;
+    let page = req.body.pageNumber || 1;
+    Food.find()
+        .limit(Number(pageSize)) //查找分页的条数
+        .skip(Number((page - 1) * pageSize)) //条过多少开始查
+        .then((data) => {
+            res.send({ status: 0, message: "查询成功", list: data });
+        })
+        .catch((err) => {
+            res.send({ status: 0, message: "查询失败:" + err });
+        });
+});
+
 module.exports = router;

@@ -10,8 +10,10 @@ let db = require("./db/connect");
 
 let userRouter = require("./router/userRouter");
 let foodRouter = require("./router/foodRouter");
+let fileRouter = require("./router/fileRouter");
 app.use("/user", userRouter);
 app.use("/food", foodRouter);
+app.use("/file", fileRouter);
 
 app.listen(3002, () => {
     console.log(
