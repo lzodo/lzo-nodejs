@@ -17,6 +17,7 @@ app.use("/file", fileRouter);
 
 app.listen(3002, () => {
     console.log(
-        "mongoLogin服务开启成功，请通过: http://localhost:3002/ 进行访问"
+        "mongoLogin server success to http://localhost:3002/"
     );
+    global.thisServer = 'http://localhost:3002/'
 });
