@@ -12,4 +12,6 @@ ws.on("connection", (clinet) => {
     clinet.emit("hehe", "欢迎管理");
 });
 
-server.listen(8081, "0.0.0.0"); //允许所有ip访问
+server.listen(8088, "0.0.0.0",()=>{
+    console.log('服务开启成功')
+}); //允许所有ip访问

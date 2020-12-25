@@ -5,16 +5,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>websocket</title>
         <!-- 手动引入文件可以到node-modules>socket.io-client>dist 找 -->
+        <!-- 官网:https://socket.io/get-started/chat/ -->
         <script src="./socket.io.js"></script>
     </head>
     <body>
         <button onclick="senddata()">发送</button>
     </body>
     <script>
-        var socket = io.connect("http://192.168.1.102:8081");
+        var socket = io.connect("http://192.168.3.18:8088");
 
-        socket.on("hehe", (msg) => {
-            console.log("自定义事件接收数据:" + msg);
-        });
+        // socket.on("hehe", (msg) => {
+        //     console.log("自定义事件接收数据:" + msg);
+        // });
     </script>
 </html>
