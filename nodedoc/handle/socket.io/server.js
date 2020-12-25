@@ -1,17 +1,36 @@
-//npm 安装 socket.io
+var express = require("express");
+var app = express();
 
-const express = require("express");
-const app = express();
-const server = require("http").Server(app);
-const ws = require("socket.io")(server); //与express服务结合
+var http = require("http").Server(app);
+var io = require("socket.io")(http);
+var port = process.env.PORT || 3000;
 
-app.use(express.static(__dirname + "/client"));
+app.use(express.static(__dirname + "/static"));
 
-//客户端链接
-ws.on("connection", (clinet) => {
-    clinet.emit("hehe", "欢迎管理");
+app.get("/", function (req, res) {
+    res.sendFile(__dirname + "/index.html");
 });
 
-server.listen(8088, "0.0.0.0",()=>{
-    console.log('服务开启成功')
-}); //允许所有ip访问
+let connects = [];
+
+io.on("connection", function (socket) {
+    connects.push(socket);
+    console.log(`有人连接,当前连接人数${connects.length}`);
+    console.log(connects);
+    socket.on("chat message", function (msg) {
+        io.emit("chat message", msg); //广播给所有链接用户
+        socket.emit("chat message", msg); //发送给自己
+    });
+    socket.on("disconnect", (reason) => {
+        connects.splice(connects.indexOf(socket), 1);
+        console.log(`${reason} 连接断开了`);
+    });
+    socket.on("disconnecting", (reason) => {
+        //socket正在断开
+        console.log(socket.rooms); // Set { ... }
+    });
+});
+
+http.listen(port, function () {
+    console.log("listening on *:" + port);
+});
