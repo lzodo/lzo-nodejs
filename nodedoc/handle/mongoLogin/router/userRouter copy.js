@@ -26,7 +26,6 @@ router.get("/login", (req, res) => {
 
                 res.send({ status: 0, message: "登入成功", token: token });
             } else {
-                res.send({ status: 0, message: "账号或密码错误" });
             }
         })
         .catch((err) => {
