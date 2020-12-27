@@ -7,6 +7,7 @@ let server = http.createServer((req, res) => {
     //处理get数据
     let { pathname, query } = url.parse(req.url, true);
     console.log(pathname, query);
+    console.log(req.socket.remotePort); //NET 模块下 socket.remotePort 获取客户端的端口号
 
     //处理post数据
     let str = "";
@@ -14,21 +15,40 @@ let server = http.createServer((req, res) => {
         str += data;
     });
 
+    res.setHeader("Content-Type", "text/plain;charset=utf-8"); //设置编码
+
     //接收结束了就会触发end事件
     req.on("end", () => {
         let post = querystring.parse(str);
         //操作数据
         switch (pathname) {
             case "/reg":
+                res.write("reg");
+                res.end();
                 break; //注册
             case "/login":
                 break; //登录
-            default:
-                //其他
-                fs.readFile(`www${pathname}`, (err, data) => {
+            case "/readimg.jpg":
+                fs.readFile(`www/readimg.jpg`, (err, data) => {
                     if (err) {
                         res.writeHeader(404); //设置状态码
-                        res.write("Not Found"); //写入页面的内容
+                        res.write("err"); //写入页面的内容
+                    } else {
+                        /**
+                         * 不同资源 Content-Type 不一样的,图片不需要指定编码
+                         */
+                        res.setHeader("Content-Type", "image/jpeg"); //设置编码
+                        res.write(data);
+                    }
+                    res.end();
+                });
+                break;
+            default:
+                //其他
+                fs.readFile(`www/${pathname}`, (err, data) => {
+                    if (err) {
+                        res.writeHeader(404); //设置状态码
+                        res.write("err"); //写入页面的内容
                     } else {
                         console.log(data);
                         res.write(data);
