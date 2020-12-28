@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router(); //获取路由实例
 var multer = require("multer");
-var Food = require("../db/model/foodschema");
 
 var storage = multer.diskStorage({
     //设置上传后的文件路径,uploads文件夹会自动创建
@@ -37,11 +36,11 @@ router.post("/upload", upload.single("fileKey"), (req, res) => {
     }
 });
 //前端图片上传
-function upload() {
-    let file = $("#file").get(0).files[0];
-    let formdata = new FormData(); //创建空formdata对象
-    formdata.append("fileKey", file); //upload.single对应
-    //formdata直接当做请求体上传
-}
+// function upload() {
+//     let file = $("#file").get(0).files[0];
+//     let formdata = new FormData(); //创建空formdata对象
+//     formdata.append("fileKey", file); //upload.single对应
+//     //formdata直接当做请求体上传
+// }
 
 module.exports = router;

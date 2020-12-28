@@ -13,9 +13,9 @@
                 font: 13px Helvetica, Arial;
                 position: relative;
             }
-            body video {
+            body video{
                 position: absolute;
-                top: 100px;
+                top:100px;
                 right: 0;
             }
             form {
@@ -51,15 +51,16 @@
         </style>
     </head>
     <body>
-        <video id="video" width="50px" height="50px"></video>
+        <video id="video" width="100px" height="100px"></video>
         <ul id="messages"></ul>
-        <form action=""><input id="m" autocomplete="off" /><button id="submit">Send</button></form>
+        <form action="">
+            <input id="m" autocomplete="off" /><button id="submit">Send</button>
+        </form>
     </body>
     <!-- 手动引入文件可以到node-modules>socket.io-client>dist 找 -->
     <!-- 官网:https://socket.io/get-started/chat/ -->
     <!-- <script src="./socket.io.js"></script> -->
     <script src="./socket.io.js"></script>
-    <script src="./socket.io-stream.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
     <script>
         $(function () {
@@ -73,54 +74,6 @@
                 $("#messages").append($("<li>").text(msg));
                 window.scrollTo(0, document.body.scrollHeight);
             });
-            socket.on("streamuser", function (msg) {
-                console.log(msg);
-                var video = document.querySelector("video");
-                console.log(video);
-
-                video.srcObject = msg;
-                video.onloadedmetadata = () => {
-                    video.play();
-                };
-            });
-            let pc = null;
-            var constraints = { video: true };
-            navigator.mediaDevices.getUserMedia(constraints).then((mediaStream) => {
-                console.log(mediaStream);
-                // console.log(ss)
-
-                // var stream = ss.createStream();
-                // output mediaStream to speakers:
-            
-
-                //ss(socket).emit("multiple-streams", formdata, { size: 55555555 });
-                //WebRTC
-       
-            });
-
-            // navigator.getUserMedia(
-            //     {
-            //         video: false,
-            //         audio: true,
-            //     },
-            //     function (mediaStream) {
-            //         // output mediaStream to speakers:
-            //         var mediaStreamSource = audioContext.createMediaStreamSource(mediaStream);
-            //         mediaStreamSource.connect(audioContext.destintion);
-
-            //         // send mediaStream to server:
-
-            //         // WebRTC code? not sure about this...
-            //         var RTCconfig = {};
-            //         var conn = new RTCPeerConnection(RTCconfig);
-
-            //         // ???
-            //     },
-            //     function (error) {
-            //         console.log("getUserMedia() fail.");
-            //         console.log(error);
-            //     }
-            // );
         });
     </script>
 </html>
