@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            #videos {
+                width: 500px;
+                height: 300px;
+            }
+        </style>
+    </head>
+    <body>
+        <video id="video" width="100" height="100" controls autoplay></video>
+        <div id="videos"></div>
+    </body>
+    <script src="./socket.io.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script>
+        $(function () {
+            //webRTC
+            //保存 RTCPeerConnection 对象的数组
+            var pc = [];
+            var localStream = null;
+            var socket = io();
+
+            socket.on("connect", () => {
+                console.log("connect", socket.id);
+                socket.emit("new user greet", {
+                    sender: socket.id,
+                    msg: "hello",
+                });
+                // socket.emit("ok we connect", {
+                //     sender: socket.id,
+                //     msg: "hello",
+                // });
+                socket.on("ok we connect", (data) => {
+                    console.log(data);
+                });
+                socket.on("need connect", (data) => {
+                    console.log(data);
+                });
+
+                socket.on("sdp", (data) => {
+                    if (data.description.type === "offer") {
+                        //把发送者（offer）的描述储存在接收者的remoteDesc中
+                        let desc = new RTCSessionDescription(data.description);
+                        pc[data.sender].setRemoteDescription(desc).then(() => {
+                            pc[data.sender] //九
+                                .createAnswer()
+                                .then((answer) => {
+                                    return pc[data.sender].setLocalDescription(
+                                        answer
+                                    );
+                                })
+                                .then(() => {
+                                    socket.emit("sdp", {
+                                        type: "video-answer",
+                                        description:
+                                            pc[data.sender].localDescription,
+                                        to: data.sender,
+                                        sender: socket.id,
+                                    });
+                                })
+                                .catch();
+                        });
+                    } else if (data.description.type === "answer") {
+                        //应答
+                        pc[data.sender].setRemoteDescription(
+                            new RTCSessionDescription(data.description)
+                        );
+                    }
+                });
+                socket.on("ice candidates", (data) => {
+                    console.log("ice candidates" + data.candidate);
+                    if (data.candidate) {
+                        var candidate = new RTCIceCandidate(data.candidate);
+                        pc[data.sender].addIceCandidate(candidate).catch();
+                    }
+                });
+            });
+
+            function InitCamera() {}
+            function StartCall(parterName, createOffer) {
+                if (localStream) {
+                    localStream.getTracks().forEach((track) => {
+                        pc[parterName].addTrack(track, localStream);
+                    });
+                } else {
+                    navigator.mediaDevices
+                        .getUserMedia({ video: true, audio: false })
+                        .then((mediaStream) => {
+                            var video = document.querySelector("video");
+                            localStream = mediaStream;
+                            video.srcObject = mediaStream;
+                            video.onloadedmetadata = () => {
+                                video.play();
+                            };
+                        });
+                }
+                if (createOffer) {
+                    pc[parterName].onnegotiationneeded = () => {
+                        pc[parterName]
+                            .createOffer()
+                            .then((offer) => {
+                                return pc[parterName].setLocalDescription(
+                                    offer
+                                );
+                            })
+                            .then(() => {
+                                //把发起者的描述信息通过signal server 发送到接收者
+                                socket.emit("sdp", {
+                                    type: "video-offer",
+                                    description:
+                                        pc[parterName].setLocalDescription,
+                                    to: parterName,
+                                    sender: socket.id,
+                                });
+                            });
+                    };
+                }
+                pc[parterName].onicecandidate = ({ candidate }) => {
+                    //五
+                    socket.emit("ice candidates", {
+                        candidate: candidate,
+                        to: parterName,
+                        sender: socket.id,
+                    });
+                };
+                pc[parterName].ontrack = (ev) => {
+                    let str = ev.streams[0];
+
+                    if (document.getElementById(`${parterName}-video`)) {
+                        document.getElementById(
+                            `${parterName}-video`
+                        ).srcObject = str;
+                    } else {
+                        let newVideo = document.createElement("video");
+                        newVideo.id = `${parterName}-video`;
+                        newVideo.autofocus = true;
+                        newVideo.autoplay = true;
+                        newVideo.className = "remote-video";
+                        newVideo.srcObject = str;
+                        document.getElementById("videos").appendChild(newVideo);
+                    }
+                };
+            }
+        });
+    </script>
+</html>

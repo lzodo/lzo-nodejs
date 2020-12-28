@@ -1,86 +1,68 @@
-// 添加ws服务
-const io = require("socket.io")(server);
-let connectionList = [];
+var express = require("express");
+var app = express();
+var http = require("http").createServer(app);
+var fs = require("fs");
+let sslOptions = {
+    key: fs.readFileSync("C:/privkey.key"), //里面的文件替换成你生成的私钥
+    cert: fs.readFileSync("C:/cacert.pem"), //里面的文件替换成你生成的证书
+};
+const https = require("https").createServer(sslOptions, app);
+var io = require("socket.io")(https);
+var path = require("path");
 
-const CLIENT_RTC_EVENT = "CLIENT_RTC_EVENT";
-const SERVER_RTC_EVENT = "SERVER_RTC_EVENT";
-
-const CLIENT_USER_EVENT = "CLIENT_USER_EVENT";
-const SERVER_USER_EVENT = "SERVER_USER_EVENT";
-
-const CLIENT_USER_EVENT_LOGIN = "CLIENT_USER_EVENT_LOGIN";
-const SERVER_USER_EVENT_UPDATE_USERS = "SERVER_USER_EVENT_UPDATE_USERS";
-
-function getOnlineUser() {
-    return connectionList
-        .filter((item) => {
-            return item.userName !== "";
-        })
-        .map((item) => {
-            return {
-                userName: item.userName,
-            };
-        });
-}
-
-function setUserName(connection, userName) {
-    connectionList.forEach((item) => {
-        if (item.connection.id === connection.id) {
-            item.userName = userName;
-        }
+app.use(express.static(path.join(__dirname, "public")));
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + "/index.html");
+});
+app.get("/camera", (req, res) => {
+    res.sendFile(__dirname + "/camera.html");
+});
+io.on("connection", (socket) => {
+    //连接加入子房间
+    socket.join(socket.id);
+    console.log("auserconnected" + socket.id);
+    socket.on("disconnect", () => {
+        console.log("userdisconnected:" + socket.id); //某个用户断开连接的时候，我们需要告诉所有还在线的用户这个信息
+        socket.broadcast.emit("userdisconnected", socket.id);
     });
-}
-
-function updateUsers(connection) {
-    connection.emit(SERVER_USER_EVENT, {
-        type: SERVER_USER_EVENT_UPDATE_USERS,
-        payload: getOnlineUser(),
+    socket.on("chatmessage", (msg) => {
+        console.log(socket.id + "say:" + msg);
+        //io.emit("chatmessage",msg);
+        socket.broadcast.emit("chatmessage", msg);
     });
-}
-
-io.on("connection", function (connection) {
-    connectionList.push({
-        connection: connection,
-        userName: "",
-    });
-
-    // 连接上的用户，推送在线用户列表
-    // connection.emit(SERVER_USER_EVENT, { type: SERVER_USER_EVENT_UPDATE_USERS, payload: getOnlineUser()});
-    updateUsers(connection);
-
-    connection.on(CLIENT_USER_EVENT, function (jsonString) {
-        const msg = JSON.parse(jsonString);
-        const { type, payload } = msg;
-
-        if (type === CLIENT_USER_EVENT_LOGIN) {
-            setUserName(connection, payload.loginName);
-            connectionList.forEach((item) => {
-                // item.connection.emit(SERVER_USER_EVENT, { type: SERVER_USER_EVENT_UPDATE_USERS, payload: getOnlineUser()});
-                updateUsers(item.connection);
-            });
-        }
-    });
-
-    connection.on(CLIENT_RTC_EVENT, function (jsonString) {
-        const msg = JSON.parse(jsonString);
-        const { payload } = msg;
-        const target = payload.target;
-
-        const targetConn = connectionList.find((item) => {
-            return item.userName === target;
-        });
-        if (targetConn) {
-            targetConn.connection.emit(SERVER_RTC_EVENT, msg);
-        }
-    });
-
-    connection.on("disconnect", function () {
-        connectionList = connectionList.filter((item) => {
-            return item.connection.id !== connection.id;
-        });
-        connectionList.forEach((item) => {
-            // item.connection.emit(SERVER_USER_EVENT, { type: SERVER_USER_EVENT_UPDATE_USERS, payload: getOnlineUser()});
-            updateUsers(item.connection);
+    //当有新用户加入，打招呼时，需要转发消息到所有在线用户。
+    socket.on("newusergreet", (data) => {
+        console.log(data);
+        console.log(socket.id + "greet" + data.msg);
+        socket.broadcast.emit("needconnect", {
+            sender: socket.id,
+            msg: data.msg,
         });
     });
+    //在线用户回应新用户消息的转发
+    socket.on("okweconnect", (data) => {
+        io.to(data.receiver).emit("okweconnect", { sender: data.sender });
+    });
+    //sdp消息的转发
+    socket.on("sdp", (data) => {
+        console.log("sdp");
+        console.log(data.description);
+        console.log("sdp:" + data.sender + "to:" + data.to);
+        socket.to(data.to).emit("sdp", {
+            description: data.description,
+            sender: data.sender,
+        });
+    });
+    //candidates消息的转发
+    socket.on("icecandidates", (data) => {
+        console.log("icecandidates:");
+        console.log(data);
+        socket.to(data.to).emit("icecandidates", {
+            candidate: data.candidate,
+            sender: data.sender,
+        });
+    });
+});
+https.listen(443, () => {
+    console.log("httpslisteningon*:443");
 });
