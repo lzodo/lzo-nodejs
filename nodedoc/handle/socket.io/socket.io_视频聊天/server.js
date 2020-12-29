@@ -12,7 +12,7 @@ var path = require("path");
 
 app.use(express.static(path.join(__dirname, "public")));
 app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/index.html");
+    res.sendFile(__dirname + "/camera.html");
 });
 app.get("/camera", (req, res) => {
     res.sendFile(__dirname + "/camera.html");
@@ -63,6 +63,6 @@ io.on("connection", (socket) => {
         });
     });
 });
-https.listen(443, () => {
-    console.log("httpslisteningon*:443");
+https.listen(9998, () => {
+    console.log("httpslisteningon*:9998");
 });

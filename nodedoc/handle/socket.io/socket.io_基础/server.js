@@ -16,7 +16,7 @@ let connects = [];
 io.on("connection", function (socket) {
     connects.push(socket);
     console.log(`有人连接,当前连接人数${connects.length}`);
-    console.log(connects);
+    // console.log(connects);
     socket.on("chat message", function (msg) {
         io.emit("chat message", msg); //广播给所有链接用户
         socket.emit("chat message", msg); //发送给自己

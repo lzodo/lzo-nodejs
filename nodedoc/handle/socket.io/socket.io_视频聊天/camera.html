@@ -13,9 +13,7 @@
     <body>
         <h1 id="user-id">用户名称</h1>
         <ul id="user-list">
-            <li>用户</li>
-            <li>用户</li>
-            <li>用户</li>
+    
         </ul>
         <video id="video-local" controls autoplay></video>
         <canvas id="capture-canvas" style="display: none"></canvas>
@@ -55,6 +53,7 @@
                 }
             }
             function canGetUserMediaUse() {
+                console.log(navigator.webkitGetUserMedia)
                 return !!(
                     navigator.mediaDevices.getUserMedia ||
                     navigator.webkitGetUserMedia ||
@@ -127,7 +126,7 @@
                         (stream) => {
                             localStream = stream;
                             localVideoElm.srcObject = stream;
-                            $(localVideoElm).width(800);
+                            $(localVideoElm).width(15);
                         },
                         (err) => {
                             console.log(
@@ -143,12 +142,15 @@
             }
 
             function StartCall(parterName, createOffer) {
+               
+                console.log(localStream)
                 pc[parterName] = new RTCPeerConnection(iceServer);
                 //如果已经有本地流，那么直接获取Tracks并调用addTrack添加到RTC对象中。
                 if (localStream) {
                     localStream.getTracks().forEach((track) => {
                         pc[parterName].addTrack(track, localStream); //shouldtriggernegotiationneededevent
                     });
+                    console.log(pc)
                 } else {
                     //否则需要重新启动摄像头并获取
                     if (canGetUserMediaUse()) {
@@ -160,7 +162,7 @@
                             function (stream) {
                                 localStream = stream;
                                 localVideoElm.srcObject = stream;
-                                $(localVideoElm).width(800);
+                                $(localVideoElm).width(15);
                             },
                             function (error) {
                                 console.log(
@@ -220,6 +222,8 @@
                         newVideo.controls = true;
                         //newVideo.className='remote-video';
                         newVideo.srcObject = str;
+                        newVideo.style.width = "100px"
+                        newVideo.style.height = "100px"
                         document.getElementById("videos").appendChild(newVideo);
                     }
                 };
@@ -243,7 +247,7 @@
                         .attr("user-id", data.sender);
                     $("#user-list").append(li);
                     //同时创建一个按钮
-                    let button = $('<buttonclass="call">通话</button>');
+                    let button = $('<button class="call">通话</button>');
                     button.appendTo(li); //监听按钮的点击事件,这是个demo需要添加很多东西，比如不能重复拨打已经连接的用户
                     $(button).click(function () {
                         //$(this).parent().attr('user-id')
