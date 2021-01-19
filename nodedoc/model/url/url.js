@@ -6,12 +6,13 @@ var url = require("url");
  *
  */
 
-//url字符串转url对象
+//==========================parse url字符串转url对象
 var urlparse = url.parse(
     "https://www.lzoxun.top:80/pathname?pathquery=queryispath#hash"
 );
 console.log(urlparse);
 
+//==========================format url对象转url字符串
 var json = {
     protocol: "https:",
     slashes: true,
@@ -27,7 +28,7 @@ var json = {
     href: "https://www.lzoxun.top:80/pathname?pathquery=queryispath#hash",
 };
 
-var urlstr = url.format(json); //url对象转url字符串
+var urlstr = url.format(json);
 console.log(urlstr);
 
 // json是一种格式;
