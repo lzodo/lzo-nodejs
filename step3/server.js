@@ -6,8 +6,8 @@ const fs = require("fs");
 let server = http.createServer((req, res) => {
     //处理get数据
     let { pathname, query } = url.parse(req.url, true);
-    console.log(pathname, query);
-    console.log(req.socket.remotePort); //NET 模块下 socket.remotePort 获取客户端的端口号
+    // console.log(pathname, query);
+    // console.log(req.socket.remotePort); //NET 模块下 socket.remotePort 获取客户端的端口号
 
     //处理post数据
     let str = "";
@@ -45,12 +45,15 @@ let server = http.createServer((req, res) => {
                 break;
             default:
                 //其他
-                fs.readFile(`www/${pathname}`, (err, data) => {
+                fs.readFile(`../www${pathname}`, (err, data) => {
                     if (err) {
                         res.writeHeader(404); //设置状态码
-                        res.write("err"); //写入页面的内容
+                        res.write("errr"); //写入页面的内容
                     } else {
                         console.log(data);
+                        res.writeHeader(200, {
+                            "content-type": "text/html", //设置返回的数据的类型
+                        });
                         res.write(data);
                     }
                     res.end(); //告诉浏览器结束了 不然会一直转 尽量不要放在异步回调外面,先结束了回调里会出错的

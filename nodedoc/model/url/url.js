@@ -34,3 +34,7 @@ console.log(urlstr);
 // json是一种格式;
 // json字符串是json格式的字符串;
 // json对象是json格式的对象(键值对必须是双引号);
+
+// URLSearchParams =========== 解析操作query
+let urlsp = new URLSearchParams(url.parse(urlstr).search);
+console.log(urlsp.get("pathquery"));
