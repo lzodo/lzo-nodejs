@@ -45,7 +45,7 @@ let server = http.createServer((req, res) => {
                 break;
             default:
                 //其他
-                fs.readFile(`../www${pathname}`, (err, data) => {
+                fs.readFile(`www${pathname}`, (err, data) => {
                     if (err) {
                         res.writeHeader(404); //设置状态码
                         res.write("errr"); //写入页面的内容
