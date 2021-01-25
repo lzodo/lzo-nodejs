@@ -8,8 +8,10 @@ var url = require("url");
 
 //==========================parse url字符串转url对象
 var urlparse = url.parse(
-    "https://www.lzoxun.top:80/pathname?pathquery=queryispath#hash"
+    "https://www.lzoxun.top:80/pathname?pathquery=queryispath#hash",
+    true
 );
+//参数二为真会被query当做对象解析出来
 console.log(urlparse);
 
 //==========================format url对象转url字符串

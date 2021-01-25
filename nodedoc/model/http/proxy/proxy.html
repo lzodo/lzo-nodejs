@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body></body>
+    <script>
+        fetch(
+            "http://localhost:8084/api/vips-mobile/rest/pcoperation/switch/v1?callback=getSwitch1611582452180&app_name=shop_pc&app_version=1&warehouse=VIP_NH&fdc_area_id=103105101&client=pc&mobile_platform=1&province_id=103105&api_key=70f71280d5d547b2a7bb370a529aeea1&user_id=&mars_cid=1611579565351_46431449f9bb78201c070eac53cf56cd&wap_consumer=a&switch_id=444&_=1611582452132"
+        )
+            .then((response) => response.json())
+            .then((result) => {
+                console.log(result);
+            });
+    </script>
+</html>
