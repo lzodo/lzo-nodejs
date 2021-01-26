@@ -1,11 +1,12 @@
 var fs = require("fs");
 var path = __dirname;
 
-//文件夹的增删改查
+//文件夹的增删改查，参数错误优先，有回调的异步操作演示
 fs.mkdir(path + "/oldmkdir", (err) => {
     if (!err) {
         console.log("创建成功");
         setTimeout(() => {
+            //可修改文件与文件夹名
             fs.rename(path + "/oldmkdir", path + "/newmkdir", (err) => {
                 if (!err) {
                     console.log("修改成功");
@@ -23,6 +24,8 @@ fs.mkdir(path + "/oldmkdir", (err) => {
                 }
             });
         }, 3000);
+    } else {
+        console.log(err);
     }
 });
 
@@ -38,6 +41,7 @@ fs.readdir(path, (err, dirs) => {
 fs.stat(path + "/read-fs.js", (err, stats) => {
     //检查path是文件还是文件夹
     console.log(stats.isFile());
+    console.log(stats.isDirectory());
 });
 
 //文件的增删改查
@@ -51,6 +55,7 @@ fs.writeFile(path + "/file.txt", "file内容", (err) => {
                     setTimeout(() => {
                         fs.readFile(path + "/file.txt", "utf8", (err, res) => {
                             if (!err) {
+                                //设置utf8参数或res.toString()可以将默认读取的buffer转正常文字
                                 console.log(res);
                                 fs.unlink(path + "/file.txt", (err) => {
                                     if (!err) {
@@ -70,4 +75,12 @@ fs.writeFile(path + "/file.txt", "file内容", (err) => {
             });
         }, 3000);
     }
+});
+
+//加Sync表示同步， 异步是aSync
+fs.writeFileSync(path + "/fileSync.txt", "file内容f");
+
+//监听文件变化
+fs.watchFile(path + "/fileSync.txt", (err) => {
+    console.log("文件发送变化了");
 });

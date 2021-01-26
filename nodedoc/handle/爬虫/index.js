@@ -3,7 +3,18 @@ const http = require("https");
 const fs = require("fs");
 const cheerio = require("cheerio");
 
-let url = "https://www.qunar.com";
+let url = "https://www.meizu.com/";
+
+function filterData(data) {
+    let $ = cheerio.load(data); //将请求到的内容转换为类DOM
+    $("img").each((index, item) => {
+        let url = $(item).attr("src");
+        if (/^http/.test(url)) {
+            console.log(url);
+        }
+    });
+}
+
 http.get(url, (res) => {
     // 安全判断
     const { statusCode } = res; //获取状态码
@@ -36,11 +47,12 @@ http.get(url, (res) => {
     res.on("end", (chunk) => {
         fs.writeFileSync(__dirname + "/bilibil.html", linkdata);
         console.log("接收数据结束");
-        let $ = cheerio.load(linkdata); //将请求到的内容转换为类DOM
-        $("img").each((index, item) => {
-            console.log($(item).attr("src"));
-        });
+        filterData(linkdata);
     });
 }).on("error", (err) => {
     console.log("请求错误");
 });
+
+/**
+ * 有写网站把说有页面以静态形式写到页面上,有利于爬虫，对SEO优化友好
+ */
