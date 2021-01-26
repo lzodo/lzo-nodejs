@@ -7,10 +7,10 @@ let server = http
     .createServer((req, res) => {
         let url = req.url;
 
-        // res.writeHead(200, {
-        //     "content-type": "application/json",
-        //     "Access-Control-Allow-Origin": "*",
-        // });
+        res.writeHead(200, {
+            "content-type": "application/json",
+            "Access-Control-Allow-Origin": "*", //处理页面访问服务器产生的跨域
+        });
 
         //如果访问路径以api开头
         if (/^\/api/.test(url)) {
@@ -27,7 +27,6 @@ let server = http
             //http://localhost:8084/ajax 拦截
             //将 前面部分替换成target
             //再通过ajaxProxy 将拿到的数据返回前端
-            console.log("进入代理");
 
             ajaxProxy(req, res); //不要再 res.end();
         }
