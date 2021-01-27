@@ -22,11 +22,16 @@ let server = http.createServer((req, res) => {
         let post = querystring.parse(str);
         //操作数据
         switch (pathname) {
+            case "/":
+                res.write("根目录");
+                res.end();
+                break; //注册
             case "/reg":
                 res.write("reg");
                 res.end();
                 break; //注册
             case "/login":
+                res.end("login");
                 break; //登录
             case "/readimg.jpg":
                 fs.readFile(`www/readimg.jpg`, (err, data) => {
