@@ -13,9 +13,12 @@ puppeteer
     .then(async (browser) => {
         //创建页面 Page 对象
         let page = await browser.newPage();
+        await page.setViewport({width:1365, height:620});
+
         await page.setJavaScriptEnabled(true);
 
         await page.goto("http://iot.huihezn.com/");
+
         const userInput = await page.$(".el-input__inner:nth-child(1)");
         await userInput.focus();
         await page.keyboard.type("root"); //输入关键字
@@ -28,9 +31,19 @@ puppeteer
         await searchBtn.click(); //点击操作
 
         let pageList = await browser.pages();
-        pageList.map(item=>{
-            console.log(item.url())
-        });
+        page.on('load',async ()=>{
+            const documentSize = await page.evaluate(() => {
+                return {
+                    width: document.documentElement.clientWidth,
+                    height : document.body.clientHeight,
+                }
+            })
+            console.log(documentSize)
+
+            pageList.map(item=>{
+                console.log(item.url())
+            });
+        })
     
 
         // await searchInput.keyboard.up('Enter')
