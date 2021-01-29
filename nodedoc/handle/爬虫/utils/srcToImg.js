@@ -1,7 +1,8 @@
-const { createWriteStream } = require("fs");
+const { createWriteStream, writeFile } = require("fs");
 const http = require("http");
 const https = require("https");
 const path = require("path");
+const fs = require("fs");
 
 module.exports = async (src, dir) => {
     if (/.(jpg|png|gif)$/.test(src)) {
@@ -25,6 +26,15 @@ const urlToImg = async (url, dir) => {
         });
     });
 };
-const base64ToImg = async (url, dir) => {
+const base64ToImg = async (str, dir) => {
     //data:image/jpeg;base64,/资源内容
+    //base64 字符串分组,1.原字符串、2.图片格式、3.逗号后面的图片资源
+    let matchs = str.match(/^data:(.+);base64,(.+)$/);
+    try {
+        let ext = matchs[1].split("/")[1].replace("jpeg", "jpg");
+        let file = path.join(dir, `${Date.now()}.${ext}`);
+        await fs.writeFileSync(file, matchs[2], "base64");
+    } catch (error) {
+        console.log("图片保存错误");
+    }
 };

@@ -3,21 +3,13 @@ const url = require("url");
 const querystring = require("querystring");
 const fs = require("fs");
 const path = require("path");
-const { readStaticFile } = require("./readStaticFile.v2.0");
+const { readStaticFile } = require("./readStaticFile.v3.0");
 
 let server = http.createServer((req, res) => {
     //处理get数据
     let { pathname, query } = url.parse(req.url, true);
     let getFileUrl = path.join(__dirname, "../www", pathname);
 
-    // console.log(pathname, query);
-    // console.log(req.socket.remotePort); //NET 模块下 socket.remotePort 获取客户端的端口号
-
-    //处理post数据
-    /*
-      一般大的数据包会分成很多小包进行处理
-      当收到一个数据包会触发data事件
-    */
     let str = "";
     req.on("data", (data) => {
         str += data;
@@ -26,7 +18,7 @@ let server = http.createServer((req, res) => {
     res.setHeader("Content-Type", "text/plain;charset=utf-8"); //设置编码
 
     //接收结束了就会触发end事件
-    req.on("end", () => {
+    req.on("end", async () => {
         let post = querystring.parse(str);
         //操作数据
         switch (pathname) {
@@ -39,7 +31,7 @@ let server = http.createServer((req, res) => {
                 break; //登录
             default:
                 //其他
-                let { data, fileType, status } = readStaticFile(getFileUrl, res);
+                let { data, fileType,status } = await readStaticFile(getFileUrl, res);
                 console.log(data, fileType);
                 if (fileType) {
                     res.writeHeader(status, {
