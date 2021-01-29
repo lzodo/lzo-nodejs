@@ -13,7 +13,7 @@ puppeteer
     .then(async (browser) => {
         //创建页面 Page 对象
         let page = await browser.newPage();
-        await page.setViewport({width:1365, height:620});
+        await page.setViewport({ width: 1365, height: 620 });
 
         await page.setJavaScriptEnabled(true);
 
@@ -31,20 +31,19 @@ puppeteer
         await searchBtn.click(); //点击操作
 
         let pageList = await browser.pages();
-        page.on('load',async ()=>{
+        page.on("load", async () => {
             const documentSize = await page.evaluate(() => {
                 return {
                     width: document.documentElement.clientWidth,
-                    height : document.body.clientHeight,
-                }
-            })
-            console.log(documentSize)
-
-            pageList.map(item=>{
-                console.log(item.url())
+                    height: document.body.clientHeight,
+                };
             });
-        })
-    
+            console.log(documentSize);
+
+            pageList.map((item) => {
+                console.log(item.url());
+            });
+        });
 
         // await searchInput.keyboard.up('Enter')
 

@@ -4,19 +4,23 @@ const mime = require("mime"); //根据扩展名操作文件类型text/plain、ap
 
 function myReadFile(filePathName, res) {
     let datas = "";
-
-    datas = fs.readFileSync(filePathName);
-    if (datas) {
-        return datas;
-    } else {
-        res.end("err");
+    console.log(filePathName)
+    try {
+        datas = fs.readFileSync(filePathName);
+    } catch (error) {
+        datas = `文件${filePathName}不存在`; 
+        status = 404;
     }
+
+    return datas;
+
 }
 
 module.exports.readStaticFile = (filePathName, res) => {
     let ext = path.extname(filePathName);
     let fileType = mime.getType(ext) || "text/html";
     let data = "";
+    let status = 200;
 
     //如果文件或文件夹存在
     if (fs.existsSync(filePathName)) {
@@ -28,12 +32,16 @@ module.exports.readStaticFile = (filePathName, res) => {
             data = myReadFile(path.join(filePathName, "/index.html"), res);
         }
     } else {
-        res.end("文件不存在");
+        console.log(`文件${filePathName}不存在`);
+        data = `文件${filePathName}不存在`;
+        status = 404;
+        fileType = 'text/html'
     }
 
     return {
         data,
         fileType,
+        status,
     };
 };
 

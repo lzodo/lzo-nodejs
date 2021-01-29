@@ -39,11 +39,13 @@ let server = http.createServer((req, res) => {
                 break; //登录
             default:
                 //其他
-                let { data, fileType } = readStaticFile(getFileUrl, res);
+                let { data, fileType,status } = readStaticFile(getFileUrl, res);
                 console.log(data, fileType);
-                res.writeHeader(200, {
-                    "content-type": fileType,
-                });
+                if (fileType) {
+                    res.writeHeader(status, {
+                        "content-type": `${fileType};charset=UTF-8`,
+                    });
+                }
                 res.write(data);
                 res.end(); //告诉浏览器结束了 不然会一直转 尽量不要放在异步回调外面,先结束了回调里会出错的
         }
