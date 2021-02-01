@@ -7,7 +7,7 @@ app.use("/", express.static(path.join(__dirname, "./www")));
 
 //解析post请求体数据
 const bodyParser = require("body-parser");
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false })); //解析表单数据
 app.use(bodyParser.json());
 
 //链接mongodb数据库

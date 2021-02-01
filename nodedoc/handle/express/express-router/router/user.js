@@ -1,21 +1,29 @@
 const express = require("express");
-const router = express.Router(); //获取路由实例
+const router = express.Router(); //获取路由实例|路由中间件
+const { login, all, client, server } = require("./controller");
 
-router.get("/login", (req, res) => {
-    //接收参数
-    let { us, ps } = req.query;
+router.get("/login", login);
 
-    //处理数据
-    if (us == 123 && ps == 456) {
-        res.send({ status: 0, message: "router ok" });
-    } else {
-        res.send({ status: 99, message: "router 请求错误" });
-    }
-});
+router.all("/all", all);
 
-router.get("/add", (req, res) => {
-    //接收参数
-    res.send("send add");
-});
+router.all("/client", client);
 
+router.all("/server", server);
+/**
+ * get:获取数据
+ * post:添加数据
+ * put:修改数据（覆盖式全部修改）
+ * patch:修改数据（修改单独的几个）
+ * delete:删除数据
+ *
+ * 请求方式是有语义的，但是一般都用post代替了put、patch、delete了,一个路径只能一个请求
+ * post('/index/add')
+ * post('/index/delete')
+ * post('/index/put')
+ * post('/index/patch')
+ *
+ * REST 一个路径多个请求就是利用post、get、put、delete的做到的
+ *
+ *
+ */
 module.exports = router;
