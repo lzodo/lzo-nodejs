@@ -1,4 +1,3 @@
-const { static } = require("express");
 const express = require("express");
 const path = require("path");
 
@@ -8,12 +7,12 @@ const app = express();
 app.use(express.static(path.join(__dirname, "./public")));
 
 //art-tetemplate 设置
-app.engine("art", require("express-art-template"));
-// app.set("view", {
-//     debug: process.env.NODE_ENV !== "production",
+app.engine('art', require('express-art-template'));
+// app.set('view', {
+//     debug: process.env.NODE_ENV !== 'production'
 // });
-app.set("views", path.join(__dirname, "view"));
-app.set("view", "art");
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'art');
 
 //路由 设置
 let userRouter = require("./router/user");

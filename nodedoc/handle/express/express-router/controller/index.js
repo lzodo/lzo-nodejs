@@ -17,29 +17,22 @@ exports.all = (req, res) => {
 
 //服务端渲染
 exports.server = (req, res) => {
-    let data = `<ul><li>1</li><li>2</li><li>3</li><li>4</li></ul>`;
-    res.send(data);
+    //let data = `<ul><li>1</li><li>2</li><li>3</li><li>4</li></ul>`;
+    res.render("serve.art", {
+        data: [1,2,3,4,5],
+        userInfo:{
+            name:'user1',
+            arg:10,
+            'user key':'keys'
+        }
+    });
 };
 
 //客户端渲染
 exports.client = (req, res) => {
-    // let data = {
-    //     status: 0,
-    //     data: [
-    //         {
-    //             key: "name",
-    //             val: "1",
-    //         },
-    //         {
-    //             key: "name",
-    //             val: "2",
-    //         },
-    //     ],
-    // };
-
-    let data = "[1, 2, 3, 4, 5]";
+    let data = [1, 2, 3, 4, 5];
     //render代替send ，art-template自带的，list模板文件名称
-    res.render("list.art", {
+    res.render("client.art", {
         data: data,
     });
 };
