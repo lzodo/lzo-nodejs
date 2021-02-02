@@ -8,9 +8,11 @@ app.use(express.static(path.join(__dirname, "./public")));
 
 //art-tetemplate 设置
 app.engine('art', require('express-art-template'));
-// app.set('view', {
-//     debug: process.env.NODE_ENV !== 'production'
-// });
+// process.env.NODE_ENV = 'production'
+console.log(process.env.NODE_ENV)
+app.set('views', {
+    debug: process.env.NODE_ENV !== 'production'
+});
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'art');
 
