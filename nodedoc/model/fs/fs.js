@@ -37,7 +37,9 @@ fs.readdir(path, (err, dirs) => {
         console.log(err);
     }
 });
+
 fs.existsSync(path + "/read-fs.js"); //判断文件或文件夹是否存在
+
 fs.stat(path + "/read-fs.js", (err, stats) => {
     //检查path是文件还是文件夹
     console.log(stats.isFile());

@@ -1,6 +1,13 @@
 const express = require("express");
 const router = express.Router(); //获取路由实例|路由中间件
-const { login, all, client, server } = require("../controller");
+const {
+    login,
+    all,
+    client,
+    server,
+    serverPage,
+    serverStaticPage,
+} = require("../controller");
 
 router.get("/login", login);
 
@@ -9,6 +16,10 @@ router.all("/all", all);
 router.all("/client", client);
 
 router.all("/server", server);
+
+router.all("/page", serverPage);
+
+router.all("/page_static", serverStaticPage);
 
 /**
  * get:获取数据
@@ -24,6 +35,6 @@ router.all("/server", server);
  * post('/index/patch')
  *
  * REST 一个路径多个请求就是利用post、get、put、delete的做到的
- * 
+ *
  */
 module.exports = router;

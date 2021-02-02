@@ -7,14 +7,14 @@ const app = express();
 app.use(express.static(path.join(__dirname, "./public")));
 
 //art-tetemplate 设置
-app.engine('art', require('express-art-template'));
+app.engine("art", require("express-art-template"));
 // process.env.NODE_ENV = 'production'
-console.log(process.env.NODE_ENV)
-app.set('views', {
-    debug: process.env.NODE_ENV !== 'production'
+console.log(process.env.NODE_ENV);
+app.set("view options", {
+    debug: process.env.NODE_ENV !== "production",
 });
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'art');
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "art");
 
 //路由 设置
 let userRouter = require("./router/user");
