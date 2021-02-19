@@ -1,6 +1,7 @@
 const { template } = require("express-art-template");
 const fs = require("fs");
 const path = require("path");
+const jwt = require("jsonwebtoken");
 
 //分离控制层P|C
 exports.login = (req, res) => {
@@ -58,6 +59,40 @@ exports.client = (req, res) => {
     //render代替send ，art-template自带的，list模板文件名称
     res.render("client.art", {
         data: data,
+    });
+};
+
+//获取token
+exports.token = (req, res) => {
+    //对称加密
+    // let tk = jwt.sign({ us: 123, ps: 456 }, "mi-yao-sui-ji-zi-fu");
+    // res.send({
+    //     status: 0,
+    //     token: tk,
+    //     parse: jwt.verify(tk, "mi-yao-sui-ji-zi-fu"),
+    // });
+
+    //非对称加密
+    let privateKey = fs.readFileSync(
+        path.join(__dirname, "../keys/rsa_private_key.pem")
+    );
+    let publicKey = fs.readFileSync(
+        path.join(__dirname, "../keys/rsa_public_key.pem")
+    );
+    let tk = jwt.sign({ us: 123, ps: 4567 }, privateKey, {
+        algorithm: "RS256",
+    });
+
+    // 也可以通过头部发给前端
+    res.set("X-Access-Token", tk);
+    //jq ajax 成功回调的第三个参数.getResponseHeader("X-Access-Token") 获取
+    //调用接口时传递的话 headers:{"X-Access-Token":localStorage.getItem('token')} 携带
+    //后端验证：let token = req.get("X-Access-Token"), 再调用 jwt.verify
+
+    res.send({
+        status: 0,
+        token: tk,
+        parse: jwt.verify(tk, publicKey, { algorithm: "RS256" }),
     });
 };
 

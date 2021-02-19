@@ -7,9 +7,11 @@ const {
     server,
     serverPage,
     serverStaticPage,
+    token,
 } = require("../controller");
 
 router.get("/login", login);
+router.get("/token", token);
 
 router.all("/all", all);
 
