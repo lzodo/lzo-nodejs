@@ -20,7 +20,7 @@ const session = require("express-session");
 app.use(
     session({
         secret: "keyboard cat", //随便设置的一个私钥
-        cookie: { maxAge: 60 * 1000 }, //设置过期事件
+        cookie: { maxAge: 600 * 1000 }, //设置过期事件
         resave: true, //即使sessiosn没有修改,也要保存  默认true
         saveUninitialized: false, //无论有没有session cookie, 都要设置session cookie
     })

@@ -59,6 +59,8 @@ router.post("/del", (req, res) => {
 router.post("/getInfoByPage", (req, res) => {
     let pageSize = req.body.pageSize || 5;
     let page = req.body.pageNumber || 1;
+    console.log(pageSize)
+    console.log(page)
     Food.find()
         .limit(Number(pageSize)) //查找分页的条数
         .skip(Number((page - 1) * pageSize)) //条过多少开始查

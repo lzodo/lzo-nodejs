@@ -11,7 +11,6 @@ router.get("/login", (req, res) => {
     //处理数据
     User.find({ ps: ps, us: us })
         .then((data) => {
-            console.log(data);
             if (data.length > 0) {
                 // 登入成功后将用户信息存到session中
                 // 后面调用接口只要这个session没过期都能取到用户信息
