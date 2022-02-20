@@ -11,7 +11,10 @@ process.on("exit", (code) => {
 
 console.log("此消息最新显示");
 console.log(process.ppid)
+console.log(process.argv[1]) //node路径 以及传递的参数
 Object.keys(process).forEach(function(i){
     console.log(i)
 })
+
+
 
