@@ -2,10 +2,12 @@
 var fs = require("fs");
 
 // 文件路径相对 process.cwd() 也就是打开这个项目的跟文件夹
+var writeData = "写入一段类容2";
 
-var writeData = "写入一段类容";
 //异步写入文件
-fs.writeFile("./nodedoc/model/output.txt", writeData, function (err) {
+//flag:默认w写入,a追加
+//encoding:编码 默认utf8
+fs.writeFile("./nodedoc/model/testfiles/output.txt", writeData, { flag: "w" }, function (err) {
     console.log(err); //null
     if (err) {
         console.log(err);
