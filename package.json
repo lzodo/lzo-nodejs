@@ -21,7 +21,7 @@
     "socket.io-stream": "^0.9.1",
     "uuid": "^3.3.3",
     "websocket-stream": "^5.5.2",
-    "ws": "^7.4.1"
+    "ws": "^7.4.6"
   },
   "devDependencies": {
     "cross-env": "^7.0.3"
