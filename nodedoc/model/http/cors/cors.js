@@ -1,6 +1,7 @@
 const http = require("http");
 const url = require("url");
 
+//创建一个web服务器
 let server = http
     .createServer((req, res) => {
         let urlObj = url.parse(req.url, true);
