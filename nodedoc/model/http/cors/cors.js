@@ -13,13 +13,27 @@ const querystring  = require("querystring")
 let server = http
     .createServer((req, res) => {
         /**
-         * 获取用户提交的信息
+         * req 获取用户提交的信息
          * console.log(req.url)
          * console.log(req.method)
          * console.log(req.headers)
          *   content-type:"..." 代表用户这次传递过来数据的类型
          *   accept-encoding："gzip ...",客户端告诉服务器字节可以识别这些类型的压缩文件
          *   connectio:"keep-alive", http1.1默认长连接，在一段事件内如果可以段没有继续发送请求的时候，服务器自己的中断
+         *   accept:"xx/xx",告诉服务器我客户端可以接收的文件类型
+         *   user-agent:'xxx',客户端信息
+         */
+
+         /**
+         * res 响应信息给用户
+         *  res.statusCode=200 设置状态码
+         *  res.setHeader("Content-Type","text/plain;charset=utf8") 设置header,告诉客户端我返回的是什么类型数据
+         * 
+         *  res.writeHead(200,{
+         *      "Content-Type","text/plain"
+         *  })  方式二
+         * 
+         *  
          */
 
         //处理url
