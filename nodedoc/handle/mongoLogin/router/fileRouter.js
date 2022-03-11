@@ -10,6 +10,7 @@ var storage = multer.diskStorage({
     //设置文件名 或 添加后缀名
     filename: function (req, file, cb) {
         var fileFormat = file.originalname.split(".");
+        console.log(fileFormat)
         //给文件添加时间戳防止重名名
         //比如把abc.jpg图片切割成数组[abc,jpg],然后用数组长度-1来获取后缀名
         cb(null, file.fieldname + "." + Date.now() + "." + fileFormat[fileFormat.length - 1]);
