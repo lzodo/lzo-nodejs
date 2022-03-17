@@ -4,8 +4,21 @@ const app = express();
 //app.use 使用某个中间件
 //urlencoded方法用来解析表单格式数据 application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
-//解析 content-type 为 json
-app.use(bodyParser.json());
+
+//
+/**
+ *  解析 content-type 为 json
+ *  内部
+ *      if(req.headers['Content-Type'] == 'xxxx/json') 做原生的on data 那些一系列处理 得到 info
+ *      再让req.body = info
+ *  新版本中experss内置了，可以直接 
+ *      app.use(express.json());
+ *      app.use(express.urlencoded({extended:true}));
+ *          extended:true //使用一个内部依赖的第三方qs库解析、
+ *                   false //使用node的querystring解析
+ *      xxxxx
+ */
+app.use(bodyParser.json()); //任何访问都会走
 
 app.get("/user/login", (req, res) => {
     //接收参数
