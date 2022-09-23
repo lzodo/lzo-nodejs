@@ -33,7 +33,7 @@
  *           
  * 
  * 发布
- *  > 设置npm源：npm config set registry https://registry.npmjs.org/
+ *  > 设置npm源：npm config set registry https://registry.npmjs.org/   ，  淘宝源  https://registry.npm.taobao.org/
  *  1、npmjs.com  npmjs.com.cn 注册账户
  *    github-name  儿搂zx...517.shift+2  Emil  Emil验证码
  *  2、包的目录下npm adduser，输入用户名、密码、邮箱
