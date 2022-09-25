@@ -6,7 +6,7 @@ const querystring  = require("querystring")
  * 创建一个web服务器,没有end关闭之前会一直转，res.end("over") == res.write("over") + res.close();
  * listen 主要的三个参数，可选
  *  port ->  不穿系统会生成一个，通过server.address().port可以查看
- *  hostname -> 如果使用127.0.0.1 服务不能通过ip地址加端口进行访问
+ *  hostname -> 如果使用127.0.0.1 ，浏览器不能通过ip地址加端口进行访问，捕获不到这个服务
  *           -> 0.0.0.0 可以访问，他监听IPV4下所有地址，不写默认就是这个
  *  callback
  */

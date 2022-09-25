@@ -50,7 +50,7 @@ rsonly.on("data", function (chunk) {
     rsonly.pause(); //暂停
     setTimeout(()=>{
         rsonly.resume() //一段时间后继续读取
-    },1000)
+    },5000)
 });
 
 rsonly.on("end", function () {
