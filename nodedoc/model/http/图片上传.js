@@ -28,13 +28,17 @@ http.createServer((req, res) => {
             body += data;
         });
         req.on("end", () => {
-            console.log(body);
+            // console.log(body);
             console.log('=================222');
             let payload = qs.parse(body, "\r\n", ":"); //解析body，为了达到文件类型位置
 
             let other_info = qs.parse(payload['Content-Disposition'], ";", "=");
             let exp = path.extname(other_info[' filename'])
             
+            console.log(payload['Content-Disposition'])
+            console.log(payload["Content-Type"])
+            console.log(other_info)
+
             let type = payload["Content-Type"]; //获取文件类型
             let fileData = body.substring(body.indexOf(type) + type.length); //文件内容为图片类型后面
 
