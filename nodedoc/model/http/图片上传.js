@@ -57,7 +57,7 @@ http.createServer((req, res) => {
             });
         });
 
-        res.end();
+        res.end("上传成功");
     }
 }).listen(8889, () => {
     console.log("启动图片上传服务");

@@ -17,9 +17,10 @@ let server = http
          * console.log(req.url)
          * console.log(req.method)
          * console.log(req.headers)
-         *   content-type:"..." 代表用户这次传递过来数据的类型
-         *   accept-encoding："gzip ...",客户端告诉服务器字节可以识别这些类型的压缩文件
-         *   connectio:"keep-alive", http1.1默认长连接，在一段事件内如果可以段没有继续发送请求的时候，服务器自己的中断
+         *   content-type:"..." 代表用户这次传递过来数据的类型,服务器应该安按照这种类型解析得到的数据
+         *   accept-encoding："gzip ...",客户端告诉服务器字节可以识别这些类型的压缩文件，如果支持，浏览器得到.gz 自己解压提高速率 
+         *   connection:"keep-alive", 保持一定时间活跃，不用直接就断，http1.1默认长连接，在一段事件内如果可以段没有继续发送请求的时候，服务器自己的中断
+         *   connection-length:52, 数据长度，每次on data的时候拿到一个进度
          *   accept:"xx/xx",告诉服务器我客户端可以接收的文件类型
          *   user-agent:'xxx',客户端信息
          */
@@ -27,7 +28,7 @@ let server = http
          /**
          * res 响应信息给用户
          *  res.statusCode=200 设置状态码
-         *  res.setHeader("Content-Type","text/plain;charset=utf8") 设置header,告诉客户端我返回的是什么类型数据
+         *  res.setHeader("Content-Type","text/plain;charset=utf8") 设置header,告诉客户端我返回的是什么类型数据，与对应编码 
          * 
          *  res.writeHead(200,{
          *      "Content-Type","text/plain"
