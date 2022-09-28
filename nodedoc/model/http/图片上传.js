@@ -30,17 +30,17 @@ http.createServer((req, res) => {
         req.on("end", () => {
             // console.log(body);
             console.log('=================222');
-            let payload = qs.parse(body, "\r\n", ":"); //解析body，为了达到文件类型位置
+            let payload = qs.parse(body, "\r\n", ":"); //解析body，为了达到文件类型位置，\r\n 将数据分割成独立参数，: 将参数分割成键值对
 
             let other_info = qs.parse(payload['Content-Disposition'], ";", "=");
-            let exp = path.extname(other_info[' filename'])
+            let exp = path.extname(other_info[' filename']) 
             
             console.log(payload['Content-Disposition'])
             console.log(payload["Content-Type"])
             console.log(other_info)
 
             let type = payload["Content-Type"]; //获取文件类型
-            let fileData = body.substring(body.indexOf(type) + type.length); //文件内容为图片类型后面
+            let fileData = body.substring(body.indexOf(type) + type.length); //文件内容为图片类型后面( 类型位置加类型长度后面就是一些空格 + 文件的内容)
 
             // let reg = new RegExp(`^\\s*`); //不包括前面空格与后面boundary的部分
             // let reg2 = new RegExp(`--${boundary[" boundary"]}--\\s*$`);
