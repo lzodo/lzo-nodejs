@@ -22,10 +22,11 @@ app.use((req, res, next) => {
     console.log("middle");
     next(); //调用后面一个符合条件的中间件
 });
-
+ 
 app.use("/home", (req, res, next) => {
     // 接口访问 /home 时会上一个和这一个全都匹配
-    console.log("middle");
+    console.log("middle2");
+    res.end('ddd')
     next();
 });
 
@@ -52,6 +53,13 @@ app.get(
         res.send({ status: 0, message: "test2" });
     }
 );
+
+// 当调用get接口时，通过next只会走 use 和 get 的，不会走post的
+
+// next() 带参数就会到错误中间件,没有带参数的next永远都不会走这里(这个中间件有四个参数)
+app.use((err,req,res,next)=>{ // 统一处理所有错误
+    console.log(err);
+})
 
 app.listen(3003, () => {
     console.log("服务开启成功，请通过: http://localhost:3003/ 进行访问");

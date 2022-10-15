@@ -1,9 +1,15 @@
 const express = require("express");
 const path = require("path");
+const fs = require("fs");
 const app = express();
 
 //设置静态文件夹
 app.use("/", express.static(path.join(__dirname, "./www")));
+
+// 日志 格式 combined ,每当有新的日志，就会往writerStream 也就是 access.log 追加新的数据
+const morgan = require('morgan')
+const writerStream = fs.createWriteStream("./logs/access.log",{flags:"a+"})
+app.use(morgan("combined", {stream: writerStream}))
 
 //解析post请求体数据
 const bodyParser = require("body-parser");
@@ -31,6 +37,7 @@ let userRouter = require("./router/userRouter");
 let foodRouter = require("./router/foodRouter");
 let fileRouter = require("./router/fileRouter");
 const { nextTick } = require("process");
+const { WriteStream } = require("fs");
 app.use("/user", userRouter);
 app.use(
     "/food",

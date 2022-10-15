@@ -19,10 +19,11 @@ var storage = multer.diskStorage({
 var upload = multer({
     storage: storage,
 });
-//添加
+
+//添加 single 单个文件 req.file,array 多个文件 和 req.files
 router.post("/upload", upload.single("fileKey"), (req, res) => {
     //fileKey 上传文件的key值,接收form-data数据{fileKey:图片数据}
-    console.log(req.file);
+    console.log(req.file,111);
     let { size, mimetype, path, destination, filename } = req.file;
     let types = ["jpeg", "png", "jpg", "gif"]; //指定可以通过的类型
     let tmpType = mimetype.split("/")[1];

@@ -18,7 +18,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
  *                   false //使用node的querystring解析
  *      xxxxx
  */
-app.use(bodyParser.json()); //任何访问都会走
+app.use(bodyParser.json()); //任何访问都会走，内部通过on data 处理数据，如果json数据，就处理，好了扔req.body, on end 调用 next()
+// app.use(express.json()) // 后面express内置了
+// app.use(express.urlencoded({extended:true})) // true 使用 外部qs插件解析，false,使用node querystring模块解析
 
 app.get("/user/login", (req, res) => {
     //接收参数
