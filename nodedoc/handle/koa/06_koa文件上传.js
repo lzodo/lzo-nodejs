@@ -4,7 +4,7 @@ const app = new Koa();
 
 // 静态资源文件
 const staticFiles = require('koa-static');
-app.use(staticFiles(path.join(__dirname , 'static')));
+app.use(staticFiles(path.join(__dirname , 'static')));  // 如果是dist目录就相当于直接部署资源了
 
 
 const multer = require("koa-multer"); // koa 文件上传 ,解析 from-data，数据要去 ctx.req 这个对象拿 ，用法和express的一样
@@ -35,13 +35,8 @@ fileRouter.post('/', upload.single("fileKey"),(ctx, next) => {
     let types = ["jpeg", "png", "jpg", "gif"]; //指定可以通过的类型
     destination = destination.split('./static')[1]
     
-    if (size >= 5000000) {
-        ctx.response.body = { status: -1, message: "文件过大" };
-    } else if (types.indexOf(mimetype.split("/")[1]) === -1) {
-        ctx.response.body = { status: -1, message: "类型错误" };
-    } else {
-        ctx.response.body = { status: 0, message: "上传成功", img: destination + "/" + filename };
-    }
+ v
+    ctx.response.body = { status: 0, message: "上传成功", img: destination + "/" + filename };
 
 },(err)=>{
     console.log(err)
@@ -51,5 +46,5 @@ fileRouter.post('/', upload.single("fileKey"),(ctx, next) => {
 app.use(fileRouter.routes())
 
 app.listen("8000",()=>{
-    console.log('服务开启成功')
+    console.log('8000 服务开启成功')
 })

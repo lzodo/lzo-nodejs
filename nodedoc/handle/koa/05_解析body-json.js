@@ -4,11 +4,8 @@ const app = new Koa();
 const bodyParser = require('koa-bodyparser');
 app.use(bodyParser())
 
-const multer = require("koa-multer"); 
-const upload = multer();
-
 app.use((ctx, next) => {
-    console.log(ctx.response.body);
+    console.log(ctx.request.body);
 })
 
 

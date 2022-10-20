@@ -3,7 +3,10 @@ const Koa = require("koa"); // 导出一个类
 const app = new Koa();
 
 app.use((ctx, next) => { // context 简写 ctx.request == req, ctx.response == res
-     ctx.response.body = "return str";  // express res.end()
+    // 响应内容 可以赋值各种类型
+    ctx.status = 200; 
+    ctx.response.body = "return str";  // express res.end()
+    ctx.body = "return str";  // 是同一个东西
 })
 
 app.listen("8000", () => {

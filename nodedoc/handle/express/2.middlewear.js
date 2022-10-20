@@ -20,7 +20,10 @@ const app = express();
 app.use((req, res, next) => {
     //调用接口时，遇到/就会拦截进入这里处理业务逻辑(如验证token)，同以通过使用next()
     console.log("middle");
-    next(); //调用后面一个符合条件的中间件
+    next(); //调用后面一个符合条件的中间件，
+    console.log('next 全部执行了'); //函数调用栈 所有next不包括，主线程执行完，才会执行后面的代码，bubaok
+
+    // express 缺点，如果有多个中间件，第三个中间件存在异步调用，这边想用异步得到的数据是不好做的 
 });
  
 app.use("/home", (req, res, next) => {
@@ -57,7 +60,7 @@ app.get(
 // 当调用get接口时，通过next只会走 use 和 get 的，不会走post的
 
 // next() 带参数就会到错误中间件,没有带参数的next永远都不会走这里(这个中间件有四个参数)
-app.use((err,req,res,next)=>{ // 统一处理所有错误
+app.use((err,req,res,next)=>{ // 统一处理所有 错误
     console.log(err);
 })
 
