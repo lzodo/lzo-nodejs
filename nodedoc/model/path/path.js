@@ -12,3 +12,8 @@ let after = "path.js"
 console.log(path.join(base,after)); // 无脑拼接，只会将斜杠转成系统适合的斜杠,认识./../,如果../在base，会直接显示
 console.log(path.resolve(base, after)); //判断拼接路径中是否有/开头的,如果有，只会取/后面的，如果没有，会自动添加运行指令所在路径再加上要拼的路径
                                                         //没/开头，并且../在base,得到运行指令所在路径上一级，加上base/after
+
+                                                        
+                                                        
+                                                        
+// 重要 项目中任何一个地方的相对路径，都是相对于process.cwd(启动项目所在的文件夹)，所以尽量用绝对路径
