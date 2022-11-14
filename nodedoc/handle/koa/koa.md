@@ -9,6 +9,7 @@
 
 -   koa-session 保存网络请求状态
 -   koa-compress 压缩响应数据
--   koa-logger 输出服务日志
+-   koa-logger 输出接口服务日志
 -   koa-error 处理响应错误
+-   log4js 自定义数据输出
     
