@@ -1,25 +1,30 @@
 const fs = require("fs");
-const path = require("path")
+const path = require("path");
 //每种操作node一般提供三种常用调用方式，同步、异步回调、异步promise
 
-const filepath = path.resolve(__dirname,"../testfiles/test.txt");
+const filepath = path.resolve(__dirname, "../testfiles/test.txt");
 // stat 读取文件信息
 // 方式一:同步读取
 const info = fs.statSync(filepath);
-console.log("statSync会阻塞，后续代码需要它执行完成后才会执行")
-console.log(info)
+console.log("statSync会阻塞，后续代码需要它执行完成后才会执行");
+console.log(info);
 
 // 方式二:回调异步
-fs.stat(filepath,(err,info)=>{
-    if(err){
-        console.log("执行错误")
-        return;
-    }
-    console.log(info)
-})
+fs.stat(filepath, (err, info) => {
+  if (err) {
+    console.log("执行错误");
+    return;
+  }
+  console.log(info);
+});
 
 // 方式三：promise异步(开始支持不好，新版本基本都有了)
-fs.promises.stat(filepath).then((info)=>{console.log(info)}).catch((err)=>{})
+fs.promises
+  .stat(filepath)
+  .then((info) => {
+    console.log(info, "fs.promises");
+  })
+  .catch((err) => {});
 /**
  * node v10以上版本
  * const fsPromises = require("fs").promises;
