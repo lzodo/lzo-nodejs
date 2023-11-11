@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
+// 相对于文件所在位置，
 const filepath = path.resolve(__dirname, "../testfiles/test.txt");
 
 // 获取文件描述符

@@ -60,6 +60,9 @@ rsonly.on("end", function () {
 rsonly.on("error", function (err) {
   console.log("ERROR: " + err);
 });
+
+rsonly.on("open", () => {});
+rsonly.on("close", () => {});
 // ==================================================
 // 创建输入流
 var ws1 = fs.createWriteStream(
@@ -90,6 +93,6 @@ ws3.end();
 var rsping = fs.createReadStream("./nodedoc/model/testfiles/copied.txt");
 var wsping = fs.createWriteStream("./nodedoc/model/testfiles/copied2.txt");
 
-wsping.write("before rsping filee \n");
+wsping.write("before rsping filee ha ha ha \n");
 
 rsping.pipe(wsping); //将copied的流直接读取并写入copied2中
