@@ -2,3 +2,4 @@ nodedoc/server/server4/node_modules/
 node_modules/
 nodedoc/file-upload/package-lock.json
 output/
+temp/

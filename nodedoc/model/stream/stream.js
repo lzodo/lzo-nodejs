@@ -17,7 +17,7 @@
 var fs = require("fs");
 
 // 打开一个文件输出流:
-var rs = fs.createReadStream("./nodedoc/model/testfiles/text.txt", "utf-8");
+var rs = fs.createReadStream("./temp/text.txt", "utf-8");
 
 rs.on("data", function (chunk) {
   //读取每一个
@@ -34,15 +34,18 @@ rs.on("error", function (err) {
   console.log("ERROR: " + err);
 });
 
-// 限制读取
-var rsonly = fs.createReadStream("./nodedoc/model/testfiles/text.txt", {
+// 限制读取，返回 Readable 可读流、输出流
+var rsonly = fs.createReadStream("./temp/text.txt", {
+  // encoding:'utf-8',
   start: 4,
   // end:8,
-  highWaterMark: 2, //每次读几个字节
+  highWaterMark: 1, // 每次读1个字节，如果：encoding：utf-8 每次读取1个字符
+  autoClose: true, // 读取完成自动关闭
 });
 
+// 文件读取
 rsonly.on("data", function (chunk) {
-  //读取每一个
+  // 读取每一个，用一个，用完就扔，节约内存
   console.log("ONLYDATA:");
   console.log(chunk);
 
@@ -57,42 +60,59 @@ rsonly.on("end", function () {
   console.log("ONLYEND");
 });
 
+// 读取错误触发
 rsonly.on("error", function (err) {
   console.log("ERROR: " + err);
 });
 
+// 文件打开触发
 rsonly.on("open", () => {});
+
+// 文件关闭触发
 rsonly.on("close", () => {});
+
+// 读取暂停pause()触发
+rsonly.on("pause", () => {
+  console.log("暂停读取");
+});
+
+// 继续读取resume()触发
+rsonly.on("resume", () => {
+  console.log("继续读取");
+});
 // ==================================================
 // 创建输入流
-var ws1 = fs.createWriteStream(
-  "./nodedoc/model/testfiles/output1.txt",
-  "utf-8"
-);
+var ws1 = fs.createWriteStream("./temp/output1.txt", "utf-8");
 ws1.write("使用Stream写入文本数据...\n");
 ws1.write("END.");
 ws1.end("last"); //表示最后的内容写进去后全部已经写完，直接关闭
 
 // let acc = new Buffer('使用Stream写入二进制数据...\n');
 const buf = Buffer.alloc(5, "a");
-var ws2 = fs.createWriteStream("./nodedoc/model/testfiles/output2.txt");
+var ws2 = fs.createWriteStream("./temp/output2.txt");
 ws2.write(buf);
 ws2.end();
 
-var ws3 = fs.createWriteStream("./nodedoc/model/testfiles/output3.txt", {
+// 返回 Writable 可写流、输入流
+var ws3 = fs.createWriteStream("./temp/output3.txt", {
+  // encoding: "utf-8",
   flags: "a", //追加文件写入的是 flag
   start: 4,
+  highWaterMark: 2, // 一次最多写入的字节数
 });
-ws3.write("123456789", (err) => {
+
+//
+const res = ws3.write("123456789", (err) => {
   console.log("写入成功");
 });
-ws3.end();
+// 后续不再写入了
+ws3.end("最后写入的数据，可写可不写");
 
 //===============================================================
 
-var rsping = fs.createReadStream("./nodedoc/model/testfiles/copied.txt");
-var wsping = fs.createWriteStream("./nodedoc/model/testfiles/copied2.txt");
+var rsping = fs.createReadStream("./temp/copied.txt");
+var wsping = fs.createWriteStream("./temp/copied2.txt");
 
-wsping.write("before rsping filee ha ha ha \n");
+wsping.write("先写一些内容 \n");
 
 rsping.pipe(wsping); //将copied的流直接读取并写入copied2中
