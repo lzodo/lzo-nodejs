@@ -1,28 +1,26 @@
 const Student = require("../models/student");
 const Class = require("../models/class");
 const { studentCreateVis } = require("./optionValids/studentValid");
-const { pick } = require("../utils/tools");
+const { pick, visHandler } = require("../utils/tools");
 
 // 添加
 exports.create = async function (obj) {
   // 获取对象指定属性
   const data = pick(obj, "name", "birthday", "sex", "mobile", "ClassId");
   // 参数校验
-  let result = studentCreateVis(data);
-  if (result) {
-    console.log("验证失败1", result);
-    return;
+  if (visHandler(studentCreateVis, data)) {
+    const ins = await Student.create(data);
+    return ins.toJSON();
   }
-
-  const ins = await Student.create(data);
-  return ins.toJSON();
 };
 
 exports.findAll = async function () {
   // 多表关联
   var res = await Student.findAll({
-    where: { id: 1 },
     include: [Class],
+    where: {
+      id: 88,
+    },
   });
   return JSON.stringify(res);
 };

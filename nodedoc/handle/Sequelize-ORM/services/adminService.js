@@ -1,16 +1,21 @@
 const Admin = require("../models/admin");
 const { fn, col, Op } = require("sequelize");
 const md5 = require("md5");
+const { pick, visHandler } = require("../utils/tools");
+const { adminCreateVis } = require("./optionValids/adminValid");
 
 // 添加
 exports.create = async function (adminObj) {
-  /**
-   * create = build + save ，最终返回创建的实例
-   * bulkCreate([{}]) 批量插入数据
-   */
-  adminObj.loginPwd = md5(adminObj.loginPwd);
-  const ins = await Admin.create(adminObj);
-  return ins.toJSON();
+  const data = pick(adminObj, "name", "loginId", "loginPwd");
+  if (visHandler(adminCreateVis, data)) {
+    /**
+     * create = build + save ，最终返回创建的实例
+     * bulkCreate([{}]) 批量插入数据
+     */
+    data.loginPwd = md5(data.loginPwd);
+    const ins = await Admin.create(data);
+    return ins.toJSON();
+  }
 };
 
 // 删除

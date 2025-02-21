@@ -16,3 +16,19 @@ exports.pick = function (obj, ...props) {
   }
   return newObj;
 };
+
+/**
+ * @param {*} vis  validate.js 校验函数
+ * @param {*} data  校验数据
+ * @returns 是否验证成功
+ */
+exports.visHandler = function (vis, data) {
+  let res = vis(data);
+  if (res) {
+    // 验证失败统一处理
+    console.log("验证失败", res);
+  } else {
+    console.log("通过验证");
+    return true;
+  }
+};

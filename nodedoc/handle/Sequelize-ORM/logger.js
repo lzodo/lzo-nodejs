@@ -1,0 +1,47 @@
+const log4js = require("log4js");
+const path = require("path");
+
+log4js.configure({
+  // 定义出口
+  appenders: {
+    sql: {
+      //定义一个sql日志出口
+      type: "dateFile", // file 保存到文件，dateFile 文件自动以当前日期作为后缀
+      filename: path.resolve(__dirname, "logs", "sql", "logging.log"),
+      maxLogSize: 1024 * 1024, //配置文件的最大字节数,到达自动分类文件
+      keepFileExt: true,
+      layout: {
+        // 自定义日志中时间的格式
+        type: "pattern",
+        pattern: "%c [%d{yyyy-MM-dd hh:mm:ss}] [%p]: %m%n",
+      },
+    },
+    // 定义一个默认输出
+    default: {
+      type: "stdout", // 控制台输出
+    },
+  },
+  // 配置分类
+  categories: {
+    sql: {
+      appenders: ["sql"], //该分类使用出口sql的配置写入日志
+      level: "all",
+    },
+    // 定义一个默认分类
+    default: {
+      appenders: ["default"],
+      level: "all",
+    },
+  },
+});
+
+// 程序关闭或意外关闭时结束日志，并把该保存的日志进行最后的保存
+process.on("exit", () => {
+  log4js.shutdown();
+});
+
+const sqlLogger = log4js.getLogger("sql");
+const defaultLogger = log4js.getLogger();
+
+exports.sqlLogger = sqlLogger;
+exports.logger = defaultLogger;
