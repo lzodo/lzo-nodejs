@@ -1,0 +1,130 @@
+const Admin = require("../models/admin");
+const { fn, col, Op } = require("sequelize");
+const md5 = require("md5");
+
+// 添加
+exports.create = async function (adminObj) {
+  /**
+   * create = build + save ，最终返回创建的实例
+   * bulkCreate([{}]) 批量插入数据
+   */
+  adminObj.loginPwd = md5(adminObj.loginPwd);
+  const ins = await Admin.create(adminObj);
+  return ins.toJSON();
+};
+
+// 删除
+exports.delete = async function (id) {
+  // 返回影响的数目
+  return await Admin.destroy({
+    where: {
+      id: id,
+    },
+  });
+};
+
+// 修改
+exports.update = async function (adminObj, whereObj) {
+  // 返回影响的数目
+  return await Admin.update(adminObj, {
+    where: whereObj,
+  });
+};
+
+// 登录
+exports.login = async function (adminObj) {
+  let res = await Admin.findOne({
+    where: {
+      loginId: adminObj.loginId,
+      loginPwd: md5(adminObj.loginPwd),
+    },
+  });
+  return res.toJSON(res);
+};
+
+// 查询
+exports.findAll = async function (pageSize = 10, pageNumber = 1) {
+  // 中文文档 https://github.com/demopark/sequelize-docs-Zh-CN/blob/master/core-concepts/model-querying-basics.md
+
+  if (false) {
+    // select * from `admin`;
+    var res = await Admin.findAll();
+
+    // select * from `admin` limit 0,10;
+    var res = await Admin.findAll({
+      offset: (pageNumber - 1) * pageSize,
+      limit: pageSize,
+    });
+
+    // select name,loginId from admins;
+    var res = await Admin.findAll({
+      attributes: ["name", "loginId"],
+    });
+
+    // select name,loginId from admins;
+    var res = await Admin.findAll({
+      attributes: ["name", "loginId"],
+    });
+
+    // select name as userName,loginId from admins;
+    var res = await Admin.findAll({
+      attributes: [["name", "userName"], "loginId"],
+    });
+
+    // select count(id) as n_hats from admins;
+    var res = await Admin.findAll({
+      attributes: [[fn("COUNT", col("id")), "n_hats"]],
+    });
+
+    // SELECT `name`, COUNT(`id`) AS `数量` FROM `Admins` WHERE (`Admin`.`deletedAt` IS NULL) GROUP BY `name`;
+    var res = await Admin.findAll({
+      attributes: ["name", [fn("COUNT", col("id")), "数量"]],
+      group: "name",
+    });
+
+    // select * from admins order by id desc;
+    var res = await Admin.findAll({
+      order: [["id", "DESC"]],
+    });
+
+    // SELECT `loginId`, `loginPwd`, `createdAt`, `updatedAt`, `deletedAt` FROM `Admins`  排除指定属性不查
+    var res = await Admin.findAll({
+      attributes: { exclude: ["name", "id"] },
+    });
+
+    // ============= where 子句 ======================
+    var res = await Admin.findAll({
+      attributes: ["id", "name", "loginId"],
+      where: {
+        // id: 3,
+        // 基本
+        id: {
+          [Op.eq]: 3,
+        },
+        // [Op.eq]: 3, // = 3
+        // [Op.ne]: 20, // != 20
+        // [Op.is]: null, // IS NULL
+        // [Op.not]: true, // IS NOT TRUE
+        // [Op.or]: [5, 6], // (someAttribute = 5) OR (someAttribute = 6)
+        // 数字比较
+        // [Op.gt]: 6, // > 6
+        // [Op.gte]: 6, // >= 6
+        // [Op.lt]: 10, // < 10
+        // [Op.lte]: 10, // <= 10
+        // [Op.between]: [6, 10], // BETWEEN 6 AND 10
+        // [Op.notBetween]: [11, 15], // NOT BETWEEN 11 AND 15
+        // [Op.in]: [1, 2], // IN [1, 2]
+        // [Op.notIn]: [1, 2], // NOT IN [1, 2]
+        // [Op.like]: "%hat", // LIKE '%hat'
+        // [Op.notLike]: "%hat", // NOT LIKE '%hat'
+      },
+    });
+  }
+
+  // select * from admins order by id desc;
+  var res = await Admin.findAll({
+    order: [["id", "DESC"]],
+  });
+
+  return JSON.parse(JSON.stringify(res));
+};

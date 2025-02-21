@@ -6,7 +6,7 @@ const sequelize = new Sequelize("duyi_myschooldb", "root", "Lzx542684.@", {
   // 选择一种支持的数据库:
   // 'mysql', 'mariadb', 'postgres', 'mssql', 'sqlite', 'snowflake', 'db2' or 'ibmi'
   dialect: "mysql",
-  logging: false, // 禁用日志记录
+  // logging: false, // 禁用日志记录
 });
 
 module.exports = sequelize;

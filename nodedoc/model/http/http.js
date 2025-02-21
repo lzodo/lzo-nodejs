@@ -3,7 +3,7 @@ const http = require("https");
 const fs = require("fs");
 const cheerio = require("cheerio");
 
-let url = "https://www.qunar.com";
+let url = "https://book.douban.com/latest";
 // let url = "http://iot.huihezn.com/";
 http
   .get(url, (res) => {
