@@ -27,8 +27,34 @@ exports.visHandler = function (vis, data) {
   if (res) {
     // 验证失败统一处理
     console.log("验证失败", res);
+    return res;
   } else {
     console.log("通过验证");
-    return true;
   }
+};
+
+/**
+ * 请求返回数据
+ * @param {*} data
+ * @returns
+ */
+exports.sendResult = function (data) {
+  return {
+    code: 0,
+    msg: "",
+    data,
+  };
+};
+
+/**
+ * 请求异常返回数据
+ * @param {*} msg
+ * @param {*} errCode
+ * @returns
+ */
+exports.sendErrResult = function (msg = "请求异常", errCode = 500) {
+  return {
+    code: errCode,
+    msg: msg,
+  };
 };

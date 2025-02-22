@@ -56,3 +56,57 @@ exports.studentCreateVis = function (data) {
   return validate.validate(data, rule);
   //   const result = await validate.async(data, rule);
 };
+
+exports.studentDeleteVis = function (data) {
+  // 自定义验证规则
+  validate.validators.allNumbers = function (value) {
+    if (!Array.isArray(value)) {
+      return "must be an array";
+    }
+    return value.every((num) => typeof num === "number" && !isNaN(num))
+      ? undefined
+      : "must contain only numbers";
+  };
+  const rule = {
+    ids: {
+      presence: true,
+      type: "array",
+      allNumbers: true,
+    },
+  };
+  return validate.validate(data, rule);
+};
+
+exports.studentUpdateVis = function (data) {
+  const rule = {
+    name: {
+      presence: false,
+      type: "string",
+      length: {
+        minimum: 2,
+        maximum: 10,
+      },
+    },
+    birthday: {
+      presence: false,
+      datetime: {
+        dateOnly: true,
+        earliest: +moment.utc().subtract(100, "y"), // 最早不能是100年前
+        latest: +moment.utc().subtract(5, "y"), // 最晚不能是5年内
+      },
+    },
+    sex: {
+      presence: false,
+      type: "boolean",
+    },
+    mobile: {
+      presence: false,
+      format: /1\d{10}/,
+    },
+    ClassId: {
+      presence: false,
+      type: "integer",
+    },
+  };
+  return validate.validate(data, rule);
+};

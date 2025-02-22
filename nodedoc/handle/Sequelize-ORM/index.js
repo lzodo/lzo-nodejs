@@ -5,6 +5,7 @@ require("./models/sync"); // 初始化模型
 const path = require("path");
 const express = require("express");
 const app = express(); //创建一个express应用
+const useRouter = require("./routes/index");
 
 /**
  * 静态资源服务器
@@ -26,28 +27,11 @@ app.use(
   express.json()
 );
 
-// api 的请求处理，【路由部分】
-app.post("/api/showBody", (req, res) => {
-  // 正常情况需要通过流的形式一点一点读取
-  console.log(req.body);
-  res.send(req.body);
-});
+// api 的请求处理【路由部分】
+useRouter(app);
 
-// 错误同一处理
-app.use((err, req, res, next) => {
-  // 四个参数就认为是4个中间件
-  console.log("handler3");
-  if (err) {
-    const errObj = {
-      code: 500,
-      msg: err instanceof Error ? err.message : err,
-    };
-    //发生了错误
-    res.status(500).send(errObj);
-  } else {
-    next();
-  }
-});
+// 错误中间件同一处理
+app.use(require("./middleware/error"));
 
 // 监听一个服务
 const port = 5008;

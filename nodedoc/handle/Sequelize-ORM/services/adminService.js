@@ -7,7 +7,8 @@ const { adminCreateVis } = require("./optionValids/adminValid");
 // 添加
 exports.create = async function (adminObj) {
   const data = pick(adminObj, "name", "loginId", "loginPwd");
-  if (visHandler(adminCreateVis, data)) {
+  const visRes = visHandler(adminCreateVis, data);
+  if (!visRes) {
     /**
      * create = build + save ，最终返回创建的实例
      * bulkCreate([{}]) 批量插入数据
@@ -15,6 +16,11 @@ exports.create = async function (adminObj) {
     data.loginPwd = md5(data.loginPwd);
     const ins = await Admin.create(data);
     return ins.toJSON();
+  } else {
+    return {
+      code: 400,
+      msg: visRes,
+    };
   }
 };
 

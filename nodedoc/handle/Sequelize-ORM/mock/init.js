@@ -3,5 +3,5 @@ setTimeout(() => {
   require("./mockAdmin");
   require("./mockClass");
   require("./mockStudent");
-  //   require("../spider");
+  require("../spider");
 }, 2000);
