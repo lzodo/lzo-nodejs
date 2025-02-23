@@ -1,30 +1,22 @@
 const express = require("express");
 const router = express.Router(); //获取路由实例|路由中间件
+const {
+  create,
+  findByPage,
+  findById,
+  update,
+  remove,
+} = require("../../controller/admin");
 
 // 添加
-router.post("/", (req, res) => {
-  console.log(req.body);
-  res.send(req.body);
-});
+router.post("/", create);
 // 通过分页获取
-router.get("/", (req, res) => {
-  console.log(req.query);
-  res.send(req.query);
-});
+router.get("/", findByPage);
 // 通过id获取
-router.get("/:id", (req, res) => {
-  console.log(req.query);
-  res.send(req.query);
-});
+router.get("/:id", findById);
 // 修改
-router.put("/:id", (req, res) => {
-  console.log(req.params);
-  res.send(req.params);
-});
+router.put("/:id", update);
 // 删除
-router.delete("/:id", (req, res) => {
-  console.log(req.params);
-  res.send(req.params);
-});
+router.delete("/", remove);
 
 module.exports = router;

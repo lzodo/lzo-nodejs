@@ -1,47 +1,22 @@
 const express = require("express");
 const router = express.Router(); //获取路由实例|路由中间件
-const stuServ = require("../../services/studentService");
-const { sendResult } = require("../../utils/tools");
+const {
+  create,
+  findByPage,
+  findById,
+  update,
+  remove,
+} = require("../../controller/student");
 
 // 添加
-router.post("/", async (req, res, next) => {
-  let result = await stuServ.create(req.body, next);
-  res.send(result);
-});
+router.post("/", create);
 // 通过分页获取
-router.get("/", async (req, res) => {
-  let limit = req.query.limit || 10;
-  let page = req.query.page >= 1 ? req.query.page : 1;
-  let searchObj = {
-    where: {},
-    page: page,
-    limit: limit,
-  };
-  // 存在的非分页参数添加到where
-  if (req.query.name) {
-    searchObj.where.name = req.query.name;
-  }
-  if (req.query.birthday) {
-    searchObj.where.birthday = req.query.birthday;
-  }
-
-  let result = await stuServ.findByPage(searchObj);
-  res.send(sendResult(result));
-});
+router.get("/", findByPage);
 // 通过id获取
-router.get("/:id", async (req, res) => {
-  let result = await stuServ.findById(req.params.id);
-  res.send(result);
-});
+router.get("/:id", findById);
 // 修改
-router.put("/:id", async (req, res) => {
-  let result = await stuServ.update(req.body, req.params.id);
-  res.send(result);
-});
+router.put("/:id", update);
 // 删除
-router.delete("/", async (req, res) => {
-  let result = await stuServ.delete(req.body);
-  res.send(result);
-});
+router.delete("/", remove);
 
 module.exports = router;

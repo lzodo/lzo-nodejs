@@ -9,7 +9,7 @@ const { pick, visHandler } = require("../utils/tools");
 const { Op } = require("sequelize");
 
 // 添加
-exports.create = async function (obj, next) {
+exports.create = async function (obj) {
   // 获取对象指定属性
   const data = pick(obj, "name", "birthday", "sex", "mobile", "ClassId");
 
@@ -19,7 +19,7 @@ exports.create = async function (obj, next) {
     const res = await Student.create(data);
     return res.toJSON();
   } else {
-    next(new Error(visRes));
+    throw new Error(JSON.stringify(visRes));
   }
 };
 
@@ -52,6 +52,8 @@ exports.findById = async function (id) {
       id,
     },
   });
+  console.log(res);
+
   return res.toJSON();
 };
 
@@ -66,15 +68,9 @@ exports.delete = async function (deleteObj) {
         },
       },
     });
-    return {
-      code: 200,
-      msg: "删除成功",
-    };
+    return "删除成功";
   } else {
-    return {
-      code: 400,
-      msg: visRes,
-    };
+    throw new Error(JSON.stringify(visRes));
   }
 };
 
@@ -88,16 +84,10 @@ exports.update = async function (updateObj, id) {
         id,
       },
     });
-    console.log(result);
 
-    return {
-      code: 200,
-      msg: result[0] ? "更新成功" : "未更新",
-    };
+    // return result[0] == 1 ? "更新成功" : "未更新";
+    return result[0] == 1 ? "更新成功" : "未更新";
   } else {
-    return {
-      code: 400,
-      msg: visRes,
-    };
+    throw new Error(JSON.stringify(visRes));
   }
 };

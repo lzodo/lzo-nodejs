@@ -32,7 +32,8 @@ const Student = sequelize.define(
       type: DataTypes.STRING(11),
       allowNull: false,
     },
-    // ClassId: { // 关联表自动生成，不需要在模型添加
+    // ClassId: {
+    //   // 关联表自动生成，不需要在模型添加
     //   type: DataTypes.NUMBER,
     //   allowNull: false,
     // },

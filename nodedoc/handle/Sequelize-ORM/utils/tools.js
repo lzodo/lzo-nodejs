@@ -20,7 +20,7 @@ exports.pick = function (obj, ...props) {
 /**
  * @param {*} vis  validate.js 校验函数
  * @param {*} data  校验数据
- * @returns 是否验证成功
+ * @returns 是否验证失败
  */
 exports.visHandler = function (vis, data) {
   let res = vis(data);
@@ -53,8 +53,16 @@ exports.sendResult = function (data) {
  * @returns
  */
 exports.sendErrResult = function (msg = "请求异常", errCode = 500) {
-  return {
-    code: errCode,
-    msg: msg,
-  };
+  try {
+    let data = JSON.parse(msg);
+    return {
+      code: errCode,
+      msg: data,
+    };
+  } catch (error) {
+    return {
+      code: errCode,
+      msg: msg,
+    };
+  }
 };
