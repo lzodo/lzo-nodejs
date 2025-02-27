@@ -1,5 +1,6 @@
 const validate = require("validate.js");
 const moment = require("moment");
+require("./customRule");
 
 exports.studentCreateVis = function (data) {
   // validate.validators.classExits = async function (value) {
@@ -58,15 +59,6 @@ exports.studentCreateVis = function (data) {
 };
 
 exports.studentDeleteVis = function (data) {
-  // 自定义验证规则
-  validate.validators.allNumbers = function (value) {
-    if (!Array.isArray(value)) {
-      return "must be an array";
-    }
-    return value.every((num) => typeof num === "number" && !isNaN(num))
-      ? undefined
-      : "must contain only numbers";
-  };
   const rule = {
     ids: {
       presence: true,

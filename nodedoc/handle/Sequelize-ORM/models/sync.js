@@ -1,6 +1,8 @@
 const sequelize = require("./db");
 
 // 同步所有模型
+require("./extend/updatePrompt");
+
 require("./admin");
 require("./book");
 const Student = require("./student");

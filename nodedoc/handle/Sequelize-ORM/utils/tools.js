@@ -38,13 +38,14 @@ exports.visHandler = function (vis, data) {
  * @param {*} data
  * @returns
  */
-exports.sendResult = function (data) {
+function sendResult(data) {
   return {
     code: 0,
     msg: "",
     data,
   };
-};
+}
+exports.sendResult = sendResult;
 
 /**
  * 请求异常返回数据
@@ -65,4 +66,30 @@ exports.sendErrResult = function (msg = "请求异常", errCode = 500) {
       msg: msg,
     };
   }
+};
+
+/**
+ * 捕获异常通用封装
+ * @param {*} promise
+ * @returns
+ *
+ * 使用：let [error, result] = await to(adminServ.findByPage(searchObj));
+ */
+exports.toa = function (promise) {
+  return promise
+    .then((data) => [null, data]) // 成功时返回 [null, 数据]
+    .catch((error) => [error, undefined]); // 失败时返回 [错误, undefined]
+};
+
+/**
+ * 捕获异常针对express中间件封装
+ * @param {*} promise
+ * @returns
+ *
+ * 使用：await to(adminServ.findByPage(searchObj),res,next);
+ */
+exports.to = function (promise, res, next) {
+  return promise
+    .then((data) => res.send(sendResult(data)))
+    .catch((error) => next(error));
 };

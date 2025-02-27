@@ -2,44 +2,94 @@ const Admin = require("../models/admin");
 const { fn, col, Op } = require("sequelize");
 const md5 = require("md5");
 const { pick, visHandler } = require("../utils/tools");
-const { adminCreateVis } = require("./optionValids/adminValid");
+const {
+  adminCreateVis,
+  adminDeleteVis,
+  adminUpdateVis,
+} = require("./optionValids/adminValid");
 
 // 添加
 exports.create = async function (adminObj) {
   const data = pick(adminObj, "name", "loginId", "loginPwd");
   const visRes = visHandler(adminCreateVis, data);
+
   if (!visRes) {
     /**
      * create = build + save ，最终返回创建的实例
      * bulkCreate([{}]) 批量插入数据
      */
     data.loginPwd = md5(data.loginPwd);
-    const ins = await Admin.create(data);
-    return ins.toJSON();
+    const res = await Admin.create(data);
+    return res.toJSON();
   } else {
-    return {
-      code: 400,
-      msg: visRes,
-    };
+    throw new Error(JSON.stringify(visRes));
   }
 };
 
 // 删除
-exports.delete = async function (id) {
-  // 返回影响的数目
-  return await Admin.destroy({
-    where: {
-      id: id,
-    },
-  });
+exports.delete = async function (deleteObj) {
+  const visRes = visHandler(adminDeleteVis, deleteObj);
+  console.log();
+  if (!visRes) {
+    // 返回影响的数目
+    return await Admin.destroy({
+      where: {
+        id: {
+          [Op.or]: deleteObj.ids,
+        },
+      },
+    });
+  } else {
+    throw new Error(JSON.stringify(visRes));
+  }
 };
 
 // 修改
-exports.update = async function (adminObj, whereObj) {
-  // 返回影响的数目
-  return await Admin.update(adminObj, {
-    where: whereObj,
+exports.update = async function (adminObj, id) {
+  const data = pick(adminObj, "name", "loginId", "loginPwd");
+  console.log(data, 33);
+
+  const visRes = visHandler(adminUpdateVis, data);
+  if (!visRes) {
+    // 返回影响的数目
+    let result = await Admin.update(data, {
+      where: { id },
+    });
+    return result[0] == 1 ? "更新成功" : "未更新";
+  } else {
+    throw new Error(JSON.stringify(visRes));
+  }
+};
+
+// 通过分页查询
+exports.findByPage = async function (searchObj) {
+  const { page, limit } = searchObj;
+  const where = {};
+  const findObj = {
+    attributes: ["name", "loginId"],
+    offset: (page - 1) * limit,
+    limit: limit,
+  };
+  for (const key in searchObj.where) {
+    where[key] = { [Op.like]: `%${searchObj.where[key]}%` };
+  }
+  if (Object.keys(where).length) {
+    findObj.where = where;
+  }
+
+  const res = await Admin.findAndCountAll(findObj);
+  return JSON.parse(JSON.stringify(res));
+};
+
+// 通过分页查询
+exports.findById = async function (id) {
+  const res = await Admin.findOne({
+    attributes: ["name", "loginId"],
+    where: {
+      id,
+    },
   });
+  return res.toJSON();
 };
 
 // 登录

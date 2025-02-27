@@ -6,6 +6,7 @@ const path = require("path");
 const express = require("express");
 const app = express(); //创建一个express应用
 const useRouter = require("./routes/index");
+const cors = require("cors");
 
 /**
  * 静态资源服务器
@@ -26,6 +27,7 @@ app.use(
   // 解析请求 Content-Type 为 application/json 的请求体
   express.json()
 );
+app.use(cors());
 
 // api 的请求处理【路由部分】
 useRouter(app);
