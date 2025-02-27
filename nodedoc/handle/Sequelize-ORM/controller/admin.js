@@ -1,15 +1,10 @@
 const adminServ = require("../services/adminService");
-const { sendResult, to } = require("../utils/tools");
+const { to } = require("../utils/tools");
 
 class AdminController {
   // 创建学生
   async create(req, res, next) {
-    try {
-      let result = await adminServ.create(req.body);
-      res.send(sendResult(result));
-    } catch (err) {
-      next(err);
-    }
+    await to(adminServ.create(req.body), res, next);
   }
 
   // 通过分页查询
@@ -30,43 +25,21 @@ class AdminController {
     }
 
     await to(adminServ.findByPage(searchObj), res, next);
-
-    // try {
-    //   let result = await adminServ.findByPage(searchObj);
-    //   res.send(sendResult(result));
-    // } catch (err) {
-    //   next(err);
-    // }
   }
 
   // 通过id查询
   async findById(req, res, next) {
-    try {
-      let result = await adminServ.findById(req.params.id);
-      res.send(sendResult(result));
-    } catch (err) {
-      next(err);
-    }
+    await to(adminServ.findById(req.params.id), res, next);
   }
 
   // 更新
   async update(req, res, next) {
-    try {
-      let result = await adminServ.update(req.body, req.params.id);
-      res.send(sendResult(result));
-    } catch (err) {
-      next(err);
-    }
+    await to(adminServ.update(req.body, req.params.id), res, next);
   }
 
   // 删除
   async remove(req, res, next) {
-    try {
-      let result = await adminServ.delete(req.body);
-      res.send(sendResult(result));
-    } catch (err) {
-      next(err);
-    }
+    await to(adminServ.delete(req.body), res, next);
   }
 }
 

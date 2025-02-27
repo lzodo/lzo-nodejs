@@ -1450,3 +1450,2065 @@ sql [2025-02-27 14:37:15] [DEBUG]: Executing (default): SELECT count(*) AS `coun
 
 sql [2025-02-27 14:37:15] [DEBUG]: Executing (default): SELECT `name`, `loginId` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND `Admin`.`name` LIKE '%liao55555555555555555%') LIMIT 0, 10;
 
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'UpdatePrompts' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `UpdatePrompts`;
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'UpdatePrompts' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updateTime` `updateTime` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): SHOW INDEX FROM `UpdatePrompts`
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Books`;
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` DATETIME NOT NULL;
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): SHOW INDEX FROM `Books`
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:39:29] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:39:30] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:39:30] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:39:30] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:39:30] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:39:30] [DEBUG]: Executing (default): SHOW INDEX FROM `Classes`
+
+sql [2025-02-27 14:39:30] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:39:30] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Students`;
+
+sql [2025-02-27 14:39:30] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:39:30] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:39:30] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+
+sql [2025-02-27 14:39:31] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+
+sql [2025-02-27 14:39:31] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+
+sql [2025-02-27 14:39:31] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:39:31] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:39:31] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:39:31] [DEBUG]: Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2025-02-27 14:39:32] [DEBUG]: Executing (default): SELECT `id`, `name`, `updateTime`, `createdAt`, `updatedAt` FROM `UpdatePrompts` AS `UpdatePrompt` WHERE `UpdatePrompt`.`name` = 'updateApp' LIMIT 1;
+
+sql [2025-02-27 14:39:32] [DEBUG]: Executing (default): SHOW INDEX FROM `Students`
+
+sql [2025-02-27 14:40:13] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'UpdatePrompts' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:40:13] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `UpdatePrompts`;
+
+sql [2025-02-27 14:40:13] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'UpdatePrompts' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:40:13] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:40:13] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updateTime` `updateTime` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:40:13] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:40:13] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:40:13] [DEBUG]: Executing (default): SHOW INDEX FROM `UpdatePrompts`
+
+sql [2025-02-27 14:40:13] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:40:13] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2025-02-27 14:40:13] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:40:13] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:40:13] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:40:13] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:40:13] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:40:13] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:40:13] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:40:13] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2025-02-27 14:40:13] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:40:13] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Books`;
+
+sql [2025-02-27 14:40:13] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:40:13] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:40:13] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2025-02-27 14:40:13] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` DATETIME NOT NULL;
+
+sql [2025-02-27 14:40:13] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:40:13] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:40:14] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:40:14] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:40:14] [DEBUG]: Executing (default): SHOW INDEX FROM `Books`
+
+sql [2025-02-27 14:40:14] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:40:14] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+
+sql [2025-02-27 14:40:14] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:40:14] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:40:14] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:40:14] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:40:14] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:40:15] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:40:15] [DEBUG]: Executing (default): SHOW INDEX FROM `Classes`
+
+sql [2025-02-27 14:40:15] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:40:15] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Students`;
+
+sql [2025-02-27 14:40:15] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:40:15] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:40:15] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+
+sql [2025-02-27 14:40:15] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+
+sql [2025-02-27 14:40:15] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+
+sql [2025-02-27 14:40:15] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:40:15] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:40:15] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:40:15] [DEBUG]: Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2025-02-27 14:40:15] [DEBUG]: Executing (default): SHOW INDEX FROM `Students`
+
+sql [2025-02-27 14:40:16] [DEBUG]: Executing (default): SELECT `id`, `name`, `updateTime`, `createdAt`, `updatedAt` FROM `UpdatePrompts` AS `UpdatePrompt` WHERE `UpdatePrompt`.`name` = 'updateApp' LIMIT 1;
+
+sql [2025-02-27 14:40:46] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'UpdatePrompts' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:40:46] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `UpdatePrompts`;
+
+sql [2025-02-27 14:40:46] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'UpdatePrompts' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:40:46] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:40:46] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updateTime` `updateTime` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:40:46] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:40:46] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:40:46] [DEBUG]: Executing (default): SHOW INDEX FROM `UpdatePrompts`
+
+sql [2025-02-27 14:40:46] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:40:46] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2025-02-27 14:40:46] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:40:46] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:40:46] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:40:46] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:40:46] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:40:46] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:40:46] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:40:46] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2025-02-27 14:40:46] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:40:46] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Books`;
+
+sql [2025-02-27 14:40:46] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:40:46] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:40:46] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2025-02-27 14:40:46] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` DATETIME NOT NULL;
+
+sql [2025-02-27 14:40:46] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:40:46] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:40:46] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:40:47] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:40:47] [DEBUG]: Executing (default): SHOW INDEX FROM `Books`
+
+sql [2025-02-27 14:40:47] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:40:47] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+
+sql [2025-02-27 14:40:47] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:40:47] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:40:47] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:40:47] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:40:47] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:40:48] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:40:48] [DEBUG]: Executing (default): SHOW INDEX FROM `Classes`
+
+sql [2025-02-27 14:40:48] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:40:48] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Students`;
+
+sql [2025-02-27 14:40:48] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:40:48] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:40:48] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+
+sql [2025-02-27 14:40:48] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+
+sql [2025-02-27 14:40:48] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+
+sql [2025-02-27 14:40:48] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:40:48] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:40:48] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:40:48] [DEBUG]: Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2025-02-27 14:40:49] [DEBUG]: Executing (default): SELECT `id`, `name`, `updateTime`, `createdAt`, `updatedAt` FROM `UpdatePrompts` AS `UpdatePrompt` WHERE `UpdatePrompt`.`name` = 'updateApp' LIMIT 1;
+
+sql [2025-02-27 14:40:49] [DEBUG]: Executing (default): SHOW INDEX FROM `Students`
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'UpdatePrompts' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `UpdatePrompts`;
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'UpdatePrompts' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updateTime` `updateTime` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): SHOW INDEX FROM `UpdatePrompts`
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Books`;
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` DATETIME NOT NULL;
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): SHOW INDEX FROM `Books`
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:41:19] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:41:20] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:41:20] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:41:21] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:41:21] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:41:21] [DEBUG]: Executing (default): SHOW INDEX FROM `Classes`
+
+sql [2025-02-27 14:41:21] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:41:21] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Students`;
+
+sql [2025-02-27 14:41:21] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:41:21] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:41:21] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+
+sql [2025-02-27 14:41:21] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+
+sql [2025-02-27 14:41:21] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+
+sql [2025-02-27 14:41:21] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:41:21] [DEBUG]: Executing (default): SELECT `id`, `name`, `updateTime`, `createdAt`, `updatedAt` FROM `UpdatePrompts` AS `UpdatePrompt` WHERE `UpdatePrompt`.`name` = 'updateApp' LIMIT 1;
+
+sql [2025-02-27 14:41:21] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:41:21] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:41:21] [DEBUG]: Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2025-02-27 14:41:21] [DEBUG]: Executing (default): SHOW INDEX FROM `Students`
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'UpdatePrompts' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `UpdatePrompts`;
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'UpdatePrompts' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updateTime` `updateTime` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): SHOW INDEX FROM `UpdatePrompts`
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Books`;
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` DATETIME NOT NULL;
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): SHOW INDEX FROM `Books`
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:41:43] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:41:44] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:41:44] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:41:44] [DEBUG]: Executing (default): SHOW INDEX FROM `Classes`
+
+sql [2025-02-27 14:41:44] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:41:44] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Students`;
+
+sql [2025-02-27 14:41:44] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:41:44] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:41:44] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+
+sql [2025-02-27 14:41:44] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+
+sql [2025-02-27 14:41:44] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+
+sql [2025-02-27 14:41:44] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:41:44] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:41:44] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:41:44] [DEBUG]: Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2025-02-27 14:41:44] [DEBUG]: Executing (default): SHOW INDEX FROM `Students`
+
+sql [2025-02-27 14:41:45] [DEBUG]: Executing (default): SELECT `id`, `name`, `updateTime`, `createdAt`, `updatedAt` FROM `UpdatePrompts` AS `UpdatePrompt` WHERE `UpdatePrompt`.`name` = 'updateApp' LIMIT 1;
+
+sql [2025-02-27 14:41:59] [DEBUG]: Executing (default): SELECT `name`, `loginId` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND `Admin`.`id` = '99');
+
+sql [2025-02-27 14:42:11] [DEBUG]: Executing (default): SELECT `name`, `loginId` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND `Admin`.`id` = '99');
+
+sql [2025-02-27 14:42:50] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'UpdatePrompts' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:42:50] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `UpdatePrompts`;
+
+sql [2025-02-27 14:42:50] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'UpdatePrompts' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:42:50] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:42:50] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updateTime` `updateTime` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:42:50] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:42:50] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:42:50] [DEBUG]: Executing (default): SHOW INDEX FROM `UpdatePrompts`
+
+sql [2025-02-27 14:42:50] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:42:50] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2025-02-27 14:42:50] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:42:50] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:42:50] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:42:50] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:42:50] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:42:51] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:42:51] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:42:51] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2025-02-27 14:42:51] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:42:51] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Books`;
+
+sql [2025-02-27 14:42:51] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:42:51] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:42:51] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2025-02-27 14:42:51] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` DATETIME NOT NULL;
+
+sql [2025-02-27 14:42:51] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:42:51] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:42:51] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:42:51] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:42:51] [DEBUG]: Executing (default): SHOW INDEX FROM `Books`
+
+sql [2025-02-27 14:42:51] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:42:51] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+
+sql [2025-02-27 14:42:51] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:42:51] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:42:52] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:42:52] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:42:52] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:42:53] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:42:53] [DEBUG]: Executing (default): SHOW INDEX FROM `Classes`
+
+sql [2025-02-27 14:42:53] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:42:53] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Students`;
+
+sql [2025-02-27 14:42:53] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:42:53] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:42:53] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+
+sql [2025-02-27 14:42:53] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+
+sql [2025-02-27 14:42:53] [DEBUG]: Executing (default): SELECT `id`, `name`, `updateTime`, `createdAt`, `updatedAt` FROM `UpdatePrompts` AS `UpdatePrompt` WHERE `UpdatePrompt`.`name` = 'updateApp' LIMIT 1;
+
+sql [2025-02-27 14:42:53] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+
+sql [2025-02-27 14:42:53] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:42:53] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:42:53] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:42:53] [DEBUG]: Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2025-02-27 14:42:53] [DEBUG]: Executing (default): SHOW INDEX FROM `Students`
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'UpdatePrompts' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `UpdatePrompts`;
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'UpdatePrompts' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updateTime` `updateTime` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): SHOW INDEX FROM `UpdatePrompts`
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Books`;
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` DATETIME NOT NULL;
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): SHOW INDEX FROM `Books`
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:43:00] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:43:01] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:43:01] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:43:01] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:43:01] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:43:02] [DEBUG]: Executing (default): SELECT `name`, `loginId` FROM `Admins` AS `Admin` WHERE (`Admin`.`deletedAt` IS NULL AND `Admin`.`id` = '99');
+
+sql [2025-02-27 14:43:02] [DEBUG]: Executing (default): SHOW INDEX FROM `Classes`
+
+sql [2025-02-27 14:43:02] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:43:02] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Students`;
+
+sql [2025-02-27 14:43:02] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:43:02] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:43:02] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+
+sql [2025-02-27 14:43:03] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+
+sql [2025-02-27 14:43:03] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+
+sql [2025-02-27 14:43:03] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:43:03] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:43:03] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:43:03] [DEBUG]: Executing (default): SELECT `id`, `name`, `updateTime`, `createdAt`, `updatedAt` FROM `UpdatePrompts` AS `UpdatePrompt` WHERE `UpdatePrompt`.`name` = 'updateApp' LIMIT 1;
+
+sql [2025-02-27 14:43:03] [DEBUG]: Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2025-02-27 14:43:03] [DEBUG]: Executing (default): SHOW INDEX FROM `Students`
+
+sql [2025-02-27 14:43:18] [DEBUG]: Executing (default): UPDATE `Admins` SET `deletedAt`=? WHERE `deletedAt` IS NULL AND (`id` = ? OR `id` = ? OR `id` = ? OR `id` = ?)
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'UpdatePrompts' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `UpdatePrompts`;
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'UpdatePrompts' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updateTime` `updateTime` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): SHOW INDEX FROM `UpdatePrompts`
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Books`;
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` DATETIME NOT NULL;
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): SHOW INDEX FROM `Books`
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:45:01] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:45:02] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:45:02] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:45:02] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:45:03] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:45:03] [DEBUG]: Executing (default): SHOW INDEX FROM `Classes`
+
+sql [2025-02-27 14:45:03] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:45:03] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Students`;
+
+sql [2025-02-27 14:45:03] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:45:03] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:45:03] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+
+sql [2025-02-27 14:45:03] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+
+sql [2025-02-27 14:45:03] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+
+sql [2025-02-27 14:45:03] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:45:03] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:45:03] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:45:03] [DEBUG]: Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2025-02-27 14:45:04] [DEBUG]: Executing (default): SHOW INDEX FROM `Students`
+
+sql [2025-02-27 14:45:04] [DEBUG]: Executing (default): SELECT `id`, `name`, `updateTime`, `createdAt`, `updatedAt` FROM `UpdatePrompts` AS `UpdatePrompt` WHERE `UpdatePrompt`.`name` = 'updateApp' LIMIT 1;
+
+sql [2025-02-27 14:45:34] [DEBUG]: Executing (default): UPDATE `Admins` SET `deletedAt`=? WHERE `deletedAt` IS NULL AND (`id` = ? OR `id` = ? OR `id` = ? OR `id` = ? OR `id` = ? OR `id` = ?)
+
+sql [2025-02-27 14:47:11] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'UpdatePrompts' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:47:11] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `UpdatePrompts`;
+
+sql [2025-02-27 14:47:11] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'UpdatePrompts' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:47:11] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:47:11] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updateTime` `updateTime` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:47:11] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:47:11] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:47:11] [DEBUG]: Executing (default): SHOW INDEX FROM `UpdatePrompts`
+
+sql [2025-02-27 14:47:11] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:47:11] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2025-02-27 14:47:11] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:47:11] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:47:11] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:47:11] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:47:11] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:47:11] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:47:11] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:47:11] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2025-02-27 14:47:11] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:47:11] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Books`;
+
+sql [2025-02-27 14:47:11] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:47:11] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:47:11] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2025-02-27 14:47:12] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` DATETIME NOT NULL;
+
+sql [2025-02-27 14:47:12] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:47:12] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:47:12] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:47:12] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:47:12] [DEBUG]: Executing (default): SHOW INDEX FROM `Books`
+
+sql [2025-02-27 14:47:12] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:47:12] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+
+sql [2025-02-27 14:47:12] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:47:12] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:47:13] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:47:13] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:47:14] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:47:14] [DEBUG]: Executing (default): SELECT `id`, `name`, `updateTime`, `createdAt`, `updatedAt` FROM `UpdatePrompts` AS `UpdatePrompt` WHERE `UpdatePrompt`.`name` = 'updateApp' LIMIT 1;
+
+sql [2025-02-27 14:47:14] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:47:14] [DEBUG]: Executing (default): SHOW INDEX FROM `Classes`
+
+sql [2025-02-27 14:47:15] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:47:15] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Students`;
+
+sql [2025-02-27 14:47:15] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:47:15] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:47:15] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+
+sql [2025-02-27 14:47:15] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+
+sql [2025-02-27 14:47:15] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+
+sql [2025-02-27 14:47:15] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:47:15] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:47:15] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:47:15] [DEBUG]: Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2025-02-27 14:47:15] [DEBUG]: Executing (default): SHOW INDEX FROM `Students`
+
+sql [2025-02-27 14:47:29] [DEBUG]: Executing (default): INSERT INTO `Admins` (`id`,`loginId`,`loginPwd`,`name`,`createdAt`,`updatedAt`) VALUES (DEFAULT,?,?,?,?,?);
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'UpdatePrompts' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `UpdatePrompts`;
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'UpdatePrompts' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updateTime` `updateTime` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): SHOW INDEX FROM `UpdatePrompts`
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Books`;
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): SHOW INDEX FROM `Books`
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:48:14] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:15] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:15] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:15] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:16] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:48:16] [DEBUG]: Executing (default): SHOW INDEX FROM `Classes`
+
+sql [2025-02-27 14:48:16] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:48:16] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Students`;
+
+sql [2025-02-27 14:48:16] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:48:16] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:16] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:16] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+
+sql [2025-02-27 14:48:16] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+
+sql [2025-02-27 14:48:16] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:16] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:16] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:48:16] [DEBUG]: Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2025-02-27 14:48:16] [DEBUG]: Executing (default): SHOW INDEX FROM `Students`
+
+sql [2025-02-27 14:48:17] [DEBUG]: Executing (default): SELECT `id`, `name`, `updateTime`, `createdAt`, `updatedAt` FROM `UpdatePrompts` AS `UpdatePrompt` WHERE `UpdatePrompt`.`name` = 'updateApp' LIMIT 1;
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'UpdatePrompts' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `UpdatePrompts`;
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'UpdatePrompts' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updateTime` `updateTime` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): SHOW INDEX FROM `UpdatePrompts`
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Books`;
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): SHOW INDEX FROM `Books`
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:48:20] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:22] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:22] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:22] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:22] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:48:23] [DEBUG]: Executing (default): SHOW INDEX FROM `Classes`
+
+sql [2025-02-27 14:48:23] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:48:23] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Students`;
+
+sql [2025-02-27 14:48:23] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:48:23] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:23] [DEBUG]: Executing (default): SELECT `id`, `name`, `updateTime`, `createdAt`, `updatedAt` FROM `UpdatePrompts` AS `UpdatePrompt` WHERE `UpdatePrompt`.`name` = 'updateApp' LIMIT 1;
+
+sql [2025-02-27 14:48:23] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:23] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+
+sql [2025-02-27 14:48:23] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+
+sql [2025-02-27 14:48:23] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:23] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:23] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:48:23] [DEBUG]: Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2025-02-27 14:48:23] [DEBUG]: Executing (default): SHOW INDEX FROM `Students`
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'UpdatePrompts' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `UpdatePrompts`;
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'UpdatePrompts' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updateTime` `updateTime` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): SHOW INDEX FROM `UpdatePrompts`
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Books`;
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): SHOW INDEX FROM `Books`
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:48] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:49] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:49] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:49] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:48:49] [DEBUG]: Executing (default): SHOW INDEX FROM `Classes`
+
+sql [2025-02-27 14:48:49] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:48:49] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Students`;
+
+sql [2025-02-27 14:48:49] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:48:49] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:49] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:49] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+
+sql [2025-02-27 14:48:50] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+
+sql [2025-02-27 14:48:50] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:50] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:50] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:48:50] [DEBUG]: Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2025-02-27 14:48:50] [DEBUG]: Executing (default): SHOW INDEX FROM `Students`
+
+sql [2025-02-27 14:48:51] [DEBUG]: Executing (default): SELECT `id`, `name`, `updateTime`, `createdAt`, `updatedAt` FROM `UpdatePrompts` AS `UpdatePrompt` WHERE `UpdatePrompt`.`name` = 'updateApp' LIMIT 1;
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'UpdatePrompts' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `UpdatePrompts`;
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'UpdatePrompts' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updateTime` `updateTime` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): SHOW INDEX FROM `UpdatePrompts`
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Books`;
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): SHOW INDEX FROM `Books`
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:48:53] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:54] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:54] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:54] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:54] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:48:55] [DEBUG]: Executing (default): SHOW INDEX FROM `Classes`
+
+sql [2025-02-27 14:48:55] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:48:55] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Students`;
+
+sql [2025-02-27 14:48:55] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:48:55] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:48:55] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:55] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+
+sql [2025-02-27 14:48:55] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+
+sql [2025-02-27 14:48:55] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:55] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:48:55] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:48:55] [DEBUG]: Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2025-02-27 14:48:55] [DEBUG]: Executing (default): SHOW INDEX FROM `Students`
+
+sql [2025-02-27 14:48:56] [DEBUG]: Executing (default): SELECT `id`, `name`, `updateTime`, `createdAt`, `updatedAt` FROM `UpdatePrompts` AS `UpdatePrompt` WHERE `UpdatePrompt`.`name` = 'updateApp' LIMIT 1;
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'UpdatePrompts' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `UpdatePrompts`;
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'UpdatePrompts' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updateTime` `updateTime` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): SHOW INDEX FROM `UpdatePrompts`
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Books`;
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` DATETIME NOT NULL;
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): SHOW INDEX FROM `Books`
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:49:22] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:49:23] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:49:23] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:49:23] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:49:23] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:49:24] [DEBUG]: Executing (default): SHOW INDEX FROM `Classes`
+
+sql [2025-02-27 14:49:24] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:49:24] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Students`;
+
+sql [2025-02-27 14:49:24] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:49:24] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:49:24] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+
+sql [2025-02-27 14:49:24] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+
+sql [2025-02-27 14:49:24] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+
+sql [2025-02-27 14:49:24] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:49:24] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:49:24] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:49:24] [DEBUG]: Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2025-02-27 14:49:24] [DEBUG]: Executing (default): SHOW INDEX FROM `Students`
+
+sql [2025-02-27 14:49:25] [DEBUG]: Executing (default): SELECT `id`, `name`, `updateTime`, `createdAt`, `updatedAt` FROM `UpdatePrompts` AS `UpdatePrompt` WHERE `UpdatePrompt`.`name` = 'updateApp' LIMIT 1;
+
+sql [2025-02-27 14:49:46] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'UpdatePrompts' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:49:46] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `UpdatePrompts`;
+
+sql [2025-02-27 14:49:46] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'UpdatePrompts' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:49:46] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updateTime` `updateTime` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): SHOW INDEX FROM `UpdatePrompts`
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Books`;
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` DATETIME NOT NULL;
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): SHOW INDEX FROM `Books`
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:49:47] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:49:48] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:49:48] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:49:48] [DEBUG]: Executing (default): SHOW INDEX FROM `Classes`
+
+sql [2025-02-27 14:49:48] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:49:48] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Students`;
+
+sql [2025-02-27 14:49:48] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:49:48] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:49:48] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+
+sql [2025-02-27 14:49:48] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+
+sql [2025-02-27 14:49:48] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+
+sql [2025-02-27 14:49:48] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:49:48] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:49:48] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:49:48] [DEBUG]: Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2025-02-27 14:49:49] [DEBUG]: Executing (default): SHOW INDEX FROM `Students`
+
+sql [2025-02-27 14:49:49] [DEBUG]: Executing (default): SELECT `id`, `name`, `updateTime`, `createdAt`, `updatedAt` FROM `UpdatePrompts` AS `UpdatePrompt` WHERE `UpdatePrompt`.`name` = 'updateApp' LIMIT 1;
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'UpdatePrompts' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `UpdatePrompts`;
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'UpdatePrompts' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updateTime` `updateTime` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): SHOW INDEX FROM `UpdatePrompts`
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Books`;
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` DATETIME NOT NULL;
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): SHOW INDEX FROM `Books`
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:50:06] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:50:07] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:50:07] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:50:07] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:50:08] [DEBUG]: Executing (default): SHOW INDEX FROM `Classes`
+
+sql [2025-02-27 14:50:08] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:50:08] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Students`;
+
+sql [2025-02-27 14:50:08] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:50:08] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:50:08] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+
+sql [2025-02-27 14:50:08] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+
+sql [2025-02-27 14:50:08] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+
+sql [2025-02-27 14:50:08] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:50:08] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:50:08] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:50:08] [DEBUG]: Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2025-02-27 14:50:08] [DEBUG]: Executing (default): SHOW INDEX FROM `Students`
+
+sql [2025-02-27 14:50:08] [DEBUG]: Executing (default): SELECT `id`, `name`, `updateTime`, `createdAt`, `updatedAt` FROM `UpdatePrompts` AS `UpdatePrompt` WHERE `UpdatePrompt`.`name` = 'updateApp' LIMIT 1;
+
+sql [2025-02-27 14:50:52] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'UpdatePrompts' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:50:52] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `UpdatePrompts`;
+
+sql [2025-02-27 14:50:52] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'UpdatePrompts' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:50:52] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:50:52] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updateTime` `updateTime` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:50:52] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:50:52] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:50:52] [DEBUG]: Executing (default): SHOW INDEX FROM `UpdatePrompts`
+
+sql [2025-02-27 14:50:52] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:50:52] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2025-02-27 14:50:52] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:50:52] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:50:52] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:50:52] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:50:52] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:50:53] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:50:53] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:50:53] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2025-02-27 14:50:53] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:50:53] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Books`;
+
+sql [2025-02-27 14:50:53] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:50:53] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:50:53] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2025-02-27 14:50:53] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` DATETIME NOT NULL;
+
+sql [2025-02-27 14:50:53] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:50:53] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:50:53] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:50:53] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:50:53] [DEBUG]: Executing (default): SHOW INDEX FROM `Books`
+
+sql [2025-02-27 14:50:53] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:50:53] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+
+sql [2025-02-27 14:50:53] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:50:53] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:50:53] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:50:53] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:50:54] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:50:54] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:50:54] [DEBUG]: Executing (default): SHOW INDEX FROM `Classes`
+
+sql [2025-02-27 14:50:54] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:50:54] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Students`;
+
+sql [2025-02-27 14:50:54] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:50:54] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:50:54] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+
+sql [2025-02-27 14:50:54] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+
+sql [2025-02-27 14:50:54] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+
+sql [2025-02-27 14:50:54] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:50:55] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:50:55] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:50:55] [DEBUG]: Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2025-02-27 14:50:55] [DEBUG]: Executing (default): SHOW INDEX FROM `Students`
+
+sql [2025-02-27 14:50:55] [DEBUG]: Executing (default): SELECT `id`, `name`, `updateTime`, `createdAt`, `updatedAt` FROM `UpdatePrompts` AS `UpdatePrompt` WHERE `UpdatePrompt`.`name` = 'updateApp' LIMIT 1;
+
+sql [2025-02-27 14:51:28] [DEBUG]: Executing (default): INSERT INTO `Students` (`id`,`name`,`birthday`,`sex`,`mobile`,`createdAt`,`updatedAt`,`ClassId`) VALUES (DEFAULT,?,?,?,?,?,?,?);
+
+sql [2025-02-27 14:51:41] [DEBUG]: Executing (default): SELECT count(`Student`.`id`) AS `count` FROM `Students` AS `Student` LEFT OUTER JOIN `Classes` AS `Class` ON `Student`.`ClassId` = `Class`.`id` AND (`Class`.`deletedAt` IS NULL) WHERE (`Student`.`deletedAt` IS NULL);
+
+sql [2025-02-27 14:51:41] [DEBUG]: Executing (default): SELECT `Student`.`id`, `Student`.`name`, `Student`.`birthday`, `Class`.`id` AS `Class.id`, `Class`.`name` AS `Class.name`, `Class`.`openDate` AS `Class.openDate`, `Class`.`createdAt` AS `Class.createdAt`, `Class`.`updatedAt` AS `Class.updatedAt`, `Class`.`deletedAt` AS `Class.deletedAt` FROM `Students` AS `Student` LEFT OUTER JOIN `Classes` AS `Class` ON `Student`.`ClassId` = `Class`.`id` AND (`Class`.`deletedAt` IS NULL) WHERE (`Student`.`deletedAt` IS NULL) LIMIT 0, 10;
+
+sql [2025-02-27 14:51:44] [DEBUG]: Executing (default): SELECT count(`Student`.`id`) AS `count` FROM `Students` AS `Student` LEFT OUTER JOIN `Classes` AS `Class` ON `Student`.`ClassId` = `Class`.`id` AND (`Class`.`deletedAt` IS NULL) WHERE (`Student`.`deletedAt` IS NULL AND `Student`.`name` LIKE '%aaa1%');
+
+sql [2025-02-27 14:51:44] [DEBUG]: Executing (default): SELECT `Student`.`id`, `Student`.`name`, `Student`.`birthday`, `Class`.`id` AS `Class.id`, `Class`.`name` AS `Class.name`, `Class`.`openDate` AS `Class.openDate`, `Class`.`createdAt` AS `Class.createdAt`, `Class`.`updatedAt` AS `Class.updatedAt`, `Class`.`deletedAt` AS `Class.deletedAt` FROM `Students` AS `Student` LEFT OUTER JOIN `Classes` AS `Class` ON `Student`.`ClassId` = `Class`.`id` AND (`Class`.`deletedAt` IS NULL) WHERE (`Student`.`deletedAt` IS NULL AND `Student`.`name` LIKE '%aaa1%') LIMIT 0, 10;
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'UpdatePrompts' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `UpdatePrompts`;
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'UpdatePrompts' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updateTime` `updateTime` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): SHOW INDEX FROM `UpdatePrompts`
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Books`;
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` DATETIME NOT NULL;
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): SHOW INDEX FROM `Books`
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:52:47] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:52:48] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:52:48] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:52:48] [DEBUG]: Executing (default): SHOW INDEX FROM `Classes`
+
+sql [2025-02-27 14:52:48] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:52:48] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Students`;
+
+sql [2025-02-27 14:52:48] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:52:48] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:52:48] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+
+sql [2025-02-27 14:52:48] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+
+sql [2025-02-27 14:52:48] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+
+sql [2025-02-27 14:52:48] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:52:48] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:52:48] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:52:48] [DEBUG]: Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2025-02-27 14:52:49] [DEBUG]: Executing (default): SHOW INDEX FROM `Students`
+
+sql [2025-02-27 14:52:49] [DEBUG]: Executing (default): SELECT `id`, `name`, `updateTime`, `createdAt`, `updatedAt` FROM `UpdatePrompts` AS `UpdatePrompt` WHERE `UpdatePrompt`.`name` = 'updateApp' LIMIT 1;
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'UpdatePrompts' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `UpdatePrompts`;
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'UpdatePrompts' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updateTime` `updateTime` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): SHOW INDEX FROM `UpdatePrompts`
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Books`;
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` DATETIME NOT NULL;
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): SHOW INDEX FROM `Books`
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:53:07] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:53:08] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:53:08] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:53:08] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:53:08] [DEBUG]: Executing (default): SHOW INDEX FROM `Classes`
+
+sql [2025-02-27 14:53:08] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:53:08] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Students`;
+
+sql [2025-02-27 14:53:08] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:53:09] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:53:09] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+
+sql [2025-02-27 14:53:09] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+
+sql [2025-02-27 14:53:09] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+
+sql [2025-02-27 14:53:09] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:53:09] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:53:09] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:53:09] [DEBUG]: Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2025-02-27 14:53:09] [DEBUG]: Executing (default): SHOW INDEX FROM `Students`
+
+sql [2025-02-27 14:53:10] [DEBUG]: Executing (default): SELECT `id`, `name`, `updateTime`, `createdAt`, `updatedAt` FROM `UpdatePrompts` AS `UpdatePrompt` WHERE `UpdatePrompt`.`name` = 'updateApp' LIMIT 1;
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'UpdatePrompts' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `UpdatePrompts`;
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'UpdatePrompts' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updateTime` `updateTime` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): ALTER TABLE `UpdatePrompts` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): SHOW INDEX FROM `UpdatePrompts`
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Admins' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Admins`;
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admins' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): ALTER TABLE `Admins` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): SHOW INDEX FROM `Admins`
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Books' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Books`;
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Books' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `imgurl` `imgurl` VARCHAR(255);
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `publishDate` `publishDate` DATETIME NOT NULL;
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): ALTER TABLE `Books` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): SHOW INDEX FROM `Books`
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Classes' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Classes`;
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Classes' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:53:13] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:53:14] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `openDate` `openDate` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:53:14] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:53:14] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:53:15] [DEBUG]: Executing (default): ALTER TABLE `Classes` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:53:15] [DEBUG]: Executing (default): SHOW INDEX FROM `Classes`
+
+sql [2025-02-27 14:53:15] [DEBUG]: Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'Students' AND TABLE_SCHEMA = 'duyi_myschooldb'
+
+sql [2025-02-27 14:53:15] [DEBUG]: Executing (default): SHOW FULL COLUMNS FROM `Students`;
+
+sql [2025-02-27 14:53:15] [DEBUG]: Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Students' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='duyi_myschooldb' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql [2025-02-27 14:53:15] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql [2025-02-27 14:53:15] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `birthday` `birthday` DATETIME NOT NULL;
+
+sql [2025-02-27 14:53:15] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+
+sql [2025-02-27 14:53:15] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `mobile` `mobile` VARCHAR(11) NOT NULL;
+
+sql [2025-02-27 14:53:15] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:53:15] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql [2025-02-27 14:53:15] [DEBUG]: Executing (default): ALTER TABLE `Students` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql [2025-02-27 14:53:15] [DEBUG]: Executing (default): ALTER TABLE `Students` ADD FOREIGN KEY (`ClassId`) REFERENCES `Classes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql [2025-02-27 14:53:15] [DEBUG]: Executing (default): SHOW INDEX FROM `Students`
+
+sql [2025-02-27 14:53:16] [DEBUG]: Executing (default): SELECT `id`, `name`, `updateTime`, `createdAt`, `updatedAt` FROM `UpdatePrompts` AS `UpdatePrompt` WHERE `UpdatePrompt`.`name` = 'updateApp' LIMIT 1;
+

@@ -41,7 +41,7 @@ exports.visHandler = function (vis, data) {
 function sendResult(data) {
   return {
     code: 0,
-    msg: "",
+    msg: "success",
     data,
   };
 }
@@ -90,6 +90,6 @@ exports.toa = function (promise) {
  */
 exports.to = function (promise, res, next) {
   return promise
-    .then((data) => res.send(sendResult(data)))
-    .catch((error) => next(error));
+    .then((data) => res.send(sendResult(data))) // 将数据格式化后返回客户端
+    .catch((error) => next(error)); // 进入异常中间件进行处理
 };

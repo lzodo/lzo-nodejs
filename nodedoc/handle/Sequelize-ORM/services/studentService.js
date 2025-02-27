@@ -28,7 +28,7 @@ exports.findByPage = async function (searchObj) {
   const { page, limit } = searchObj;
   const where = {};
   const findObj = {
-    attributes: ["name", "age", "birthday"],
+    attributes: ["id", "name", "age", "birthday"],
     offset: (page - 1) * limit,
     limit: limit,
     include: [Class],
@@ -47,13 +47,11 @@ exports.findByPage = async function (searchObj) {
 // 通过分页查询
 exports.findById = async function (id) {
   const res = await Student.findOne({
-    attributes: ["name", "age", "birthday"],
+    attributes: ["id", "name", "age", "birthday"],
     where: {
       id,
     },
   });
-  console.log(res);
-
   return res.toJSON();
 };
 

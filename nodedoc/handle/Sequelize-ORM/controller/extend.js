@@ -1,5 +1,5 @@
 const extendServ = require("../services/extendService");
-const { PassThrough } = require("stream");
+// const { PassThrough } = require("stream");
 
 class ExtendController {
   // 更新提示
@@ -8,16 +8,6 @@ class ExtendController {
     res.setHeader("Content-Type", "text/event-stream"); // SSE 通信核心代码
     res.setHeader("Cache-Control", "no-cache");
     res.setHeader("Connection", "keep-alive");
-
-    // const stream = new PassThrough();
-    // res.send(stream);
-    // stream.write(`event: res\n`); // 自定义客户端监听事件，可以定义多个，默认 message
-    // stream.write(`data: ${res}\n\n`);
-    // setInterval(async () => {
-    //   const result = await extendServ.getPrompt();
-    //   stream.write(`event: res\n`); // 自定义客户端监听事件，可以定义多个，默认 message
-    //   stream.write(`data: ${result}\n\n`);
-    // }, 3000);
 
     // 发送初始数据
     res.write("data: Connected\n\n");

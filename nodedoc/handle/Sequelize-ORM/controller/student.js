@@ -1,15 +1,10 @@
 const stuServ = require("../services/studentService");
-const { sendResult } = require("../utils/tools");
+const { to } = require("../utils/tools");
 
 class StudentController {
   // 创建学生
   async create(req, res, next) {
-    try {
-      let result = await stuServ.create(req.body);
-      res.send(sendResult(result));
-    } catch (err) {
-      next(err);
-    }
+    await to(stuServ.create(req.body), res, next);
   }
 
   // 通过分页查询
@@ -29,42 +24,22 @@ class StudentController {
       searchObj.where.birthday = req.query.birthday;
     }
 
-    try {
-      let result = await stuServ.findByPage(searchObj);
-      res.send(sendResult(result));
-    } catch (err) {
-      next(err);
-    }
+    await to(stuServ.findByPage(searchObj), res, next);
   }
 
   // 通过id查询
   async findById(req, res, next) {
-    try {
-      let result = await stuServ.findById(req.params.id);
-      res.send(sendResult(result));
-    } catch (err) {
-      next(err);
-    }
+    await to(stuServ.findById(req.params.id), res, next);
   }
 
   // 更新
   async update(req, res, next) {
-    try {
-      let result = await stuServ.update(req.body, req.params.id);
-      res.send(sendResult(result));
-    } catch (err) {
-      next(err);
-    }
+    await to(stuServ.update(req.body, req.params.id), res, next);
   }
 
   // 删除
   async remove(req, res, next) {
-    try {
-      let result = await stuServ.delete(req.body);
-      res.send(sendResult(result));
-    } catch (err) {
-      next(err);
-    }
+    await to(stuServ.delete(req.body), res, next);
   }
 }
 
