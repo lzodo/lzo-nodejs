@@ -94,13 +94,18 @@ exports.findById = async function (id) {
 
 // 登录
 exports.login = async function (adminObj) {
-  let res = await Admin.findOne({
+  let result = await Admin.findOne({
     where: {
       loginId: adminObj.loginId,
       loginPwd: md5(adminObj.loginPwd),
     },
   });
-  return res.toJSON(res);
+
+  if (result) {
+    return result.toJSON();
+  } else {
+    throw new Error("账号或密码错误");
+  }
 };
 
 // 查询

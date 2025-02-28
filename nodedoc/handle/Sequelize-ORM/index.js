@@ -7,6 +7,7 @@ const express = require("express");
 const app = express(); //创建一个express应用
 const useRouter = require("./routes/index");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 
 /**
  * 静态资源服务器
@@ -28,6 +29,11 @@ app.use(
   express.json()
 );
 app.use(cors());
+// 解析cookie，
+// 加入之后会在res添加cookie方法用于设置cookie，res.cookie 的 max-age变成毫秒
+// 通过 req.cookies 属性接收请求中的cookie
+// 对称加密：可以选择输入一个秘钥，如果通过 res.cookie 添加cookie，可以通过属性signed:true 加密 cookie，通过req.signedCookies 接收
+app.use(cookieParser("miyao"));
 
 // api 的请求处理【路由部分】
 useRouter(app);

@@ -69,20 +69,20 @@ exports.sendErrResult = function (msg = "请求异常", errCode = 500) {
 };
 
 /**
- * 捕获异常通用封装
+ * 捕获异常通用封装，返回结果需要再次处理
  * @param {*} promise
  * @returns
  *
  * 使用：let [error, result] = await to(adminServ.findByPage(searchObj));
  */
-exports.toa = function (promise) {
+exports.toh = function (promise) {
   return promise
     .then((data) => [null, data]) // 成功时返回 [null, 数据]
     .catch((error) => [error, undefined]); // 失败时返回 [错误, undefined]
 };
 
 /**
- * 捕获异常针对express中间件封装
+ * 捕获异常通用封装，返回结果不需要处理
  * @param {*} promise
  * @returns
  *
