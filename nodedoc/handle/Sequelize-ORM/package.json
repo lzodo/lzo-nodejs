@@ -19,8 +19,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./index.js",
+    "start": "nodemon -x node --inspect ./index.js",
     "update": "node ./mock/extend/mockUpdatePrompt.js"
   },
   "author": "",
