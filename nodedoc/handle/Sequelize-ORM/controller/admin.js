@@ -72,7 +72,7 @@ class AdminController {
     res.cookie("token", encrypt(data.id.toString()), {
       path: "/",
       domain: "localhost",
-      maxAge: 10 * 60 * 1000, // 10分钟
+      maxAge: 60 * 60 * 1000 * 24,
     });
 
     res.header("authorization", encrypt(data.id.toString())); // 自动cookie只适合浏览器，一般都会额外加上这个，app或其他终端可以去主动获取设置

@@ -8,6 +8,8 @@ const app = express(); //创建一个express应用
 const useRouter = require("./routes/index");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const { authByCookie } = require("./middleware/auth");
+const { crosVis } = require("./middleware/cros");
 
 /**
  * 静态资源服务器
@@ -28,12 +30,30 @@ app.use(
   // 解析请求 Content-Type 为 application/json 的请求体
   express.json()
 );
-app.use(cors());
+
+// 跨域处理
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      const allowedOrigins = ["xxx"];
+      if (!origin || !allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+  })
+);
+// app.use(crosVis);
+
 // 解析cookie，
 // 加入之后会在res添加cookie方法用于设置cookie，res.cookie 的 max-age变成毫秒
 // 通过 req.cookies 属性接收请求中的cookie
 // 对称加密：可以选择输入一个秘钥，如果通过 res.cookie 添加cookie，可以通过属性signed:true 加密 cookie，通过req.signedCookies 接收
 app.use(cookieParser("miyao"));
+
+// 权限校验
+app.use(authByCookie); // 所有请求必须讲过 cookie 校验
 
 // api 的请求处理【路由部分】
 useRouter(app);

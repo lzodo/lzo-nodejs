@@ -8,12 +8,12 @@ const {
   remove,
   loginByCookie,
 } = require("../../controller/admin");
-const { authByCookie } = require("../../middleware/auth");
+// const { authByCookie } = require("../../middleware/auth");
 
 // 添加
 router.post("/", create);
 // 通过分页获取
-router.get("/", authByCookie, findByPage);
+router.get("/", findByPage);
 // 通过id获取
 router.get("/:id", findById);
 // 修改
