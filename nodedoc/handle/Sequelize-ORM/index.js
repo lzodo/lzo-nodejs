@@ -10,6 +10,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const { authByCookie } = require("./middleware/auth");
 const { crosVis } = require("./middleware/cros");
+const errHealder = require("./middleware/error");
 
 /**
  * 静态资源服务器
@@ -44,7 +45,7 @@ app.use(
     },
   })
 );
-// app.use(crosVis);
+// app.use(crosVis());
 
 // 解析cookie，
 // 加入之后会在res添加cookie方法用于设置cookie，res.cookie 的 max-age变成毫秒
@@ -53,13 +54,13 @@ app.use(
 app.use(cookieParser("miyao"));
 
 // 权限校验
-app.use(authByCookie); // 所有请求必须讲过 cookie 校验
+app.use(authByCookie()); // 所有请求必须讲过 cookie 校验
 
 // api 的请求处理【路由部分】
 useRouter(app);
 
 // 错误中间件同一处理
-app.use(require("./middleware/error"));
+app.use(errHealder());
 
 // 监听一个服务
 const port = 5008;
