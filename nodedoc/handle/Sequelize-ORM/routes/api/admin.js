@@ -7,6 +7,7 @@ const {
   update,
   remove,
   loginByCookie,
+  loginBySession,
 } = require("../../controller/admin");
 // const { authByCookie } = require("../../middleware/auth");
 
@@ -20,7 +21,11 @@ router.get("/:id", findById);
 router.put("/:id", update);
 // 删除
 router.delete("/", remove);
-// 登录
+// 登录(cookie)
 router.post("/loginByCookie", loginByCookie);
+// 登录(session)
+router.post("/loginBySession", loginBySession);
+// 登录(jwt)
+// router.post("/loginByJwt", loginByCookie);
 
 module.exports = router;

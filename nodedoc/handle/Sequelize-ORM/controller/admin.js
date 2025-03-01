@@ -25,7 +25,7 @@ class AdminController {
     if (req.query.birthday) {
       searchObj.where.birthday = req.query.birthday;
     }
-    console.log(req.userId, "req.userId");
+    console.log(req.userInfo, "req.userInfo");
     await to(adminServ.findByPage(searchObj), res, next);
   }
 
@@ -76,6 +76,17 @@ class AdminController {
     });
 
     res.header("authorization", encrypt(data.id.toString())); // 自动cookie只适合浏览器，一般都会额外加上这个，app或其他终端可以去主动获取设置
+    res.send(sendResult(data));
+  }
+
+  // 通过 session 登录
+  async loginBySession(req, res, next) {
+    const [error, data] = await toh(adminServ.login(req.body));
+    if (error) {
+      next(error);
+      return;
+    }
+    req.session.userInfo = data;
     res.send(sendResult(data));
   }
 }

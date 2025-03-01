@@ -14,16 +14,41 @@ exports.authByCookie = function () {
     // 如果当前请求存在白名单中
     if (isPass.length) {
       next();
+      return;
+    }
+
+    // const token = req.signedCookies.token;
+    const token = req.cookies.token;
+    if (token) {
+      req.userInfo = decrypt(token);
+      // 判断有效性，再决定要不要next
+      next();
     } else {
-      // const token = req.signedCookies.token;
-      const token = req.cookies.token;
-      if (token) {
-        req.userId = decrypt(token);
-        // 判断有效性，再决定要不要next
-        next();
-      } else {
-        res.send(sendErrResult("鉴权失败"));
-      }
+      res.send(sendErrResult("鉴权失败"));
+    }
+  };
+};
+
+exports.authBySession = function () {
+  return function (req, res, next) {
+    const isPass = whiteList.filter((item) => {
+      const reg = pathToRegexp(item.path);
+      return item.method == req.method && reg.regexp.test(req.url);
+    });
+
+    // 如果当前请求存在白名单中
+    if (isPass.length) {
+      next();
+      return;
+    }
+
+    const userInfo = req.session.userInfo;
+    req.userInfo = userInfo;
+
+    if (userInfo) {
+      next();
+    } else {
+      res.send(sendErrResult("鉴权失败"));
     }
   };
 };
