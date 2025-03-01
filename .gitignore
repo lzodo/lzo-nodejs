@@ -3,3 +3,4 @@ node_modules/
 nodedoc/file-upload/package-lock.json
 output/
 temp/
+nodedoc/handle/Sequelize-ORM/logs
