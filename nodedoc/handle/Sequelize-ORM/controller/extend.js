@@ -1,3 +1,4 @@
+const Mock = require("mockjs");
 const extendServ = require("../services/extendService");
 // const { PassThrough } = require("stream");
 
@@ -23,6 +24,15 @@ class ExtendController {
       clearInterval(interval); // 清除定时器
       console.log("Client disconnected");
     });
+  }
+
+  async jsonp(req, res, next) {
+    const callback = req.query.callback || "callback";
+    const data = Mock.mock({
+      type: "jsonp 数据模拟",
+      name: "@cname",
+    });
+    res.send(`${callback}(${JSON.stringify(data)})`);
   }
 }
 
