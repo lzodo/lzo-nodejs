@@ -16,7 +16,8 @@
     "path-to-regexp": "^8.2.0",
     "redis": "^4.7.0",
     "sequelize": "^6.37.5",
-    "validate.js": "^0.13.1"
+    "validate.js": "^0.13.1",
+    "log4js": "^6.9.1"
   },
   "name": "sequelize-orm",
   "version": "1.0.0",
