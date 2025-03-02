@@ -12,6 +12,7 @@ const session = require("express-session");
 const { authByCookie, authBySession } = require("./middleware/auth");
 const { crosVis } = require("./middleware/cros");
 const errHealder = require("./middleware/error");
+require("./redis");
 
 /**
  * 静态资源服务器

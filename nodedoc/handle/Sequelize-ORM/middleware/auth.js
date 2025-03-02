@@ -45,6 +45,8 @@ exports.authBySession = function () {
     const userInfo = req.session.userInfo;
     req.userInfo = userInfo;
 
+    // console.log(req.session);
+
     if (userInfo) {
       next();
     } else {
