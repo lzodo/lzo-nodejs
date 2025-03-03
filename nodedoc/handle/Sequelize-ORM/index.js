@@ -13,6 +13,7 @@ const { RedisStore } = require("connect-redis");
 const { authByCookie, authBySession, authByJwt } = require("./middleware/auth");
 const { crosVis } = require("./middleware/cros");
 const errHealder = require("./middleware/error");
+const saveApiLogs = require("./middleware/api-logger");
 const client = require("./redis");
 const { secretKey } = require("./config");
 client.select(2);
@@ -94,6 +95,9 @@ app.use(
 // jwt
 app.use(authByJwt());
 // ==================jwt==end======================
+
+// api 日志
+app.use(saveApiLogs());
 
 // api 的请求处理【路由部分】
 useRouter(app);
