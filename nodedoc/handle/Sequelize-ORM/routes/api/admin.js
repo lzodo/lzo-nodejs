@@ -8,8 +8,10 @@ const {
   remove,
   loginByCookie,
   loginBySession,
+  loginByJwt,
 } = require("../../controller/admin");
 const { redisCatch } = require("../../middleware/catch");
+const { createToken } = require("../../middleware/auth");
 // const { authByCookie } = require("../../middleware/auth");
 
 // 添加
@@ -27,6 +29,6 @@ router.post("/loginByCookie", loginByCookie);
 // 登录(session)
 router.post("/loginBySession", loginBySession);
 // 登录(jwt)
-// router.post("/loginByJwt", loginByCookie);
+router.post("/loginByJwt", loginByJwt, createToken());
 
 module.exports = router;

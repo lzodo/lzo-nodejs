@@ -10,10 +10,11 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const { RedisStore } = require("connect-redis");
-const { authByCookie, authBySession } = require("./middleware/auth");
+const { authByCookie, authBySession, authByJwt } = require("./middleware/auth");
 const { crosVis } = require("./middleware/cros");
 const errHealder = require("./middleware/error");
 const client = require("./redis");
+const { secretKey } = require("./config");
 client.select(2);
 
 /**
@@ -53,12 +54,12 @@ app.use(
 
 // ==================cookie========================
 
-// // 解析cookie，
-// // 加入之后会在res添加cookie方法用于设置cookie，res.cookie 的 max-age变成毫秒
-// // 通过 req.cookies 属性接收请求中的cookie
-// // 对称加密：可以选择输入一个秘钥，如果通过 res.cookie 添加cookie，可以通过属性signed:true 加密 cookie，通过req.signedCookies 接收
-// app.use(cookieParser("miyao"));
-// // 权限校验（cookie）
+// 解析cookie，
+// 加入之后会在res添加cookie方法用于设置cookie，res.cookie 的 max-age变成毫秒
+// 通过 req.cookies 属性接收请求中的cookie
+// 对称加密：可以选择输入一个秘钥，如果通过 res.cookie 添加cookie，可以通过属性signed:true 加密 cookie，通过req.signedCookies 接收
+app.use(cookieParser(secretKey));
+// 权限校验（cookie）
 // app.use(authByCookie()); // 所有请求必须讲过 cookie 校验
 
 // ==================cookie==end======================
@@ -68,7 +69,7 @@ app.use(
 // 服务端维护着session表，只将sessionId发到客户端，服务端不是直接使用sessionId，而是通过这个sessionId关联对应的用户信息
 app.use(
   session({
-    secret: "miyao",
+    secret: secretKey,
     name: "sessionId",
     resave: true, // 强制保存到仓库
     saveUninitialized: false, // 没有用过的session要不要保存
@@ -85,9 +86,15 @@ app.use(
     }),
   })
 );
-app.use(authBySession());
+// app.use(authBySession());
 
 // ==================session==end======================
+
+// ==================jwt==========================
+// jwt
+app.use(authByJwt());
+// ==================jwt==end======================
+
 // api 的请求处理【路由部分】
 useRouter(app);
 

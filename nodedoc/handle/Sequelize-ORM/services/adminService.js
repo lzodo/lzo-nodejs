@@ -95,6 +95,7 @@ exports.findById = async function (id) {
 // 登录
 exports.login = async function (adminObj) {
   let result = await Admin.findOne({
+    attributes: ["id", "loginId", "name"],
     where: {
       loginId: adminObj.loginId,
       loginPwd: md5(adminObj.loginPwd),

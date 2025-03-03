@@ -89,6 +89,19 @@ class AdminController {
     req.session.userInfo = data;
     res.send(sendResult(data));
   }
+
+  // 通过 jwt 登录
+  async loginByJwt(req, res, next) {
+    const [error, data] = await toh(adminServ.login(req.body));
+    if (error) {
+      next(error);
+      return;
+    }
+    req.userInfo = data;
+    next();
+    // req.session.userInfo = data;
+    // res.send(sendResult(data));
+  }
 }
 
 module.exports = new AdminController();

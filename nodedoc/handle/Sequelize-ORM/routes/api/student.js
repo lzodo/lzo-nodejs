@@ -14,7 +14,7 @@ router.post("/", create);
 // 通过分页获取
 router.get("/", findByPage);
 // 通过id获取
-router.get("/:id", redisCatch({ ttl: 10 }), findById);
+router.get("/:id", redisCatch(), findById);
 // 修改
 router.put("/:id", update);
 // 删除
