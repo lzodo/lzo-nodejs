@@ -79,6 +79,7 @@ exports.authByJwt = function () {
     // verify a token symmetric
 
     try {
+      // jwt.decode(token) 解码，不带校验功能
       const result = jwt.verify(token, secretKey, { algorithms: ["HS256"] });
       req.userInfo = result;
       next();
@@ -96,16 +97,27 @@ exports.createToken = function () {
     const data = req.userInfo || {};
 
     // jwt 签名
-    jwt.sign(data, secretKey, { algorithm: "HS256" }, function (err, token) {
-      if (err) {
-        next(err);
-        return;
-      }
-      // 方便apifox调试
-      res.cookie("token", token);
+    jwt.sign(
+      data,
+      secretKey,
+      { algorithm: "HS256", expiresIn: 60 * 60 * 1000 },
+      function (err, token) {
+        if (err) {
+          next(err);
+          return;
+        }
 
-      res.header("authorization", token);
-      res.send(sendResult(token));
-    });
+        /**
+         *  Authorization 头部字段支持多种授权方案，例如：
+         *    Basic：用于基本认证（用户名和密码）。
+         *    Bearer：用于持有者令牌（如 JWT）。
+         *    Digest：用于摘要认证。
+         */
+
+        res.cookie("token", token);
+        res.header("authorization", token);
+        res.send(sendResult(token));
+      }
+    );
   };
 };
