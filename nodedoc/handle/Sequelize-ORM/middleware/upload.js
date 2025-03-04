@@ -33,12 +33,12 @@ const upload = multer({
 
 // 多文件上传
 exports.uploadArray = function () {
-  return upload.array("photos", 12); // 接收 form-data 中参数名为photos的文件列表
+  return upload.array("keyFiles", 12); // 接收 form-data 中参数名为keyFiles的文件列表
 };
 
 // 单文件上传
 exports.uploadSingle = function () {
-  return upload.single("fileType"); // 接收 form-data 中参数名为file的文件
+  return upload.single("keyFile"); // 接收 form-data 中参数名为file的文件
 };
 
 // 判断是否为真实图片
@@ -79,7 +79,6 @@ exports.visRealPicture = async (req, res, next) => {
 // 对上传好的图片进程处理 (sharp/jimp)
 exports.pictureResize = async (req, res, next) => {
   const files = req.files || [req.file];
-  console.log(files, 222);
   for (let file of files) {
     const ext = /\..*$/.exec(file.filename);
     const destPath = path.join(

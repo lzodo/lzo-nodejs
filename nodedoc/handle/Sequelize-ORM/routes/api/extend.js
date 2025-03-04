@@ -19,7 +19,7 @@ router.post(
   "/singleUpload",
   uploadSingle(),
   (req, res, next) => {
-    // console.log(req.file, "req.file"); // upload.single("fileType") 单文件中间件才有结果
+    // console.log(req.file, "req.file"); // upload.single("keyFile") 单文件中间件才有结果
     // console.log(req.body, "req.body"); // 除了 file 外的其他非file类型数据
     req.files = [req.file];
     next();
@@ -34,7 +34,7 @@ router.post(
   "/arrayUpload",
   uploadArray(),
   (req, res, next) => {
-    // console.log(req.files, "req.files"); // upload.array("photos", 12)
+    // console.log(req.files, "req.files"); // upload.array("keyFiles", 12)
     // console.log(req.body, "req.body"); // 除了 files 外的其他非file类型数据
     next();
   },

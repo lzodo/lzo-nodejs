@@ -41,7 +41,6 @@ class ExtendController {
   async upload(req, res, next) {
     const files = req.files || [req.file];
     const data = files.map((item) => `/uploads/${item.filename}`);
-    console.log("upload");
 
     res.send(sendResult(data));
   }

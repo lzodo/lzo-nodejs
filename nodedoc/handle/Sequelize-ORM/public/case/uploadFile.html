@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件上传</title>
+</head>
+
+<body>
+    <!-- 方案1 表单上传 -->
+    <form action="/extend/singleUpload" method="POST" enctype="multipart/form-data">
+        <p>
+            <input type="text" name="a" />
+        </p>
+        <p>
+            <input type="file" name="keyFile" />
+        </p>
+        <p>
+            <button>提交</button>
+        </p>
+    </form>
+
+    <input type="file" id="upFile" multiple />
+    <button id="upButton">文件上传</button>
+</body>
+<script>
+    // 法案2 FormData 上传
+    const btn = document.querySelector('#upButton')
+    const fileInput = document.querySelector('#upFile')
+
+    btn.onclick = function () {
+        console.log(fileInput.files);
+        const formData = new FormData();
+        for (const file of fileInput.files) {
+            formData.append('keyFiles', file, file.name)
+        }
+        console.log(formData);
+        fetch("/extend/arrayUpload", {
+            body: formData,
+            method: "POST",
+        })
+            .then((resp) => resp.json())
+            .then((resp) => {
+                console.log(resp);
+                if (resp.code) {
+                    //有错误
+                    alert(resp.msg);
+                } else {
+                    img.src = resp.data;
+                }
+            });
+
+    }
+
+
+</script>
+
+</html>
