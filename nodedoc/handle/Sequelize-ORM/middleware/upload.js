@@ -1,7 +1,7 @@
 const path = require("path");
 const multer = require("multer");
 const { getImageFormat, getImageRealFormat } = require("../utils/tools-file");
-const { Jimp } = require("jimp");
+const Jimp = require("jimp");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -78,19 +78,19 @@ exports.visRealPicture = async (req, res, next) => {
 
 // 对上传好的图片进程处理 (sharp/jimp)
 exports.pictureResize = async (req, res, next) => {
-  // const files = req.files || [req.file];
-  // console.log(files, 222);
-  // for (let file of files) {
-  //   const ext = /\..*$/.exec(file.filename);
-  //   const destPath = path.join(
-  //     file.destination,
-  //     file.filename.replace(/\..*$/, "")
-  //   );
-  //   Jimp.read(file.path).then((image) => {
-  //     image.resize(640, Jimp.AUTO).write(`${destPath}-large${ext}`); // 生成width 640分辨率， 高度自适应的大图，写入到指定位置
-  //     // image.resize(320, Jimp.AUTO).write(`${destPath}-middle${ext}`);
-  //     // image.resize(160, Jimp.AUTO).write(`${destPath}-small${ext}`);
-  //   });
-  // }
+  const files = req.files || [req.file];
+  console.log(files, 222);
+  for (let file of files) {
+    const ext = /\..*$/.exec(file.filename);
+    const destPath = path.join(
+      file.destination,
+      file.filename.replace(/\..*$/, "")
+    );
+    Jimp.read(file.path).then((image) => {
+      image.resize(640, Jimp.AUTO).write(`${destPath}-large${ext}`); // 生成width 640分辨率， 高度自适应的大图，写入到指定位置
+      image.resize(320, Jimp.AUTO).write(`${destPath}-middle${ext}`);
+      image.resize(160, Jimp.AUTO).write(`${destPath}-small${ext}`);
+    });
+  }
   next();
 };
