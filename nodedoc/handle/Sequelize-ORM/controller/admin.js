@@ -98,6 +98,8 @@ class AdminController {
       return;
     }
     req.userInfo = data;
+    console.log("loginByJwt");
+
     next();
     // req.session.userInfo = data;
     // res.send(sendResult(data));

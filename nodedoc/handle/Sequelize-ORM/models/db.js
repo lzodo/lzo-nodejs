@@ -11,6 +11,12 @@ const sequelize = new Sequelize("duyi_myschooldb", "root", "Lzx542684.@", {
   logging: (msg) => {
     sqlLogger.debug(msg);
   },
+  pool: {
+    max: 10, // 最大连接数
+    min: 0, // 最小连接数
+    idle: 10000, // 连接空闲时间（毫秒）
+    acquire: 30000, // 获取连接的超时时间（毫秒）
+  },
 });
 
 module.exports = sequelize;

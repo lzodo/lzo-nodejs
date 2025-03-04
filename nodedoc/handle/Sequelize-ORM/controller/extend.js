@@ -1,5 +1,6 @@
 const Mock = require("mockjs");
 const extendServ = require("../services/extendService");
+const { sendResult } = require("../utils/tools");
 // const { PassThrough } = require("stream");
 
 class ExtendController {
@@ -26,6 +27,7 @@ class ExtendController {
     });
   }
 
+  // jsonp 实例
   async jsonp(req, res, next) {
     const callback = req.query.callback || "callback";
     const data = Mock.mock({
@@ -33,6 +35,15 @@ class ExtendController {
       name: "@cname",
     });
     res.send(`${callback}(${JSON.stringify(data)})`);
+  }
+
+  // 文件上传
+  async upload(req, res, next) {
+    const files = req.files || [req.file];
+    const data = files.map((item) => `/uploads/${item.filename}`);
+    console.log("upload");
+
+    res.send(sendResult(data));
   }
 }
 

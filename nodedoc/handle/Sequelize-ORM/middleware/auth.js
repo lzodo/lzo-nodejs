@@ -72,10 +72,17 @@ exports.authByJwt = function () {
       next();
       return;
     }
+
+    // 只要有后缀名就不需要验证token;
+    if (path.extname(req.originalUrl)) {
+      next();
+      return;
+    }
+
     // 这边一般从header 的 authorization 取，需要前端手动设置，除了浏览器很多终端不支持cookie，先用cookie测试
     // console.log(req.headers.cookie);
     const token = req.cookies.token;
-    console.log(token);
+    // console.log(token);
     // verify a token symmetric
 
     try {
@@ -95,6 +102,7 @@ exports.authByJwt = function () {
 exports.createToken = function () {
   return (req, res, next) => {
     const data = req.userInfo || {};
+    console.log("createToken");
 
     // jwt 签名
     jwt.sign(
