@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { prompt, jsonp, upload } = require("../../controller/extend");
+const { prompt, jsonp, upload, downlaod } = require("../../controller/extend");
 const {
   uploadArray,
   uploadSingle,
@@ -13,6 +13,9 @@ router.get("/updatePrompt", prompt);
 
 // jsonp
 router.get("/jsonp", jsonp);
+
+// 文件下载
+router.get("/download/:filename", downlaod);
 
 // 单文件上传
 router.post(

@@ -1,6 +1,7 @@
 const Mock = require("mockjs");
 const extendServ = require("../services/extendService");
 const { sendResult } = require("../utils/tools");
+const path = require("path");
 // const { PassThrough } = require("stream");
 
 class ExtendController {
@@ -35,6 +36,29 @@ class ExtendController {
       name: "@cname",
     });
     res.send(`${callback}(${JSON.stringify(data)})`);
+  }
+
+  // 文件下载
+  async downlaod(req, res, next) {
+    const filename = req.params.filename;
+    if (!filename) {
+      next(new Error("请填写文件名"));
+    } else {
+      const filepath = path.resolve(__dirname, "../public/source", filename);
+      /**
+       * download(文件路径，默认文件名，错误处理)
+       * 响应头的属性：
+       *    Content-Disposition: attachment; filename="t1.png"
+       *      attachment 标记为附件
+       *      filename 默认名称
+       *    Accept-Ranges：bytes  支持断的续传
+       *
+       * 请求头：
+       *    Range:bytes=1000-10000  续传的部分，如果有续传，比如大文件暂停再开始下载时
+       *
+       */
+      res.download(filepath, filename);
+    }
   }
 
   // 文件上传
