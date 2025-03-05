@@ -1,16 +1,18 @@
 const path = require("path");
 const multer = require("multer");
-const { getImageFormat, getImageRealFormat } = require("../utils/tools-file");
-const fs = require("fs");
+const {
+  getImageFormat,
+  getImageRealFormat,
+  mkdir,
+} = require("../utils/tools-file");
 const Jimp = require("jimp");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     // 文件存在当前目录出发，上级的public，下的uploads中
-    const uploads = path.resolve(__dirname, "../public/", "uploads");
-    if (!fs.existsSync(uploads)) {
-      fs.mkdirSync(uploads);
-    }
+    const uploads = path.resolve(__dirname, "../public/uploads", "origin");
+    mkdir(uploads);
+
     cb(null, uploads);
   },
   filename: function (req, file, cb) {
@@ -86,10 +88,9 @@ exports.pictureResize = async (req, res, next) => {
   const files = req.files || [req.file];
   for (let file of files) {
     const ext = /\..*$/.exec(file.filename);
-    const destPath = path.join(
-      file.destination,
-      file.filename.replace(/\..*$/, "")
-    );
+    const sizeDir = path.resolve(__dirname, "../public/uploads", "resize");
+    mkdir(sizeDir);
+    const destPath = path.join(sizeDir, file.filename.replace(/\..*$/, ""));
     Jimp.read(file.path).then((image) => {
       image.resize(640, Jimp.AUTO).write(`${destPath}-large${ext}`); // 生成width 640分辨率， 高度自适应的大图，写入到指定位置
       image.resize(320, Jimp.AUTO).write(`${destPath}-middle${ext}`);
@@ -99,20 +100,19 @@ exports.pictureResize = async (req, res, next) => {
   next();
 };
 
-// 加水印 (sharp/jimp)
+// 加水印 (water/jimp)
 exports.addWatermark = async (req, res, next) => {
   const files = req.files || [req.file];
+  const water = path.resolve(__dirname, "../public/uploads", "water");
+  mkdir(water);
   for (let file of files) {
     const ext = /\..*$/.exec(file.filename);
-    const destPath = path.join(
-      file.destination,
-      file.filename.replace(/\..*$/, "")
-    );
+    const destPath = path.join(water, file.filename.replace(/\..*$/, ""));
 
     mark(
       path.resolve(__dirname, "../public/source/cat.png"),
       file.path,
-      `${destPath}-watermark${ext}`
+      `${destPath}-water${ext}`
     );
   }
 

@@ -27,6 +27,15 @@ class FileTools {
       return ext.toUpperCase(); // 返回图片格式（如 JPEG、PNG 等）
     }
   }
+
+  mkdir(filePath) {
+    if (!fs.existsSync(filePath)) {
+      fs.mkdirSync(filePath, {
+        recursive: true, // 是否递归创建目录
+        // mode: string | integer // 目录权限（默认为 0o777）
+      });
+    }
+  }
 }
 
 module.exports = new FileTools();
