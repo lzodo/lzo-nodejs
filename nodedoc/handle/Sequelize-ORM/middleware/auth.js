@@ -64,6 +64,8 @@ exports.authByJwt = function () {
   return function (req, res, next) {
     const isPass = whiteList.filter((item) => {
       const reg = pathToRegexp(item.path);
+      console.log(reg);
+
       return item.method == req.method && reg.regexp.test(req.url);
     });
 

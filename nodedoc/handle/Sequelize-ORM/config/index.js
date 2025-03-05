@@ -4,14 +4,19 @@ const whiteList = [
   { method: "POST", path: "/api/admin/loginBySession" },
   { method: "POST", path: "/api/admin/loginByJwt" },
   { method: "GET", path: "/api/admin/:id" },
+  // { method: "POST", path: "/coder/:path*" },
 ];
 
 // 对称加密秘钥
 const secretKey = "miyao";
 
-// 跨域白名单
+// proxy 服务器
+const proxyList = {
+  coder: "http://localhost:8778/",
+};
 
 module.exports = {
   whiteList,
   secretKey,
+  proxyList,
 };

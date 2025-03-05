@@ -17,6 +17,7 @@ const saveApiLogs = require("./middleware/api-logger");
 const securityChain = require("./middleware/security-chain");
 const client = require("./redis");
 const { secretKey } = require("./config");
+const { httpProxy } = require("./middleware/proxy");
 client.select(2);
 
 // 图片防盗链
@@ -53,6 +54,7 @@ app.use(
         callback(new Error("Not allowed by CORS"));
       }
     },
+    // credentials: true, // 允许跨域携带 Cookie
   })
 );
 // app.use(crosVis());
@@ -102,6 +104,9 @@ app.use(authByJwt());
 
 // api 日志
 app.use(saveApiLogs());
+
+// Http Proxy 代理
+app.use("/coder", httpProxy);
 
 // api 的请求处理【路由部分】
 useRouter(app);
