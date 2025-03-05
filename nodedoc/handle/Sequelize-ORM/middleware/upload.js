@@ -93,3 +93,21 @@ exports.pictureResize = async (req, res, next) => {
   }
   next();
 };
+
+// 加水印 (sharp/jimp)
+exports.pictureResize = async (req, res, next) => {
+  const files = req.files || [req.file];
+  for (let file of files) {
+    const ext = /\..*$/.exec(file.filename);
+    const destPath = path.join(
+      file.destination,
+      file.filename.replace(/\..*$/, "")
+    );
+    Jimp.read(file.path).then((image) => {
+      image.resize(640, Jimp.AUTO).write(`${destPath}-large${ext}`); // 生成width 640分辨率， 高度自适应的大图，写入到指定位置
+      image.resize(320, Jimp.AUTO).write(`${destPath}-middle${ext}`);
+      image.resize(160, Jimp.AUTO).write(`${destPath}-small${ext}`);
+    });
+  }
+  next();
+};
