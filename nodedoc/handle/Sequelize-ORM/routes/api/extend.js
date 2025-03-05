@@ -6,6 +6,7 @@ const {
   uploadSingle,
   visRealPicture,
   pictureResize,
+  addWatermark,
 } = require("../../middleware/upload");
 
 // 系统更新实时提示
@@ -29,6 +30,7 @@ router.post(
   },
   visRealPicture,
   pictureResize,
+  addWatermark,
   upload
 );
 

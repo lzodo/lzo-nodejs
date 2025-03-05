@@ -81,38 +81,73 @@ exports.visRealPicture = async (req, res, next) => {
   }
 };
 
-// 对上传好的图片进程处理 (sharp/jimp)
+// 对上传好的图片进程处理 (sharp/jimp)  Jimp@1.0 以上版本不支持 commonjs
 exports.pictureResize = async (req, res, next) => {
   const files = req.files || [req.file];
-  // for (let file of files) {
-  //   const ext = /\..*$/.exec(file.filename);
-  //   const destPath = path.join(
-  //     file.destination,
-  //     file.filename.replace(/\..*$/, "")
-  //   );
-  //   Jimp.read(file.path).then((image) => {
-  //     image.resize(640, Jimp.AUTO).write(`${destPath}-large${ext}`); // 生成width 640分辨率， 高度自适应的大图，写入到指定位置
-  //     image.resize(320, Jimp.AUTO).write(`${destPath}-middle${ext}`);
-  //     image.resize(160, Jimp.AUTO).write(`${destPath}-small${ext}`);
-  //   });
-  // }
+  for (let file of files) {
+    const ext = /\..*$/.exec(file.filename);
+    const destPath = path.join(
+      file.destination,
+      file.filename.replace(/\..*$/, "")
+    );
+    Jimp.read(file.path).then((image) => {
+      image.resize(640, Jimp.AUTO).write(`${destPath}-large${ext}`); // 生成width 640分辨率， 高度自适应的大图，写入到指定位置
+      image.resize(320, Jimp.AUTO).write(`${destPath}-middle${ext}`);
+      image.resize(160, Jimp.AUTO).write(`${destPath}-small${ext}`);
+    });
+  }
   next();
 };
 
 // 加水印 (sharp/jimp)
-exports.pictureResize = async (req, res, next) => {
+exports.addWatermark = async (req, res, next) => {
   const files = req.files || [req.file];
-  // for (let file of files) {
-  //   const ext = /\..*$/.exec(file.filename);
-  //   const destPath = path.join(
-  //     file.destination,
-  //     file.filename.replace(/\..*$/, "")
-  //   );
-  //   Jimp.read(file.path).then((image) => {
-  //     image.resize(640, Jimp.AUTO).write(`${destPath}-large${ext}`); // 生成width 640分辨率， 高度自适应的大图，写入到指定位置
-  //     image.resize(320, Jimp.AUTO).write(`${destPath}-middle${ext}`);
-  //     image.resize(160, Jimp.AUTO).write(`${destPath}-small${ext}`);
-  //   });
-  // }
+  for (let file of files) {
+    const ext = /\..*$/.exec(file.filename);
+    const destPath = path.join(
+      file.destination,
+      file.filename.replace(/\..*$/, "")
+    );
+
+    mark(
+      path.resolve(__dirname, "../public/source/cat.png"),
+      file.path,
+      `${destPath}-watermark${ext}`
+    );
+  }
+
   next();
 };
+
+/**
+ *
+ * @param {*} waterFile 水印文件
+ * @param {*} originFile 原始文件
+ * @param {*} targetFile 生成目标文件
+ */
+async function mark(
+  waterFile,
+  originFile,
+  targetFile,
+  right = 10,
+  bottom = 10
+) {
+  let [water, origin] = await Promise.all([
+    Jimp.read(waterFile),
+    Jimp.read(originFile),
+  ]);
+
+  water.resize(origin.bitmap.width / 10, Jimp.AUTO); // 设置水印大小
+
+  // 计算位置
+  const x = origin.bitmap.width - water.bitmap.width - right;
+  const y = origin.bitmap.height - water.bitmap.height - bottom;
+
+  origin
+    .composite(water, x, y, {
+      mode: Jimp.BLEND_MULTIPLY,
+      opacitySource: 0.5,
+      opacityDest: 1,
+    })
+    .write(targetFile);
+}

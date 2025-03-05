@@ -8,7 +8,7 @@
     "cors": "^2.8.5",
     "express-session": "^1.18.1",
     "file-type": "^20.4.0",
-    "jimp": "^1.6.0",
+    "jimp": "^0.22.12",
     "jsonwebtoken": "^9.0.2",
     "log4js": "^6.9.1",
     "lzo-utils": "^1.0.3",
@@ -30,8 +30,7 @@
   "scripts": {
     "start": "nodemon -x node --inspect ./index.js",
     "update": "node ./mock/extend/mockUpdatePrompt.js",
-    "clear":"node ./utils/clear.js"
-
+    "clear": "node ./utils/clear.js"
   },
   "author": "",
   "license": "ISC",
