@@ -1,3 +1,4 @@
 {
-    "eslint.onIgnoredFiles": "off"
+    "eslint.onIgnoredFiles": "off",
+    "liveServer.settings.port": 5674
 }

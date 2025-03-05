@@ -14,9 +14,13 @@ const { authByCookie, authBySession, authByJwt } = require("./middleware/auth");
 const { crosVis } = require("./middleware/cros");
 const errHealder = require("./middleware/error");
 const saveApiLogs = require("./middleware/api-logger");
+const securityChain = require("./middleware/security-chain");
 const client = require("./redis");
 const { secretKey } = require("./config");
 client.select(2);
+
+// 图片防盗链
+app.use(securityChain());
 
 /**
  * 静态资源服务器
