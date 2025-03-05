@@ -1,12 +1,17 @@
 const path = require("path");
 const multer = require("multer");
 const { getImageFormat, getImageRealFormat } = require("../utils/tools-file");
+const fs = require("fs");
 const Jimp = require("jimp");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     // 文件存在当前目录出发，上级的public，下的uploads中
-    cb(null, path.resolve(__dirname, "../public/", "uploads"));
+    const uploads = path.resolve(__dirname, "../public/", "uploads");
+    if (!fs.existsSync(uploads)) {
+      fs.mkdirSync(uploads);
+    }
+    cb(null, uploads);
   },
   filename: function (req, file, cb) {
     cb(
@@ -79,35 +84,35 @@ exports.visRealPicture = async (req, res, next) => {
 // 对上传好的图片进程处理 (sharp/jimp)
 exports.pictureResize = async (req, res, next) => {
   const files = req.files || [req.file];
-  for (let file of files) {
-    const ext = /\..*$/.exec(file.filename);
-    const destPath = path.join(
-      file.destination,
-      file.filename.replace(/\..*$/, "")
-    );
-    Jimp.read(file.path).then((image) => {
-      image.resize(640, Jimp.AUTO).write(`${destPath}-large${ext}`); // 生成width 640分辨率， 高度自适应的大图，写入到指定位置
-      image.resize(320, Jimp.AUTO).write(`${destPath}-middle${ext}`);
-      image.resize(160, Jimp.AUTO).write(`${destPath}-small${ext}`);
-    });
-  }
+  // for (let file of files) {
+  //   const ext = /\..*$/.exec(file.filename);
+  //   const destPath = path.join(
+  //     file.destination,
+  //     file.filename.replace(/\..*$/, "")
+  //   );
+  //   Jimp.read(file.path).then((image) => {
+  //     image.resize(640, Jimp.AUTO).write(`${destPath}-large${ext}`); // 生成width 640分辨率， 高度自适应的大图，写入到指定位置
+  //     image.resize(320, Jimp.AUTO).write(`${destPath}-middle${ext}`);
+  //     image.resize(160, Jimp.AUTO).write(`${destPath}-small${ext}`);
+  //   });
+  // }
   next();
 };
 
 // 加水印 (sharp/jimp)
 exports.pictureResize = async (req, res, next) => {
   const files = req.files || [req.file];
-  for (let file of files) {
-    const ext = /\..*$/.exec(file.filename);
-    const destPath = path.join(
-      file.destination,
-      file.filename.replace(/\..*$/, "")
-    );
-    Jimp.read(file.path).then((image) => {
-      image.resize(640, Jimp.AUTO).write(`${destPath}-large${ext}`); // 生成width 640分辨率， 高度自适应的大图，写入到指定位置
-      image.resize(320, Jimp.AUTO).write(`${destPath}-middle${ext}`);
-      image.resize(160, Jimp.AUTO).write(`${destPath}-small${ext}`);
-    });
-  }
+  // for (let file of files) {
+  //   const ext = /\..*$/.exec(file.filename);
+  //   const destPath = path.join(
+  //     file.destination,
+  //     file.filename.replace(/\..*$/, "")
+  //   );
+  //   Jimp.read(file.path).then((image) => {
+  //     image.resize(640, Jimp.AUTO).write(`${destPath}-large${ext}`); // 生成width 640分辨率， 高度自适应的大图，写入到指定位置
+  //     image.resize(320, Jimp.AUTO).write(`${destPath}-middle${ext}`);
+  //     image.resize(160, Jimp.AUTO).write(`${destPath}-small${ext}`);
+  //   });
+  // }
   next();
 };
