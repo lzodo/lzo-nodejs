@@ -9,14 +9,8 @@ const path = require("path");
 // cookie 鉴权
 exports.authByCookie = function () {
   return function (req, res, next) {
-    const isPass = whiteList.filter((item) => {
-      // 生成正则表达式
-      const reg = pathToRegexp(item.path); // PUT /api/admin/:id 这种不能全等判断，也是能进白名单的
-      return item.method == req.method && reg.regexp.test(req.url);
-    });
-
-    // 如果当前请求存在白名单中
-    if (isPass.length) {
+    const result = isAuth(req, whiteList);
+    if (!result) {
       next();
       return;
     }
@@ -36,13 +30,8 @@ exports.authByCookie = function () {
 // session 鉴权
 exports.authBySession = function () {
   return function (req, res, next) {
-    const isPass = whiteList.filter((item) => {
-      const reg = pathToRegexp(item.path);
-      return item.method == req.method && reg.regexp.test(req.url);
-    });
-
-    // 如果当前请求存在白名单中
-    if (isPass.length) {
+    const result = isAuth(req, whiteList);
+    if (!result) {
       next();
       return;
     }
@@ -62,25 +51,8 @@ exports.authBySession = function () {
 // session 鉴权
 exports.authByJwt = function () {
   return function (req, res, next) {
-    const isPass = whiteList.filter((item) => {
-      let reg = {};
-      if (item.type == "before") {
-        reg.regexp = new RegExp(`^${item.path}.*`);
-      } else {
-        reg = pathToRegexp(item.path);
-      }
-
-      return item.method == req.method && reg.regexp.test(req.url);
-    });
-
-    // 如果当前请求存在白名单中
-    if (isPass.length) {
-      next();
-      return;
-    }
-
-    // 只要有后缀名就不需要验证token;
-    if (path.extname(req.originalUrl)) {
+    const result = isAuth(req, whiteList);
+    if (!result) {
       next();
       return;
     }
@@ -138,6 +110,29 @@ exports.createToken = function () {
 
 /**
  *
- * @param {*} whiteList
+ * @param {*} req
+ * @param {*} whiteList token校验白名单
+ * @returns 是否需要校验token
  */
-function isAuth(whiteList) {}
+function isAuth(req, whiteList) {
+  const isPass = whiteList.filter((item) => {
+    let reg = {};
+    if (item.type == "before") {
+      reg.regexp = new RegExp(`^${item.path}.*`);
+    } else {
+      reg = pathToRegexp(item.path); // PUT /api/admin/:id 这种不能全等判断，也是能进白名单的
+    }
+
+    return item.method == req.method && reg.regexp.test(req.url);
+  });
+
+  // 如果当前请求存在白名单中
+  if (isPass.length) {
+    return false;
+  }
+
+  // 只要有后缀名就不需要验证token;
+  if (path.extname(req.originalUrl)) {
+    return false;
+  }
+}
