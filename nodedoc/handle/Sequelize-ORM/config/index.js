@@ -4,7 +4,8 @@ const whiteList = [
   { method: "POST", path: "/api/admin/loginBySession" },
   { method: "POST", path: "/api/admin/loginByJwt" },
   { method: "GET", path: "/api/admin/:id" },
-  // { method: "POST", path: "/coder/:path*" },
+  { method: "POST", path: "/coder", type: "before" },
+  { method: "GET", path: "/coder", type: "before" },
 ];
 
 // 对称加密秘钥

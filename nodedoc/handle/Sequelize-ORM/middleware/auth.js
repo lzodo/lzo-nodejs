@@ -63,8 +63,12 @@ exports.authBySession = function () {
 exports.authByJwt = function () {
   return function (req, res, next) {
     const isPass = whiteList.filter((item) => {
-      const reg = pathToRegexp(item.path);
-      console.log(reg);
+      let reg = {};
+      if (item.type == "before") {
+        reg.regexp = new RegExp(`^${item.path}.*`);
+      } else {
+        reg = pathToRegexp(item.path);
+      }
 
       return item.method == req.method && reg.regexp.test(req.url);
     });
@@ -131,3 +135,9 @@ exports.createToken = function () {
     );
   };
 };
+
+/**
+ *
+ * @param {*} whiteList
+ */
+function isAuth(whiteList) {}
