@@ -1,12 +1,12 @@
 const adminServ = require("../services/adminService");
 const { encrypt } = require("../utils/crypt");
-const { to, sendResult, toh } = require("../utils/tools");
+const { to, sendResult, toi } = require("../utils/tools");
 // const { to } = require("lzo-utils");
 
 class AdminController {
   // 创建学生
   async create(req, res, next) {
-    await to(adminServ.create(req.body), res, next);
+    await toi(adminServ.create(req.body), res, next);
   }
 
   // 通过分页查询
@@ -26,27 +26,27 @@ class AdminController {
       searchObj.where.birthday = req.query.birthday;
     }
     console.log(req.userInfo, "req.userInfo");
-    await to(adminServ.findByPage(searchObj), res, next);
+    await toi(adminServ.findByPage(searchObj), res, next);
   }
 
   // 通过id查询
   async findById(req, res, next) {
-    await to(adminServ.findById(req.params.id), res, next);
+    await toi(adminServ.findById(req.params.id), res, next);
   }
 
   // 更新
   async update(req, res, next) {
-    await to(adminServ.update(req.body, req.params.id), res, next);
+    await toi(adminServ.update(req.body, req.params.id), res, next);
   }
 
   // 删除
   async remove(req, res, next) {
-    await to(adminServ.delete(req.body), res, next);
+    await toi(adminServ.delete(req.body), res, next);
   }
 
   // 通过token登录
   async loginByCookie(req, res, next) {
-    const [error, data] = await toh(adminServ.login(req.body));
+    const [error, data] = await to(adminServ.login(req.body));
     if (error) {
       next(error);
       return;
@@ -81,7 +81,7 @@ class AdminController {
 
   // 通过 session 登录
   async loginBySession(req, res, next) {
-    const [error, data] = await toh(adminServ.login(req.body));
+    const [error, data] = await to(adminServ.login(req.body));
     if (error) {
       next(error);
       return;
@@ -92,7 +92,7 @@ class AdminController {
 
   // 通过 jwt 登录
   async loginByJwt(req, res, next) {
-    const [error, data] = await toh(adminServ.login(req.body));
+    const [error, data] = await to(adminServ.login(req.body));
     if (error) {
       next(error);
       return;

@@ -75,7 +75,7 @@ exports.sendErrResult = function (msg = "请求异常", errCode = 500) {
  *
  * 使用：let [error, result] = await to(adminServ.findByPage(searchObj));
  */
-exports.toh = function (promise) {
+exports.to = function (promise) {
   return promise
     .then((data) => [null, data]) // 成功时返回 [null, 数据]
     .catch((error) => [error, undefined]); // 失败时返回 [错误, undefined]
@@ -86,9 +86,9 @@ exports.toh = function (promise) {
  * @param {*} promise
  * @returns
  *
- * 使用：await to(adminServ.findByPage(searchObj),res,next);
+ * 使用：await toi(adminServ.findByPage(searchObj),res,next);
  */
-exports.to = function (promise, res, next) {
+exports.toi = function (promise, res, next) {
   return promise
     .then((data) => res.send(sendResult(data))) // 将数据格式化后返回客户端
     .catch((error) => next(error)); // 进入异常中间件进行处理
