@@ -44,7 +44,7 @@ exports.findByPage = async function (searchObj) {
   return JSON.parse(JSON.stringify(res));
 };
 
-// 通过分页查询
+// 通过id查询
 exports.findById = async function (id) {
   const res = await Student.findOne({
     attributes: ["id", "name", "age", "birthday"],
@@ -52,7 +52,7 @@ exports.findById = async function (id) {
       id,
     },
   });
-  return res.toJSON();
+  return res?.toJSON();
 };
 
 // 删除

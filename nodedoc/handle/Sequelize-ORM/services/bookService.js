@@ -71,7 +71,8 @@ exports.findById = async function (id) {
       id,
     },
   });
-  return res.toJSON();
+
+  return res?.toJSON();
 };
 
 // 删除

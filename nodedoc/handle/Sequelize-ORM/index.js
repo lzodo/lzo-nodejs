@@ -1,4 +1,4 @@
-require("./services/globalExtend");
+require("./services/optionValids/globalExtend");
 require("./models/sync"); // 初始化模型
 // require("./mock/init"); // 初始化模拟数据
 
