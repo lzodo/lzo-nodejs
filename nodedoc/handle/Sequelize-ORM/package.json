@@ -24,6 +24,7 @@
     "qrcode": "^1.5.4",
     "redis": "^4.7.0",
     "sequelize": "^6.37.5",
+    "svg-captcha": "^1.4.0",
     "validate.js": "^0.13.1"
   },
   "name": "sequelize-orm",

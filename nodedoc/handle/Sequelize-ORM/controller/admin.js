@@ -1,6 +1,6 @@
 const adminServ = require("../services/adminService");
 const { encrypt } = require("../utils/crypt");
-const { to, sendResult, toi } = require("../utils/tools");
+const { to, sendResult, toi, sendErrResult } = require("../utils/tools");
 // const { to } = require("lzo-utils");
 
 class AdminController {
@@ -94,15 +94,15 @@ class AdminController {
   async loginByJwt(req, res, next) {
     const [error, data] = await to(adminServ.login(req.body));
     if (error) {
+      req.session.loginRecord.push(new Date().getTime());
       next(error);
       return;
     }
-    req.userInfo = data;
-    console.log("loginByJwt");
 
+    req.session.captcha = "";
+    req.session.loginRecord = [];
+    req.userInfo = data;
     next();
-    // req.session.userInfo = data;
-    // res.send(sendResult(data));
   }
 }
 

@@ -48,7 +48,6 @@ exports.authBySession = function () {
 };
 
 // jwt 鉴权
-// session 鉴权
 exports.authByJwt = function () {
   return function (req, res, next) {
     const result = isAuth(req, whiteList);
@@ -135,4 +134,6 @@ function isAuth(req, whiteList) {
   if (path.extname(req.originalUrl)) {
     return false;
   }
+
+  return true;
 }

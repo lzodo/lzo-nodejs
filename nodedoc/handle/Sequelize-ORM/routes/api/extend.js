@@ -75,4 +75,8 @@ router.get("/qrcode", async (req, res, next) => {
   res.send(result);
 });
 
+// 图形验证码,测试使用
+const { captcha } = require("../../middleware/captcha");
+router.get("/captcha", captcha);
+
 module.exports = router;

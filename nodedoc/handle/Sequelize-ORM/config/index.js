@@ -3,6 +3,7 @@ const whiteList = [
   { method: "POST", path: "/api/admin/loginByCookie" },
   { method: "POST", path: "/api/admin/loginBySession" },
   { method: "POST", path: "/api/admin/loginByJwt" },
+  { method: "GET", path: "/extend/captcha" },
   { method: "GET", path: "/api/admin/:id" },
   { method: "POST", path: "/coder", type: "before" },
   { method: "GET", path: "/coder", type: "before" },

@@ -12,6 +12,7 @@ const {
 } = require("../../controller/admin");
 const { redisCatch } = require("../../middleware/catch");
 const { createToken } = require("../../middleware/auth");
+const { visCaptcha } = require("../../middleware/captcha");
 // const { authByCookie } = require("../../middleware/auth");
 
 // 添加
@@ -29,6 +30,6 @@ router.post("/loginByCookie", loginByCookie);
 // 登录(session)
 router.post("/loginBySession", loginBySession);
 // 登录(jwt)
-router.post("/loginByJwt", loginByJwt, createToken());
+router.post("/loginByJwt", visCaptcha, loginByJwt, createToken());
 
 module.exports = router;
