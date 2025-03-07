@@ -18,8 +18,16 @@ const proxyList = {
   coder: "http://localhost:8778/",
 };
 
+// 服务器
 const servers = {
   port: 5008,
+};
+
+const mysqlConfig = {
+  database: "duyi_myschooldb",
+  account: "root",
+  passwd: "Lzx542684.@",
+  host: "192.168.203.132",
 };
 
 module.exports = {
@@ -27,4 +35,5 @@ module.exports = {
   secretKey,
   proxyList,
   servers,
+  mysqlConfig,
 };

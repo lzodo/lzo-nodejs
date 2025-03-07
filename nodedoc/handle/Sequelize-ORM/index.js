@@ -6,20 +6,14 @@ const path = require("path");
 const express = require("express");
 const app = express(); //创建一个express应用
 const useRouter = require("./routes/index");
-const cors = require("cors");
-const cookieParser = require("cookie-parser");
-const session = require("express-session");
-const { RedisStore } = require("connect-redis");
-const { authByCookie, authBySession, authByJwt } = require("./middleware/auth");
-const { crosVis } = require("./middleware/cros");
 const errHealder = require("./middleware/error");
 const saveApiLogs = require("./middleware/api-logger");
 const securityChain = require("./middleware/security-chain");
-const client = require("./redis");
-const { secretKey } = require("./config");
+const { servers } = require("./config");
 const { httpProxy } = require("./middleware/proxy");
 const { useSwagger } = require("./swagger");
-client.select(2);
+const { useAuth } = require("./middleware/Third-party-middle/auth");
+const { useCros } = require("./middleware/Third-party-middle/cros");
 
 // 图片防盗链
 app.use(securityChain());
@@ -44,64 +38,12 @@ app.use(
   express.json()
 );
 
-// 跨域处理
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      const allowedOrigins = ["xxx"];
-      if (!origin || !allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    // credentials: true, // 允许跨域携带 Cookie
-  })
-);
-// app.use(crosVis());
+// 跨域
+useCros(app);
 
-// ==================cookie========================
+// 鉴权
+useAuth(app);
 
-// 解析cookie，
-// 加入之后会在res添加cookie方法用于设置cookie，res.cookie 的 max-age变成毫秒
-// 通过 req.cookies 属性接收请求中的cookie
-// 对称加密：可以选择输入一个秘钥，如果通过 res.cookie 添加cookie，可以通过属性signed:true 加密 cookie，通过req.signedCookies 接收
-app.use(cookieParser(secretKey));
-// 权限校验（cookie）
-// app.use(authByCookie()); // 所有请求必须讲过 cookie 校验
-
-// ==================cookie==end======================
-
-// ==================session==========================
-// session
-// 服务端维护着session表，只将sessionId发到客户端，服务端不是直接使用sessionId，而是通过这个sessionId关联对应的用户信息
-app.use(
-  session({
-    secret: secretKey,
-    name: "sessionId",
-    resave: true, // 强制保存到仓库
-    saveUninitialized: false, // 没有用过的session要不要保存
-    cookie: {
-      // session 内部也是需要通过cookie实现的
-      maxAge: 60 * 60 * 1000,
-      base: "/",
-      domain: "localhost",
-    },
-    // 如果不用仓库，存在内存，数据一会就丢失了
-    store: new RedisStore({
-      client: client,
-      prefix: "sessionLogin:",
-    }),
-  })
-);
-// app.use(authBySession());
-
-// ==================session==end======================
-
-// ==================jwt==========================
-// jwt
-app.use(authByJwt());
-// ==================jwt==end======================
 // swagger
 useSwagger(app);
 
@@ -118,7 +60,7 @@ useRouter(app);
 app.use(errHealder());
 
 // 监听一个服务
-const port = 5008;
+const { port } = servers;
 app.listen(port, () => {
   console.log(`server listen on ${port}`);
 });
