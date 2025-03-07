@@ -3,5 +3,5 @@ module.exports = function (app) {
   app.use("/api/class", require("./api/class"));
   app.use("/api/book", require("./api/book"));
   app.use("/api/admin", require("./api/admin"));
-  app.use("/extend", require("./api/extend"));
+  app.use("/api/extend", require("./api/extend"));
 };

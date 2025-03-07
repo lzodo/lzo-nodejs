@@ -18,6 +18,7 @@ const securityChain = require("./middleware/security-chain");
 const client = require("./redis");
 const { secretKey } = require("./config");
 const { httpProxy } = require("./middleware/proxy");
+const { useSwagger } = require("./swagger");
 client.select(2);
 
 // 图片防盗链
@@ -101,6 +102,8 @@ app.use(
 // jwt
 app.use(authByJwt());
 // ==================jwt==end======================
+// swagger
+useSwagger(app);
 
 // api 日志
 app.use(saveApiLogs());

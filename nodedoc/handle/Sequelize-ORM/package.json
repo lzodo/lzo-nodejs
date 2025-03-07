@@ -25,13 +25,15 @@
     "redis": "^4.7.0",
     "sequelize": "^6.37.5",
     "svg-captcha": "^1.4.0",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.1",
     "validate.js": "^0.13.1"
   },
   "name": "sequelize-orm",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -x node --inspect ./index.js",
+    "start": "node ./swagger-autogen.js && nodemon -x node --inspect ./index.js",
     "update": "node ./mock/extend/mockUpdatePrompt.js",
     "clear": "node ./utils/clear.js"
   },

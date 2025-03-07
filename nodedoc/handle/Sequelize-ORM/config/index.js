@@ -7,6 +7,7 @@ const whiteList = [
   { method: "GET", path: "/api/admin/:id" },
   { method: "POST", path: "/coder", type: "before" },
   { method: "GET", path: "/coder", type: "before" },
+  { method: "GET", path: "/api-docs", type: "before" },
 ];
 
 // 对称加密秘钥
@@ -17,8 +18,13 @@ const proxyList = {
   coder: "http://localhost:8778/",
 };
 
+const servers = {
+  port: 5008,
+};
+
 module.exports = {
   whiteList,
   secretKey,
   proxyList,
+  servers,
 };
