@@ -93,3 +93,13 @@ exports.toi = function (promise, res, next) {
     .then((data) => res.send(sendResult(data))) // 将数据格式化后返回客户端
     .catch((error) => next(error)); // 进入异常中间件进行处理
 };
+
+// 控制台输出文件名行号
+// const originalLog = console.log;
+// console.log = function (...args) {
+//   const stack = new Error().stack.split("\n")[2];
+//   const match = stack.match(/\((.+):(\d+):(\d+)\)/);
+//   const fileInfo = match ? `${match[1]}:${match[2]}` : "unknown";
+
+//   originalLog(`[ ${fileInfo} ]\n`, ...args);
+// };

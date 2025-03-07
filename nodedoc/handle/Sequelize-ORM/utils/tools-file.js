@@ -22,7 +22,6 @@ class FileTools {
   async getImageFormat(filePath) {
     const ext = path.extname(filePath).slice(1); // 获取文件扩展名（去掉点）
     const mimeType = mime.lookup(ext); // 根据扩展名获取 MIME 类型
-    console.log(mimeType);
     if (mimeType && mimeType.startsWith("image/")) {
       return ext.toUpperCase(); // 返回图片格式（如 JPEG、PNG 等）
     }

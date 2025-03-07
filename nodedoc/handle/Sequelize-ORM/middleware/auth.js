@@ -74,8 +74,6 @@ exports.authByJwt = function () {
 };
 
 // 创建jwt
-// const privateKey = fs.readFileSync(path.join(__dirname, "../keys/private.key"));
-// const publicKey = fs.readFileSync(path.join(__dirname, "../keys/public.key"));
 exports.createToken = function () {
   return (req, res, next) => {
     const data = req.userInfo || {};
@@ -118,11 +116,11 @@ function isAuth(req, whiteList) {
     let reg = {};
     if (item.type == "before") {
       reg.regexp = new RegExp(`^${item.path}.*`);
+      return reg.regexp.test(req.url);
     } else {
       reg = pathToRegexp(item.path); // PUT /api/admin/:id 这种不能全等判断，也是能进白名单的
+      return item.method == req.method && reg.regexp.test(req.url);
     }
-
-    return item.method == req.method && reg.regexp.test(req.url);
   });
 
   // 如果当前请求存在白名单中

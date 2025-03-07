@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>静态页面</title>
+</head>
+
+<body>
+    静态资源首页
+</body>
+<script>
+
+    // 简单请求
+
+    // fetch("http://localhost:5008/api/student")
+    //     .then((resp) => resp.json())
+    //     .then((resp) => {
+    //         console.log(resp);
+    //     });
+
+    // 预检请求
+
+    fetch("http://localhost:5008/api/student", {
+        method: "POST",
+        headers: {
+            "content-type": "application/json",
+            a: 1,
+        },
+        // credentials: "include", // 这个打开，也就是附身份 access-control-allow-origin：* 是有问题的
+    })
+        .then((resp) => resp.json())
+        .then((resp) => {
+            console.log(resp);
+        });
+
+</script>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsonp</title>
+</head>
+
+<body>
+    静态资源首页
+</body>
+<script>
+    // jsonp 
+
+    jsonp('http://localhost:5008/extend/jsonp?callback=testJsonp')
+    function jsonp(url) {
+        const script = document.createElement('script')
+        script.src = url;
+        document.body.append(script)
+        script.onload = function () {
+            script.remove()
+        }
+    }
+    function testJsonp(data) {
+        console.log("jsonp 接收的数据：", data);
+
+    }
+
+
+
+</script>
+
+</html>
