@@ -26,7 +26,11 @@ app.use(securityChain());
  * 如果不存在文件，则直接移交给后续的中间件处理
  * 默认情况下，如果映射的结果是一个目录，则会自动使用index.html文件
  */
-app.use(express.static(path.resolve(__dirname, "./public")));
+app.use(
+  express.static(path.resolve(__dirname, "./public"), {
+    maxAge: 3600 * 1000, // 缓存静态资源
+  })
+);
 
 // 消息体解析
 app.use(
