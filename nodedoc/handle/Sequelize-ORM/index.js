@@ -14,6 +14,7 @@ const { httpProxy } = require('./middleware/proxy');
 const { useSwagger } = require('./swagger');
 const { useAuth } = require('./middleware/Third-party-middle/auth');
 const { useCros } = require('./middleware/Third-party-middle/cros');
+const { axios } = require('./middleware/request');
 
 // 图片防盗链
 app.use(securityChain());
@@ -44,6 +45,9 @@ app.use(
 
 // 跨域
 useCros(app);
+
+// axios api请求
+app.use(axios());
 
 // 鉴权
 useAuth(app);

@@ -1,4 +1,4 @@
-const { whiteList, secretKey } = require('../config');
+const { whiteList, secretKey, servers } = require('../config');
 const { decrypt } = require('../utils/crypt');
 const { sendErrResult, sendResult } = require('../utils/tools');
 const { pathToRegexp } = require('path-to-regexp');
@@ -130,3 +130,38 @@ function isAuth(req, whiteList) {
 
 	return true;
 }
+
+// oauth gitee 授权
+// Gitee 应用配置
+const GITEE_CLIENT_ID = '1382951b82a4264ca1321c0b187375cdf464d1d8cdc10eca5ccb239088ea1198';
+const GITEE_CLIENT_SECRET = '2389b2a7bc29dac5ed186edb190757b49857961d8784c1e4af5405e6f397b9bf';
+const GITEE_REDIRECT_URI = `http://localhost:${servers.port}/api/extend/oauth/gitee/callback`; // 回调地址
+exports.oauthLoginGitee = function () {
+	return (req, res, next) => {
+		/* 跳转到git获取授权码的地址  携带了client_id参数*/
+		const path = `https://gitee.com/oauth/authorize?client_id=${GITEE_CLIENT_ID}&redirect_uri=${encodeURIComponent(GITEE_REDIRECT_URI)}&response_type=code`;
+		res.redirect(path);
+		next();
+	};
+};
+
+exports.oauthLoginCallback = function () {
+	return async (req, res, next) => {
+		const { code } = req.query;
+
+		/* 请求令牌 post  params参数 */
+		const accessToken = await req.axios.post(
+			`https://gitee.com/oauth/token?grant_type=authorization_code&code=${code}&client_id=${GITEE_CLIENT_ID}&redirect_uri=${encodeURIComponent(
+				GITEE_REDIRECT_URI
+			)}&client_secret=${GITEE_CLIENT_SECRET}`
+		);
+
+		/* 拿到令牌 */
+		const { access_token } = accessToken.data;
+		/* 使用令牌：获取用户的信息 */
+		userInfo = await req.axios.get(`https://gitee.com/api/v5/user?access_token=${access_token}`);
+		userInfo = userInfo.data;
+
+		res.send(userInfo);
+	};
+};

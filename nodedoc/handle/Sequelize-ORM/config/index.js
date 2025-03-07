@@ -7,7 +7,8 @@ const whiteList = [
 	{ method: 'GET', path: '/api/admin/:id' },
 	{ method: 'GET', path: '/' },
 	{ path: '/coder', type: 'before' },
-	{ path: '/api-docs', type: 'before' }
+	{ path: '/api-docs', type: 'before' },
+	{ path: '/api/extend', type: 'before' }
 ];
 
 // 对称加密秘钥
