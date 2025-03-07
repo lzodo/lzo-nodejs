@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="https://unpkg.com/@wangeditor/editor@latest/dist/css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <h1>添加一本书籍</h1>
+    <p>书籍名称：<input type="text" id="name" /></p>
+    <div>
+        书籍描述：
+        <!-- 富文本框 -->
+        <div id="editor—wrapper">
+            <div id="toolbar-container"><!-- 工具栏 --></div>
+            <div id="editor-container"><!-- 编辑器 --></div>
+        </div>
+    </div>
+    <p>
+        <button id="btn">提交</button>
+    </p>
+
+</body>
+<script src="https://unpkg.com/@wangeditor/editor@latest/dist/index.js"></script>
+<script>
+
+    const { createEditor, createToolbar } = window.wangEditor
+    let html = ""
+    const editorConfig = {
+        placeholder: 'Type here...',
+        onChange(editor) {
+            html = editor.getHtml()
+            console.log(html)
+            // 也可以同步到 <textarea>
+        },
+        MENU_CONF: {}
+    }
+    // 图片上传配置
+    editorConfig.MENU_CONF['uploadImage'] = {
+        server: '/api/extend/singleUpload',
+        fieldName: 'keyFile',
+        allowedFileTypes: ['image/*'],
+        // 跨域是否传递 cookie ，默认为 false
+        withCredentials: true,
+        // 自定义插入图片
+        customInsert(res, insertFn) {
+            console.log(res, '服务器响应数据');
+            // 从 res 中找到 url alt href ，然后插入图片
+            insertFn(res.data[0], "alt", "href")
+        },
+
+    }
+
+    const editor = createEditor({
+        selector: '#editor-container',
+        html: '<p><br></p>',
+        config: editorConfig,
+        mode: 'default', // or 'simple'
+    })
+
+    const toolbarConfig = {}
+
+    const toolbar = createToolbar({
+        editor,
+        selector: '#toolbar-container',
+        config: toolbarConfig,
+        mode: 'simple', // or 'simple default'
+    })
+
+    window.onload = function () {
+        const oName = document.querySelector("#name")
+        const button = document.querySelector('#btn')
+        button.onclick = function () {
+            if (!oName.value) {
+                alert("请输入书名")
+                return
+            };
+            fetch('/api/book', {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    "name": oName.value,
+                    "description": html,
+                }),
+            }).then((res) => res.json()).then(res => {
+                console.log(res);
+
+            })
+        }
+        login();
+
+    }
+
+    function login() {
+        fetch('/api/admin/loginByJwt', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                "loginId": "22222",
+                "loginPwd": "123456",
+            }),
+        }).then((res) => res.json()).then(res => {
+            console.log(res);
+
+        })
+    }
+
+</script>
+
+</html>

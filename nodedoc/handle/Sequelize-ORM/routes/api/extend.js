@@ -28,6 +28,8 @@ router.post(
     // console.log(req.file, "req.file"); // upload.single("keyFile") 单文件中间件才有结果
     // console.log(req.body, "req.body"); // 除了 file 外的其他非file类型数据
     req.files = [req.file];
+    console.log(req.file);
+
     next();
   },
   visRealPicture,

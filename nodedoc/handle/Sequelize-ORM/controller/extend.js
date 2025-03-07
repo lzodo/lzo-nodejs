@@ -64,7 +64,7 @@ class ExtendController {
   // 文件上传
   async upload(req, res, next) {
     const files = req.files || [req.file];
-    const data = files.map((item) => `/uploads/${item.filename}`);
+    const data = files.map((item) => `/uploads/origin/${item.filename}`);
 
     res.send(sendResult(data));
   }

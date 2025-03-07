@@ -10,14 +10,19 @@ const Book = sequelize.define(
     },
     imgurl: {
       type: DataTypes.STRING,
+      allowNull: true,
     },
     publishDate: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
     author: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
+    },
+    description: {
+      type: DataTypes.TEXT("long"),
+      allowNull: true,
     },
   },
   {

@@ -8,7 +8,7 @@ const Admin = sequelize.define(
     // 在这里定义模型属性
     loginId: {
       type: DataTypes.STRING,
-      allowNull: false, // 是否运行为null
+      allowNull: false, // 是否允许为null
     },
     loginPwd: {
       type: DataTypes.STRING,
