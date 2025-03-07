@@ -1,19 +1,19 @@
-require("./services/optionValids/globalExtend");
-require("./models/sync"); // 初始化模型
+require('./services/optionValids/globalExtend');
+require('./models/sync'); // 初始化模型
 // require("./mock/init"); // 初始化模拟数据
 
-const path = require("path");
-const express = require("express");
+const path = require('path');
+const express = require('express');
 const app = express(); //创建一个express应用
-const useRouter = require("./routes/index");
-const errHealder = require("./middleware/error");
-const saveApiLogs = require("./middleware/api-logger");
-const securityChain = require("./middleware/security-chain");
-const { servers } = require("./config");
-const { httpProxy } = require("./middleware/proxy");
-const { useSwagger } = require("./swagger");
-const { useAuth } = require("./middleware/Third-party-middle/auth");
-const { useCros } = require("./middleware/Third-party-middle/cros");
+const useRouter = require('./routes/index');
+const errHealder = require('./middleware/error');
+const saveApiLogs = require('./middleware/api-logger');
+const securityChain = require('./middleware/security-chain');
+const { servers } = require('./config');
+const { httpProxy } = require('./middleware/proxy');
+const { useSwagger } = require('./swagger');
+const { useAuth } = require('./middleware/Third-party-middle/auth');
+const { useCros } = require('./middleware/Third-party-middle/cros');
 
 // 图片防盗链
 app.use(securityChain());
@@ -27,19 +27,19 @@ app.use(securityChain());
  * 默认情况下，如果映射的结果是一个目录，则会自动使用index.html文件
  */
 app.use(
-  express.static(path.resolve(__dirname, "./public"), {
-    maxAge: 3600 * 1000, // 缓存静态资源
-  })
+	express.static(path.resolve(__dirname, './public'), {
+		maxAge: 3600 * 1000 // 缓存静态资源
+	})
 );
 
 // 消息体解析
 app.use(
-  // 解析请求 Content-Type 为 application/x-www-form-urlencoded 的请求体
-  express.urlencoded({
-    extended: true, // 内部使用新的库进行处理
-  }),
-  // 解析请求 Content-Type 为 application/json 的请求体
-  express.json()
+	// 解析请求 Content-Type 为 application/x-www-form-urlencoded 的请求体
+	express.urlencoded({
+		extended: true // 内部使用新的库进行处理
+	}),
+	// 解析请求 Content-Type 为 application/json 的请求体
+	express.json()
 );
 
 // 跨域
@@ -55,7 +55,7 @@ useSwagger(app);
 app.use(saveApiLogs());
 
 // Http Proxy 代理
-app.use("/coder", httpProxy);
+app.use('/coder', httpProxy);
 
 // api 的请求处理【路由部分】
 useRouter(app);
@@ -66,5 +66,5 @@ app.use(errHealder());
 // 监听一个服务
 const { port } = servers;
 app.listen(port, () => {
-  console.log(`server listen on ${port}`);
+	console.log(`server listen on ${port}`);
 });

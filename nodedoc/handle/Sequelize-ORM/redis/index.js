@@ -1,18 +1,18 @@
 // 创建连接
-const redis = require("redis");
+const redis = require('redis');
 const client = redis.createClient({
-  url: "redis://192.168.203.132:6379",
-  password: "Lzx542684.@",
+	url: 'redis://192.168.203.132:6379',
+	password: 'Lzx542684.@'
 });
 
 // 监听连接成功事件
-client.on("connect", () => {
-  console.log("redis 连接成功！");
+client.on('connect', () => {
+	console.log('redis 连接成功！');
 });
 
 // 监听错误事件
-client.on("error", (err) => {
-  console.error("Redis error:", err);
+client.on('error', (err) => {
+	console.error('Redis error:', err);
 });
 
 // 连接到 Redis
