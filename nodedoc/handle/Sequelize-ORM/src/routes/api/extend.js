@@ -8,7 +8,6 @@ const { captcha } = require('../../middleware/captcha');
 const { oauthLoginGitee, oauthLoginCallback } = require('../../middleware/auth');
 const { prompt, jsonp, upload, downlaod, sendMail } = require('../../controller/extend');
 const { mkdir } = require('../../utils/tools-file');
-const { body } = require('express-validator'); // 校验请求参数，未校验成功
 
 // 系统更新实时提示
 router.get('/updatePrompt', prompt);
@@ -20,10 +19,25 @@ router.get('/jsonp', jsonp);
 router.get('/download/:filename', downlaod);
 
 // 单文件上传
-router.post('/singleUpload', [body('keyFile').notEmpty()], uploadSingle(), visRealPicture, pictureResize, addWatermark, upload);
+router.post(
+	'/singleUpload',
+	(req, res, next) => {
+		const schema = req.Joi.object({ keyFile: req.Joi.required() });
+		const { error } = schema.validate({ keyFile: req.body.keyFile });
+		if (error) {
+			next(error);
+		} else {
+			next();
+		}
+	},
+	uploadSingle(),
+	pictureResize,
+	addWatermark,
+	upload
+);
 
 // 多文件上传
-router.post('/arrayUpload', uploadArray(), visRealPicture, pictureResize, upload);
+router.post('/arrayUpload', uploadArray(), pictureResize, upload);
 
 // 发送邮件功能
 router.post('/email', sendMail);

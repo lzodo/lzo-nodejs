@@ -14,6 +14,7 @@ const { useCros } = require('./middleware/Third-party-middle/cros');
 const { axios } = require('./middleware/request');
 const morgan = require('morgan');
 const { mkdir } = require('./utils/tools-file');
+const Joi = require('joi');
 
 // 图片防盗链
 app.use(securityChain());
@@ -48,12 +49,18 @@ app.use(helmet());
 // 跨域
 useCros(app);
 
-// 日志中间件
+// 日志中间件(方便，不灵活)
 // 创建写入流
-const dirPath = path.join(__dirname, '../morganLog');
-mkdir(dirPath);
-const accessLogStream = fs.createWriteStream(path.join(dirPath, 'access.log'), { flags: 'a' });
-app.use(morgan('combined', { stream: accessLogStream }));
+// const dirPath = path.join(__dirname, '../morganLog');
+// mkdir(dirPath);
+// const accessLogStream = fs.createWriteStream(path.join(dirPath, 'access.log'), { flags: 'a' });
+// app.use(morgan('combined', { stream: accessLogStream }));
+
+// 注入参数校验插件
+app.use((req, res, next) => {
+	req.Joi = Joi;
+	next();
+});
 
 // axios api请求
 app.use(axios());
