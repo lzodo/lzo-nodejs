@@ -2,8 +2,7 @@ const dotenv = require('dotenv'); // 通过dotenv插件获取根目录下.env �
 dotenv.config(); //将配置信息写入到 process.env 环境变量中
 
 // 环境变量管理器
-const { SECRET_KEY_TEST } = process.env;
-console.log(SECRET_KEY_TEST);
+const { PORT, MYSQL_DATABASE, MYSQL_ACCOUNT, MYSQL_PASSWD, MYSQL_HOST, PROXY_LIST_CODER, AUTH_SECRET_KEY } = process.env;
 
 // 鉴权白名单
 const whiteList = [
@@ -19,23 +18,23 @@ const whiteList = [
 ];
 
 // 对称加密秘钥
-const secretKey = 'miyao';
+const secretKey = AUTH_SECRET_KEY;
 
 // proxy 服务器
 const proxyList = {
-	coder: 'http://localhost:8778/'
+	coder: PROXY_LIST_CODER
 };
 
 // 服务器
 const servers = {
-	port: 5008
+	port: PORT
 };
 
 const mysqlConfig = {
-	database: 'duyi_myschooldb',
-	account: 'root',
-	passwd: 'Lzx542684.@',
-	host: '192.168.203.132'
+	database: MYSQL_DATABASE,
+	account: MYSQL_ACCOUNT,
+	passwd: MYSQL_PASSWD,
+	host: MYSQL_HOST
 };
 
 module.exports = {

@@ -215,7 +215,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "url": {
+                "email": {
                   "example": "any"
                 }
               }
@@ -668,7 +668,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "url": {
+                "email": {
                   "example": "any"
                 }
               }
