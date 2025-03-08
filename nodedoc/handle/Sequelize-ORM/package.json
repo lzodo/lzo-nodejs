@@ -37,7 +37,7 @@
   "version": "1.0.0",
   "main": "src/app.js",
   "scripts": {
-    "start": "node ./swagger/swagger-autogen.js && nodemon -x node --inspect ./src/app.js",
+    "start": "node ./swagger/swagger-autogen.js && nodemon -x node --inspect ./src/index.js",
     "update": "node ./src/mock/extend/mockUpdatePrompt.js",
     "clear": "node ./src/utils/clear.js"
   },

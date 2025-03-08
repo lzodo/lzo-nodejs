@@ -1,7 +1,3 @@
-require('./services/optionValids/globalExtend');
-require('./models/sync'); // 初始化模型
-// require('./mock/init'); // 初始化模拟数据
-
 const path = require('path');
 const express = require('express');
 const helmet = require('helmet');
@@ -10,7 +6,6 @@ const useRouter = require('./routes/index');
 const errHealder = require('./middleware/error');
 const saveApiLogs = require('./middleware/api-logger');
 const securityChain = require('./middleware/security-chain');
-const { servers } = require('./config');
 const { httpProxy } = require('./middleware/proxy');
 const { useSwagger } = require('../swagger');
 const { useAuth } = require('./middleware/Third-party-middle/auth');
@@ -71,8 +66,4 @@ useRouter(app);
 // 错误中间件同一处理
 app.use(errHealder());
 
-// 监听一个服务
-const { port } = servers;
-app.listen(port, () => {
-	console.log(`server listen on ${port}`);
-});
+module.exports = app;

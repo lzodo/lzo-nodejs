@@ -188,6 +188,13 @@
     "/singleUpload": {
       "post": {
         "description": "",
+        "parameters": [
+          {
+            "name": "value",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -641,6 +648,13 @@
     "/api/extend/singleUpload": {
       "post": {
         "description": "",
+        "parameters": [
+          {
+            "name": "value",
+            "in": "query",
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
