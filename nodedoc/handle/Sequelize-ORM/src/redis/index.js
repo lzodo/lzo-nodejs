@@ -1,8 +1,9 @@
 // 创建连接
 const redis = require('redis');
+const { redisConfig } = require('../config');
 const client = redis.createClient({
-	url: 'redis://192.168.203.132:6379',
-	password: 'Lzx542684.@'
+	url: redisConfig.url,
+	password: redisConfig.passwd
 });
 
 // 监听连接成功事件

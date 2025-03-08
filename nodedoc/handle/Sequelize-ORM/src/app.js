@@ -4,6 +4,7 @@ require('./models/sync'); // 初始化模型
 
 const path = require('path');
 const express = require('express');
+const helmet = require('helmet');
 const app = express(); //创建一个express应用
 const useRouter = require('./routes/index');
 const errHealder = require('./middleware/error');
@@ -42,6 +43,9 @@ app.use(
 	// 解析请求 Content-Type 为 application/json 的请求体
 	express.json()
 );
+
+// 使用 helmet，设置一系列 HTTP 头来帮助保护应用
+app.use(helmet());
 
 // 跨域
 useCros(app);

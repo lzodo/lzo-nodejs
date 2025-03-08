@@ -4,7 +4,7 @@ const path = require('path');
 function createAppenders(type) {
 	return {
 		type: 'dateFile', // file 保存到文件，dateFile 文件自动以当前日期作为后缀
-		filename: path.resolve(__dirname, 'logs', type, 'logging.log'),
+		filename: path.resolve(__dirname, '../logs', type, 'logging.log'),
 		maxLogSize: 1024 * 1024, //配置文件的最大字节数,到达自动分类文件
 		keepFileExt: true,
 		// daysToKeep: 3, // 保留天数

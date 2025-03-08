@@ -2,7 +2,7 @@ const dotenv = require('dotenv'); // 通过dotenv插件获取根目录下.env �
 dotenv.config(); //将配置信息写入到 process.env 环境变量中
 
 // 环境变量管理器
-const { PORT, MYSQL_DATABASE, MYSQL_ACCOUNT, MYSQL_PASSWD, MYSQL_HOST, PROXY_LIST_CODER, AUTH_SECRET_KEY } = process.env;
+const { PORT, MYSQL_DATABASE, MYSQL_ACCOUNT, MYSQL_PASSWD, MYSQL_HOST, PROXY_LIST_CODER, AUTH_SECRET_KEY, REDIS_PASSWD, REDIS_URL } = process.env;
 
 // 鉴权白名单
 const whiteList = [
@@ -27,9 +27,10 @@ const proxyList = {
 
 // 服务器
 const servers = {
-	port: PORT
+	port: PORT || 5008
 };
 
+// mysql 配置
 const mysqlConfig = {
 	database: MYSQL_DATABASE,
 	account: MYSQL_ACCOUNT,
@@ -37,10 +38,17 @@ const mysqlConfig = {
 	host: MYSQL_HOST
 };
 
+// redis 配置
+const redisConfig = {
+	url: REDIS_URL,
+	passwd: REDIS_PASSWD
+};
+
 module.exports = {
 	whiteList,
 	secretKey,
 	proxyList,
 	servers,
-	mysqlConfig
+	mysqlConfig,
+	redisConfig
 };
