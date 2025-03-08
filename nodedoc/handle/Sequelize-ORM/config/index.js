@@ -1,3 +1,10 @@
+const dotenv = require('dotenv'); // 通过dotenv插件获取根目录下.env 文件的配置参数
+dotenv.config(); //将配置信息写入到 process.env 环境变量中
+
+// 环境变量管理器
+const { SECRET_KEY_TEST } = process.env;
+console.log(SECRET_KEY_TEST);
+
 // 鉴权白名单
 const whiteList = [
 	{ method: 'POST', path: '/api/admin/loginByCookie' },
