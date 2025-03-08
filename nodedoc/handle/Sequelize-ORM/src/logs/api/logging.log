@@ -1,0 +1,55 @@
+api [2025-03-08 11:18:28] [INFO]: ::1 - - "GET /api/extend/jsonp?callback=testJsonp HTTP/1.1" 200 59 "" "Apifox/1.0.0 (https://apifox.com)"
+
+api [2025-03-08 11:18:33] [INFO]: ::1 - - "POST /api/extend/singleUpload HTTP/1.1" 200 79 "" "Apifox/1.0.0 (https://apifox.com)"
+
+api [2025-03-08 11:20:34] [INFO]: ::1 - - "POST /api/extend/singleUpload HTTP/1.1" 200 79 "" "Apifox/1.0.0 (https://apifox.com)"
+
+api [2025-03-08 11:21:22] [ERROR]: ::1 - - "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:5008/uploads/origin/keyFile-1741404034006.jpg" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+
+api [2025-03-08 11:21:34] [INFO]: ::1 - - "POST /api/extend/arrayUpload HTTP/1.1" 200 170 "" "Apifox/1.0.0 (https://apifox.com)"
+
+api [2025-03-08 11:21:46] [ERROR]: Error occurred: {
+  message: "ENOENT: no such file or directory, stat 'D:\\lzo-project\\lzo-nodejs\\nodedoc\\handle\\Sequelize-ORM\\src\\public\\source\\s2.jpg'",
+  timestamp: '2025-03-08T03:21:46.535Z',
+  request: {
+    method: 'GET',
+    url: '/api/extend/download/s2.jpg',
+    body: {},
+    headers: {
+      codertoken: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6ImFkbWluIiwib3BlbklkIjpudWxsLCJpYXQiOjE3NDExNzgzMzB9.Az5E_SBz6cLv45UIMrocEvG-75LoFk1oVkhsxpWLlN3YtIN67_S9m6ydNrm1_zC8f0_C4XZW_KZcLS0sMIcpyWI9c1KcmmppdGlgKQqc7rgtb-45zhX3psohkh81y1ToDiE18yfDyHAgIzPpF9b1vSuS3rJvBEo8TcVmi7L1B40',
+      'user-agent': 'Apifox/1.0.0 (https://apifox.com)',
+      accept: '*/*',
+      host: 'localhost:5008',
+      'accept-encoding': 'gzip, deflate, br',
+      connection: 'keep-alive',
+      cookie: 'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAxLCJsb2dpbklkIjoiMjIyMjIiLCJuYW1lIjoibGlhb2FkbWluIiwiaWF0IjoxNzQxMzk4NDQzLCJleHAiOjE3NDQ5OTg0NDN9.jYh7r0HY5r-wMupclDPNXcizEfC9SLJOVsKyHpOIvEU'
+    }
+  }
+}
+
+api [2025-03-08 11:23:53] [INFO]: ::1 - - "GET /api/extend/qrcode/img?value=%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%95%B0%E6%8D%AE2 HTTP/1.1" 200 960 "" "Apifox/1.0.0 (https://apifox.com)"
+
+api [2025-03-08 11:23:56] [INFO]: ::1 - - "GET /api/extend/qrcode?value=%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%95%B0%E6%8D%AE2 HTTP/1.1" 200 1302 "" "Apifox/1.0.0 (https://apifox.com)"
+
+api [2025-03-08 11:23:59] [INFO]: ::1 - - "GET /api/extend/captcha HTTP/1.1" 200 49 "" "Apifox/1.0.0 (https://apifox.com)"
+
+api [2025-03-08 11:24:05] [INFO]: ::1 - - "POST /api/extend/email HTTP/1.1" 200 54 "" "Apifox/1.0.0 (https://apifox.com)"
+
+api [2025-03-08 11:24:21] [ERROR]: ::1 - - "POST /coder/users/login HTTP/1.1" 504 - "" "Apifox/1.0.0 (https://apifox.com)"
+
+api [2025-03-08 11:24:34] [INFO]: ::1 - - "POST /coder/users/login HTTP/1.1" 200 398 "" "Apifox/1.0.0 (https://apifox.com)"
+
+api [2025-03-08 11:24:48] [INFO]: ::1 - - "POST /api/student HTTP/1.1" 200 215 "" "Apifox/1.0.0 (https://apifox.com)"
+
+api [2025-03-08 11:24:56] [INFO]: ::1 - - "GET /api/student HTTP/1.1" 200 2158 "" "Apifox/1.0.0 (https://apifox.com)"
+
+api [2025-03-08 11:25:04] [INFO]: ::1 - - "PUT /api/student/101?id=1 HTTP/1.1" 200 48 "" "Apifox/1.0.0 (https://apifox.com)"
+
+api [2025-03-08 11:25:15] [INFO]: ::1 - - "GET /api/student/101 HTTP/1.1" 200 89 "" "Apifox/1.0.0 (https://apifox.com)"
+
+api [2025-03-08 11:25:26] [INFO]: ::1 - - "POST /api/book HTTP/1.1" 200 134 "" "Apifox/1.0.0 (https://apifox.com)"
+
+api [2025-03-08 11:26:04] [INFO]: ::1 - - "GET /api/student/101 HTTP/1.1" 200 89 "" "Apifox/1.0.0 (https://apifox.com)"
+
+api [2025-03-08 11:30:59] [INFO]: ::1 - - "POST /api/admin/loginByJwt HTTP/1.1" 200 225 "http://localhost:5008/api-docs/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+

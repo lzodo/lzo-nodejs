@@ -14,7 +14,7 @@ function deleteAllFilesInDirectory(directoryPath) {
 	}
 }
 
-deleteAllFilesInDirectory(path.resolve(__dirname, '../public/uploads'));
+deleteAllFilesInDirectory(path.resolve(__dirname, '../../public/uploads'));
 module.exports = {
 	deleteAllFilesInDirectory
 };

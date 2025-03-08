@@ -6,7 +6,7 @@ const Jimp = require('jimp');
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
 		// 文件存在当前目录出发，上级的public，下的uploads中
-		const uploads = path.resolve(__dirname, '../public/uploads', 'origin');
+		const uploads = path.resolve(__dirname, '../../public/uploads', 'origin');
 		mkdir(uploads);
 
 		cb(null, uploads);
@@ -81,7 +81,7 @@ exports.pictureResize = async (req, res, next) => {
 	const files = req.files || [req.file];
 	for (let file of files) {
 		const ext = /\..*$/.exec(file.filename);
-		const sizeDir = path.resolve(__dirname, '../public/uploads', 'resize');
+		const sizeDir = path.resolve(__dirname, '../../public/uploads', 'resize');
 		mkdir(sizeDir);
 		const destPath = path.join(sizeDir, file.filename.replace(/\..*$/, ''));
 		Jimp.read(file.path).then((image) => {
@@ -96,13 +96,13 @@ exports.pictureResize = async (req, res, next) => {
 // 加水印 (water/jimp)
 exports.addWatermark = async (req, res, next) => {
 	const files = req.files || [req.file];
-	const water = path.resolve(__dirname, '../public/uploads', 'water');
+	const water = path.resolve(__dirname, '../../public/uploads', 'water');
 	mkdir(water);
 	for (let file of files) {
 		const ext = /\..*$/.exec(file.filename);
 		const destPath = path.join(water, file.filename.replace(/\..*$/, ''));
 
-		mark(path.resolve(__dirname, '../public/source/cat.png'), file.path, `${destPath}-water${ext}`);
+		mark(path.resolve(__dirname, '../../public/source/cat.png'), file.path, `${destPath}-water${ext}`);
 	}
 
 	next();

@@ -46,7 +46,7 @@ class ExtendController {
 		if (!filename) {
 			next(new Error('请填写文件名'));
 		} else {
-			const filepath = path.resolve(__dirname, '../public/source', filename);
+			const filepath = path.resolve(__dirname, '../../public/source', filename);
 			/**
 			 * download(文件路径，默认文件名，错误处理)
 			 * 响应头的属性：

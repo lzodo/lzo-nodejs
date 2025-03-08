@@ -11,7 +11,7 @@ const saveApiLogs = require('./middleware/api-logger');
 const securityChain = require('./middleware/security-chain');
 const { servers } = require('./config');
 const { httpProxy } = require('./middleware/proxy');
-const { useSwagger } = require('./swagger');
+const { useSwagger } = require('../swagger');
 const { useAuth } = require('./middleware/Third-party-middle/auth');
 const { useCros } = require('./middleware/Third-party-middle/cros');
 const { axios } = require('./middleware/request');
@@ -28,7 +28,7 @@ app.use(securityChain());
  * 默认情况下，如果映射的结果是一个目录，则会自动使用index.html文件
  */
 app.use(
-	express.static(path.resolve(__dirname, './public'), {
+	express.static(path.resolve(__dirname, '../public'), {
 		maxAge: 3600 * 1000 // 缓存静态资源
 	})
 );

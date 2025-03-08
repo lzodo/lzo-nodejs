@@ -33,11 +33,11 @@
   },
   "name": "sequelize-orm",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
-    "start": "node ./swagger-autogen.js && nodemon -x node --inspect ./index.js",
-    "update": "node ./mock/extend/mockUpdatePrompt.js",
-    "clear": "node ./utils/clear.js"
+    "start": "node ./swagger/swagger-autogen.js && nodemon -x node --inspect ./src/app.js",
+    "update": "node ./src/mock/extend/mockUpdatePrompt.js",
+    "clear": "node ./src/utils/clear.js"
   },
   "author": "",
   "license": "ISC",
