@@ -2,7 +2,7 @@
 FROM node:latest
 
 # 设置工作目录
-WORKDIR /
+WORKDIR /app
 
 # 复制 package.json 和 package-lock.json
 COPY package*.json ./
