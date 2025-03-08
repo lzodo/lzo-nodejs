@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm install
 
 # 复制项目文件
-COPY ./* ./* 
+COPY . . 
 
 # 暴露端口（Express 应用监听的端口）
 EXPOSE 3000
