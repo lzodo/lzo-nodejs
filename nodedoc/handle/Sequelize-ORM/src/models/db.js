@@ -23,10 +23,10 @@ const sequelize = new Sequelize(mysqlConfig.database, mysqlConfig.account, mysql
 sequelize
 	.authenticate()
 	.then(() => {
-		console.log('Connection has been established successfully.');
+		// console.log('sequelize 连接成功');
 	})
 	.catch((error) => {
-		console.error('Unable to connect to the database:', error);
+		// console.error('sequelize 连接异常：', error);
 	});
 
 module.exports = sequelize;

@@ -25,7 +25,7 @@ class AdminController {
 		if (req.query.birthday) {
 			searchObj.where.birthday = req.query.birthday;
 		}
-		console.log(req.userInfo, 'req.userInfo');
+		// console.log(req.userInfo, 'req.userInfo');
 		await toi(adminServ.findByPage(searchObj), res, next);
 	}
 
@@ -44,7 +44,7 @@ class AdminController {
 		await toi(adminServ.delete(req.body), res, next);
 	}
 
-	// 通过token登录
+	// 通过 cookie 登录
 	async loginByCookie(req, res, next) {
 		const [error, data] = await to(adminServ.login(req.body));
 		if (error) {

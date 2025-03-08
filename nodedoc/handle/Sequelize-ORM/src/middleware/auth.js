@@ -58,10 +58,12 @@ exports.authByJwt = function () {
 
 		// 这边一般从header 的 authorization 取，需要前端手动设置，除了浏览器很多终端不支持cookie，先用cookie测试
 		// console.log(req.headers.cookie);
-		const token = req.cookies.token;
+		let token = req.cookies.token;
 		// console.log(token);
 		// verify a token symmetric
-
+		if (!token) {
+			token = req.headers.authorization;
+		}
 		try {
 			// jwt.decode(token) 解码，不带校验功能
 			const result = jwt.verify(token, secretKey, { algorithms: ['HS256'] });
@@ -77,7 +79,6 @@ exports.authByJwt = function () {
 exports.createToken = function () {
 	return (req, res, next) => {
 		const data = req.userInfo || {};
-		console.log('createToken');
 
 		// jwt 签名
 		jwt.sign(data, secretKey, { algorithm: 'HS256', expiresIn: 60 * 60 * 1000 }, function (err, token) {

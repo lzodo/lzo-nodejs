@@ -8,12 +8,12 @@ const client = redis.createClient({
 
 // 监听连接成功事件
 client.on('connect', () => {
-	console.log('redis 连接成功！');
+	// console.log('redis 连接成功！');
 });
 
 // 监听错误事件
 client.on('error', (err) => {
-	console.error('Redis error:', err);
+	// console.error('Redis error:', err);
 });
 
 // 连接到 Redis
