@@ -25,3 +25,6 @@ pnpm-debug.log*
 /public/qrcode
 swagger-output.json
 /coverage
+
+/logs
+/morganLog

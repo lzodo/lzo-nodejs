@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const express = require('express');
 const helmet = require('helmet');
 const app = express(); //创建一个express应用
@@ -11,6 +12,8 @@ const { useSwagger } = require('../swagger');
 const { useAuth } = require('./middleware/Third-party-middle/auth');
 const { useCros } = require('./middleware/Third-party-middle/cros');
 const { axios } = require('./middleware/request');
+const morgan = require('morgan');
+const { mkdir } = require('./utils/tools-file');
 
 // 图片防盗链
 app.use(securityChain());
@@ -44,6 +47,13 @@ app.use(helmet());
 
 // 跨域
 useCros(app);
+
+// 日志中间件
+// 创建写入流
+const dirPath = path.join(__dirname, '../morganLog');
+mkdir(dirPath);
+const accessLogStream = fs.createWriteStream(path.join(dirPath, 'access.log'), { flags: 'a' });
+app.use(morgan('combined', { stream: accessLogStream }));
 
 // axios api请求
 app.use(axios());
