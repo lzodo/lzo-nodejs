@@ -3,11 +3,12 @@ const router = express.Router();
 const path = require('path');
 const QRCode = require('qrcode');
 const { to } = require('../../utils/tools');
-const { prompt, jsonp, upload, downlaod, sendMail } = require('../../controller/extend');
 const { uploadArray, uploadSingle, visRealPicture, pictureResize, addWatermark } = require('../../middleware/upload');
 const { captcha } = require('../../middleware/captcha');
 const { oauthLoginGitee, oauthLoginCallback } = require('../../middleware/auth');
+const { prompt, jsonp, upload, downlaod, sendMail } = require('../../controller/extend');
 const { mkdir } = require('../../utils/tools-file');
+const { body } = require('express-validator'); // 校验请求参数，未校验成功
 
 // 系统更新实时提示
 router.get('/updatePrompt', prompt);
@@ -19,7 +20,7 @@ router.get('/jsonp', jsonp);
 router.get('/download/:filename', downlaod);
 
 // 单文件上传
-router.post('/singleUpload', uploadSingle(), visRealPicture, pictureResize, addWatermark, upload);
+router.post('/singleUpload', [body('keyFile').notEmpty()], uploadSingle(), visRealPicture, pictureResize, addWatermark, upload);
 
 // 多文件上传
 router.post('/arrayUpload', uploadArray(), visRealPicture, pictureResize, upload);

@@ -2,6 +2,7 @@ const path = require('path');
 const multer = require('multer');
 const { getImageFormat, getImageRealFormat, mkdir } = require('../utils/tools-file');
 const Jimp = require('jimp');
+const { validationResult } = require('express-validator');
 
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
