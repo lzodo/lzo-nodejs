@@ -13,11 +13,20 @@ const sequelize = new Sequelize(mysqlConfig.database, mysqlConfig.account, mysql
 		sqlLogger.debug(msg);
 	},
 	pool: {
-		max: 10, // 最大连接数
-		min: 0, // 最小连接数
-		idle: 10000, // 连接空闲时间（毫秒）
-		acquire: 30000 // 获取连接的超时时间（毫秒）
+		max: 15 // 最大连接数
+		// min: 0, // 最小连接数
+		// idle: 10000, // 连接空闲时间（毫秒）
+		// acquire: 30000 // 获取连接的超时时间（毫秒）
 	}
 });
+
+sequelize
+	.authenticate()
+	.then(() => {
+		console.log('Connection has been established successfully.');
+	})
+	.catch((error) => {
+		console.error('Unable to connect to the database:', error);
+	});
 
 module.exports = sequelize;

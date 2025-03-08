@@ -1,6 +1,6 @@
 require('./services/optionValids/globalExtend');
 require('./models/sync'); // 初始化模型
-// require("./mock/init"); // 初始化模拟数据
+// require('./mock/init'); // 初始化模拟数据
 
 const path = require('path');
 const express = require('express');

@@ -5,8 +5,8 @@ require('./extend/updatePrompt');
 
 require('./admin');
 require('./book');
-const Student = require('./student');
-const Class = require('./class');
+require('./student');
+require('./class');
 
 // 关联模型的关系
 // Class.hasMany(Student);

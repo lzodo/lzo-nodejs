@@ -16,4 +16,4 @@ const result = Mock.mock({
 console.log(result);
 setTimeout(() => {
 	Student.bulkCreate(result);
-}, 3000);
+}, 5000);

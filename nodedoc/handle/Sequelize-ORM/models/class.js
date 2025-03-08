@@ -20,7 +20,6 @@ const Class = sequelize.define(
 );
 
 // 关联模型的关系
-Class.hasMany(Student);
-Student.belongsTo(Class);
+// Class.hasMany(Student);
 
 module.exports = Class;

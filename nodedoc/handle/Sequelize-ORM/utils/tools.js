@@ -103,3 +103,10 @@ exports.toi = function (promise, res, next) {
 
 //   originalLog(`[ ${fileInfo} ]\n`, ...args);
 // };
+
+// 程序崩溃执行
+process.on('uncaughtException', (err) => {
+	// console.error('uncaughtException 的错误：', err);
+	// 可以选择在这里关闭服务器或执行其他清理操作
+	process.exit(1); // 非零退出码通常表示异常终止
+});
