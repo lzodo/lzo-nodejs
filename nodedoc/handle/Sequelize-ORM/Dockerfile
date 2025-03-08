@@ -2,7 +2,7 @@
 FROM node:latest
 
 # 设置工作目录
-WORKDIR /app
+WORKDIR /
 
 # 复制 package.json 和 package-lock.json
 COPY package*.json ./
@@ -11,10 +11,10 @@ COPY package*.json ./
 RUN npm install
 
 # 复制项目文件
-COPY . .
+COPY . . 
 
 # 暴露端口（Express 应用监听的端口）
-EXPOSE 3000
+EXPOSE 5008
 
 # 启动应用
 CMD ["npm", "start"]
