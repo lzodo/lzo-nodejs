@@ -1,7 +1,9 @@
 const Mock = require('mockjs');
 const extendServ = require('../services/extendService');
-const { sendResult } = require('../utils/tools');
+const { sendResult, to } = require('../utils/tools');
 const path = require('path');
+const nodemailer = require('nodemailer');
+const { promisify } = require('util');
 // const { PassThrough } = require("stream");
 
 class ExtendController {
@@ -67,6 +69,54 @@ class ExtendController {
 		const data = files.map((item) => `/uploads/origin/${item.filename}`);
 
 		res.send(sendResult(data));
+	}
+
+	// 发送邮件
+	async sendMail(req, res, next) {
+		const { email } = req.body;
+		const reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		if (!reg.test(email)) {
+			next(new Error('邮件格式异常'));
+		}
+		// 验证码随机数
+		let code = Math.random().toString().substr(2, 4);
+
+		// 创建一个SMTP客户端配置
+		const config = {
+			service: 'QQ',
+			auth: {
+				// 发件人邮箱账号
+				user: '869664233@qq.com',
+				//发件人邮箱的授权码 这里可以通过qq邮箱获取 并且不唯一
+				pass: 'dkoikvzyhjgvbedg' //授权码生成之后，要等一会才能使用，否则验证的时候会报错
+			}
+		};
+
+		//创建一个SMTP客户端配置对象
+		const transporter = nodemailer.createTransport(config);
+
+		//创建一个收件人对象
+		const mail = {
+			// 发件人 邮箱  '昵称<发件人邮箱>'
+			from: `lzo<869664233@qq.com>`,
+			// 主题
+			subject: '激活验证码',
+			// 收件人 的邮箱 可以是其他邮箱 不一定是qq邮箱
+			to: email,
+			//这里可以添加html标签
+			html: `<b>您的激活验证码为：${code}, 请24小时内有效，请谨慎保管。</b>`
+		};
+
+		//  发送邮件 调用transporter.sendMail(mail, callback)
+		transporter.sendMail(mail, function (error, info) {
+			if (error) {
+				next(error);
+			} else {
+				transporter.close();
+				console.log('mail sent:', info.response);
+				res.send(sendResult(info.response));
+			}
+		});
 	}
 }
 

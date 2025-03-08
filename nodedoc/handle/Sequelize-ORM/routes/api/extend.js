@@ -3,7 +3,7 @@ const router = express.Router();
 const path = require('path');
 const QRCode = require('qrcode');
 const { to } = require('../../utils/tools');
-const { prompt, jsonp, upload, downlaod } = require('../../controller/extend');
+const { prompt, jsonp, upload, downlaod, sendMail } = require('../../controller/extend');
 const { uploadArray, uploadSingle, visRealPicture, pictureResize, addWatermark } = require('../../middleware/upload');
 const { captcha } = require('../../middleware/captcha');
 const { oauthLoginGitee, oauthLoginCallback } = require('../../middleware/auth');
@@ -24,9 +24,12 @@ router.post('/singleUpload', uploadSingle(), visRealPicture, pictureResize, addW
 // 多文件上传
 router.post('/arrayUpload', uploadArray(), visRealPicture, pictureResize, upload);
 
+// 发送邮件功能
+router.post('/email', sendMail);
+
 // oauth 授权登录，拦截前端的a链接跳转
 router.get('/oauth/login/gitee', oauthLoginGitee());
-// 创建一个授权码的回调地址路由
+// oauth 授权的授权码的回调地址路由
 router.get('/oauth/gitee/callback', oauthLoginCallback());
 
 // 二维码生成
@@ -41,7 +44,6 @@ router.get('/qrcode/img', async (req, res, next) => {
 	}
 	res.download(`${qrcodePath}/${name}`, name);
 });
-
 router.get('/qrcode', async (req, res, next) => {
 	const val = req.query.value || '二维码数据！';
 	let [error, result] = await to(QRCode.toDataURL(val));
