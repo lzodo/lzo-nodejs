@@ -41,9 +41,14 @@
     "start": "node ./swagger/swagger-autogen.js && node ./src/index.js",
     "dev": "node ./swagger/swagger-autogen.js && nodemon -x node --inspect ./src/index.js",
     "update": "node ./src/mock/extend/mockUpdatePrompt.js",
-    "clear": "node ./src/utils/clear.js"
+    "clear": "node ./src/utils/clear.js",
+    "test": "jest --detectOpenHandles"
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  }
 }
