@@ -17,11 +17,11 @@ COPY . .
 EXPOSE 5008
 
 # 启动应用
-CMD ["npm", "start"]
+CMD ["npm", "run", "start:test"]
 
 
 # 项目根目录，构建镜像
-# docker build -t <image-name> .
+# docker build -t express-orm .
 
 # 创建容器
 # docker run -d --name nodeorm -p 5008:5008 express-orm
