@@ -190,9 +190,16 @@
         "description": "",
         "parameters": [
           {
-            "name": "value",
-            "in": "query",
-            "type": "string"
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "keyFile": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -650,9 +657,16 @@
         "description": "",
         "parameters": [
           {
-            "name": "value",
-            "in": "query",
-            "type": "string"
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "keyFile": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {

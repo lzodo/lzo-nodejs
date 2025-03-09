@@ -40,8 +40,8 @@
   "version": "1.0.0",
   "main": "src/app.js",
   "scripts": {
-    "start": "node ./swagger/swagger-autogen.js && node ./src/index.js",
-    "dev": "node ./swagger/swagger-autogen.js && nodemon -x node --inspect ./src/index.js",
+    "start:test": "node ./swagger/swagger-autogen.js && cross-env NODE_ENV=test  node ./src/index.js",
+    "start": "node ./swagger/swagger-autogen.js && cross-env NODE_ENV=development nodemon -x node --inspect ./src/index.js",
     "update": "node ./src/mock/extend/mockUpdatePrompt.js",
     "clear": "node ./src/utils/clear.js",
     "test": "jest --verbose --detectOpenHandles"

@@ -97,11 +97,11 @@ exports.toi = function (promise, res, next) {
 // 控制台输出文件名行号
 // const originalLog = console.log;
 // console.log = function (...args) {
-//   const stack = new Error().stack.split("\n")[2];
-//   const match = stack.match(/\((.+):(\d+):(\d+)\)/);
-//   const fileInfo = match ? `${match[1]}:${match[2]}` : "unknown";
+// 	const stack = new Error().stack.split('\n')[2];
+// 	const match = stack.match(/\((.+):(\d+):(\d+)\)/);
+// 	const fileInfo = match ? `${match[1]}:${match[2]}` : 'unknown';
 
-//   originalLog(`[ ${fileInfo} ]\n`, ...args);
+// 	originalLog(`[ ${fileInfo} ]\n`, ...args);
 // };
 
 // 程序崩溃执行

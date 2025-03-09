@@ -1,8 +1,14 @@
 const dotenv = require('dotenv'); // 通过dotenv插件获取根目录下.env 文件的配置参数
-dotenv.config(); //将配置信息写入到 process.env 环境变量中
+// 根据环境加载对应的 .env 文件
+if (process.env.NODE_ENV === 'test') {
+	dotenv.config({ path: '.env.test' }); //将 .env.test 配置信息写入到 process.env 环境变量中
+} else {
+	dotenv.config(); // 默认加载 .env
+}
 
 // 环境变量管理器
 const { PORT, MYSQL_DATABASE, MYSQL_ACCOUNT, MYSQL_PASSWD, MYSQL_HOST, PROXY_LIST_CODER, AUTH_SECRET_KEY, REDIS_PASSWD, REDIS_URL } = process.env;
+console.log(PROXY_LIST_CODER);
 
 // 鉴权白名单
 const whiteList = [
