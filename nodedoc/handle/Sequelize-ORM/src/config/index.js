@@ -7,8 +7,7 @@ if (process.env.NODE_ENV === 'test') {
 }
 
 // 环境变量管理器
-const { PORT, MYSQL_DATABASE, MYSQL_ACCOUNT, MYSQL_PASSWD, MYSQL_HOST, PROXY_LIST_CODER, AUTH_SECRET_KEY, REDIS_PASSWD, REDIS_URL } = process.env;
-console.log(PROXY_LIST_CODER);
+const { PORT, MYSQL_DATABASE, MYSQL_ACCOUNT, MYSQL_PASSWD, MYSQL_HOST, PROXY_LIST_CODER, AUTH_SECRET_KEY, REDIS_PASSWD, REDIS_URL, SERVER_HTTPS } = process.env;
 
 // 鉴权白名单
 const whiteList = [
@@ -33,7 +32,8 @@ const proxyList = {
 
 // 服务器
 const servers = {
-	port: PORT || 5008
+	port: PORT || 5008,
+	https: SERVER_HTTPS
 };
 
 // mysql 配置
