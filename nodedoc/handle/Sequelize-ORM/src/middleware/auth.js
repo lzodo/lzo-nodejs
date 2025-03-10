@@ -82,10 +82,7 @@ exports.createToken = function () {
 
 		// jwt 签名
 		jwt.sign(data, secretKey, { algorithm: 'HS256', expiresIn: 60 * 60 * 1000 }, function (err, token) {
-			if (err) {
-				next(err);
-				return;
-			}
+			if (err) return next(err);
 
 			/**
 			 *  Authorization 头部字段支持多种授权方案，例如：

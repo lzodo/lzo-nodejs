@@ -1,8 +1,10 @@
 const { sendErrResult } = require('../utils/tools');
 const { apiLogger } = require('../logger');
+// var createError = require('http-errors');
 
 module.exports = function () {
 	return function (err, req, res, next) {
+		// createError();
 		// 四个参数就认为是4个中间件
 		console.log('进入了错误中间件');
 		if (err) {

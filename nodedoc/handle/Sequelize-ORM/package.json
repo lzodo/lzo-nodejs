@@ -13,6 +13,7 @@
     "express-validator": "^7.2.1",
     "file-type": "^16.5.4",
     "helmet": "^8.0.0",
+    "http-errors": "^2.0.0",
     "http-proxy-middleware": "^3.0.3",
     "jimp": "^0.22.12",
     "joi": "^17.13.3",

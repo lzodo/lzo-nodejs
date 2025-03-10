@@ -110,7 +110,7 @@ class ExtendController {
 		//  发送邮件 调用transporter.sendMail(mail, callback)
 		transporter.sendMail(mail, function (error, info) {
 			if (error) {
-				next(error);
+				return next(error);
 			} else {
 				transporter.close();
 				console.log('mail sent:', info.response);

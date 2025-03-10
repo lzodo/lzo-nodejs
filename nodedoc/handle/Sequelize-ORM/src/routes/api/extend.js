@@ -25,10 +25,9 @@ router.post(
 		const schema = req.Joi.object({ keyFile: req.Joi.required() });
 		const { error } = schema.validate({ keyFile: req.body.keyFile });
 		if (error) {
-			next(error);
-		} else {
-			next();
+			return next(error);
 		}
+		next();
 	},
 	uploadSingle(),
 	pictureResize,
@@ -55,7 +54,7 @@ router.get('/qrcode/img', async (req, res, next) => {
 	mkdir(qrcodePath);
 	let [error, result] = await to(QRCode.toFile(`${qrcodePath}/${name}`, val));
 	if (error) {
-		next(error);
+		return next(error);
 	}
 	res.download(`${qrcodePath}/${name}`, name);
 });
@@ -63,7 +62,7 @@ router.get('/qrcode', async (req, res, next) => {
 	const val = req.query.value || '二维码数据！';
 	let [error, result] = await to(QRCode.toDataURL(val));
 	if (error) {
-		next(error);
+		return next(error);
 	}
 	res.send(result);
 });
