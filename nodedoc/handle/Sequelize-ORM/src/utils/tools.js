@@ -1,3 +1,5 @@
+const AppError = require('./AppError');
+
 /**
  * 保留对象的指定属性
  * @param {*} obj
@@ -53,17 +55,21 @@ exports.sendResult = sendResult;
  * @param {*} errCode
  * @returns
  */
-exports.sendErrResult = function (msg = '请求异常', errCode = 500) {
+exports.sendErrResult = function (msg = '请求异常', errCode = 500, status = 'error', stack = {}) {
 	try {
 		let data = JSON.parse(msg);
 		return {
 			code: errCode,
-			msg: data
+			status,
+			msg: data,
+			stack
 		};
 	} catch (error) {
 		return {
 			code: errCode,
-			msg: msg
+			msg: msg,
+			stack,
+			status
 		};
 	}
 };
@@ -91,7 +97,7 @@ exports.to = function (promise) {
 exports.toi = function (promise, res, next) {
 	return promise
 		.then((data) => res.send(sendResult(data))) // 将数据格式化后返回客户端
-		.catch((error) => next(error)); // 进入异常中间件进行处理
+		.catch((error) => next(new AppError(error))); // 进入异常中间件进行处理
 };
 
 // 控制台输出文件名行号

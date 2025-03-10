@@ -8,6 +8,7 @@ const { captcha } = require('../../middleware/captcha');
 const { oauthLoginGitee, oauthLoginCallback } = require('../../middleware/auth');
 const { prompt, jsonp, upload, downlaod, sendMail } = require('../../controller/extend');
 const { mkdir } = require('../../utils/tools-file');
+const AppError = require('../../utils/AppError');
 
 // 系统更新实时提示
 router.get('/updatePrompt', prompt);
@@ -25,7 +26,7 @@ router.post(
 		const schema = req.Joi.object({ keyFile: req.Joi.required() });
 		const { error } = schema.validate({ keyFile: req.body.keyFile });
 		if (error) {
-			return next(error);
+			return next(new AppError(error, 400));
 		}
 		next();
 	},
@@ -54,7 +55,7 @@ router.get('/qrcode/img', async (req, res, next) => {
 	mkdir(qrcodePath);
 	let [error, result] = await to(QRCode.toFile(`${qrcodePath}/${name}`, val));
 	if (error) {
-		return next(error);
+		return next(new AppError(error));
 	}
 	res.download(`${qrcodePath}/${name}`, name);
 });
@@ -62,7 +63,7 @@ router.get('/qrcode', async (req, res, next) => {
 	const val = req.query.value || '二维码数据！';
 	let [error, result] = await to(QRCode.toDataURL(val));
 	if (error) {
-		return next(error);
+		return next(new AppError(error));
 	}
 	res.send(result);
 });

@@ -5,6 +5,7 @@ const { pathToRegexp } = require('path-to-regexp');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
 const path = require('path');
+const AppError = require('../utils/AppError');
 
 // cookie 鉴权
 exports.authByCookie = function () {
@@ -22,7 +23,7 @@ exports.authByCookie = function () {
 			// 判断有效性，再决定要不要next
 			next();
 		} else {
-			res.send(sendErrResult('鉴权失败'));
+			return next(new AppError(error, 401));
 		}
 	};
 };
@@ -42,7 +43,7 @@ exports.authBySession = function () {
 		if (userInfo) {
 			next();
 		} else {
-			res.send(sendErrResult('鉴权失败'));
+			return next(new AppError(error, 401));
 		}
 	};
 };
@@ -70,7 +71,7 @@ exports.authByJwt = function () {
 			req.userInfo = result;
 			next();
 		} catch (error) {
-			next(error + ': jwt 鉴权失败');
+			return next(new AppError(error, 401));
 		}
 	};
 };
@@ -82,7 +83,7 @@ exports.createToken = function () {
 
 		// jwt 签名
 		jwt.sign(data, secretKey, { algorithm: 'HS256', expiresIn: 60 * 60 * 1000 }, function (err, token) {
-			if (err) return next(err);
+			if (err) return next(new AppError(err));
 
 			/**
 			 *  Authorization 头部字段支持多种授权方案，例如：

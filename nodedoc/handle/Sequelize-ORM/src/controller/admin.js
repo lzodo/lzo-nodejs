@@ -1,6 +1,7 @@
 const adminServ = require('../services/adminService');
+const AppError = require('../utils/AppError');
 const { encrypt } = require('../utils/crypt');
-const { to, sendResult, toi, sendErrResult } = require('../utils/tools');
+const { to, sendResult, toi } = require('../utils/tools');
 // const { to } = require("lzo-utils");
 
 class AdminController {
@@ -48,7 +49,7 @@ class AdminController {
 	async loginByCookie(req, res, next) {
 		const [error, data] = await to(adminServ.login(req.body));
 		if (error) {
-			return next(error, 401);
+			return next(new AppError(error, 401));
 		}
 
 		// 通过一写条件设置cookie，客户端拿到自动储存，调用其他接口时，如果该接口与这些条件匹配，就会自动携带
@@ -82,7 +83,7 @@ class AdminController {
 	async loginBySession(req, res, next) {
 		const [error, data] = await to(adminServ.login(req.body));
 		if (error) {
-			return next(error, 401);
+			return next(new AppError(error, 401));
 		}
 		req.session.userInfo = data;
 		res.send(sendResult(data));
@@ -93,7 +94,7 @@ class AdminController {
 		const [error, data] = await to(adminServ.login(req.body));
 		if (error) {
 			req.session.loginRecord.push(new Date().getTime());
-			return next(error, 401);
+			return next(new AppError(error, 401));
 		}
 
 		req.session.captcha = '';

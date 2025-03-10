@@ -4,6 +4,7 @@ const { sendResult, to } = require('../utils/tools');
 const path = require('path');
 const nodemailer = require('nodemailer');
 const { promisify } = require('util');
+const AppError = require('../utils/AppError');
 // const { PassThrough } = require("stream");
 
 class ExtendController {
@@ -110,7 +111,7 @@ class ExtendController {
 		//  发送邮件 调用transporter.sendMail(mail, callback)
 		transporter.sendMail(mail, function (error, info) {
 			if (error) {
-				return next(error);
+				return next(new AppError(error));
 			} else {
 				transporter.close();
 				console.log('mail sent:', info.response);

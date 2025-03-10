@@ -1,5 +1,6 @@
 const svgCaptcha = require('svg-captcha');
 const { sendResult, sendErrResult } = require('../utils/tools');
+const AppError = require('../utils/AppError');
 exports.captcha = (req, res, next) => {
 	// 登录界面初始化调用，登录错误也调用，如果登录错误次数足够多，创建图形验证码，客户端能那到图形码就显示
 	if ((req.session?.loginRecord || []).length >= 3) {
@@ -29,8 +30,7 @@ exports.visCaptcha = (req, res, next) => {
 		// 校验 req.session.captcha 是否等于 req.body.captcha
 		if (req.session.captcha != req.body.captcha) {
 			req.session.captcha = '';
-			next(sendErrResult('图形验证码校验失败'));
-			return;
+			return next(new AppError('图形验证码校验失败', 401));
 		}
 	}
 	next();
