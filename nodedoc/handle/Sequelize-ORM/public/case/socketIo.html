@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>socket io</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/socket.io/4.8.1/socket.io.min.js"></script>
+</head>
+
+<body>
+    <script>
+        const socket = io('ws://localhost:5008')
+        socket.on("connect", () => {
+
+            socket.on("message", (msg) => {
+                console.log(msg); // true
+            })
+
+            socket.on("test", (msg) => {
+                console.log(msg); // true
+            })
+
+            // 监听客户端断开连接
+            socket.on('disconnect', () => {
+                console.log('服务器断开');
+            });
+
+            setTimeout(() => {
+                socket.emit('message', '客户端发送的消息')
+            }, 8000)
+            console.log(socket.id); // "G5p5..."
+        });
+    </script>
+</body>
+
+</html>
