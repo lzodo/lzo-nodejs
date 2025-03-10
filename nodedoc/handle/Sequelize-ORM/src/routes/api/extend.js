@@ -7,7 +7,7 @@ const { uploadArray, uploadSingle, visRealPicture, pictureResize, addWatermark }
 const { captcha } = require('../../middleware/captcha');
 const { oauthLoginGitee, oauthLoginCallback } = require('../../middleware/auth');
 const { prompt, jsonp, upload, downlaod, sendMail } = require('../../controller/extend');
-const { mkdir } = require('../../utils/tools-file');
+const { mkdir } = require('../../utils/FileTools');
 const AppError = require('../../utils/AppError');
 
 // 系统更新实时提示

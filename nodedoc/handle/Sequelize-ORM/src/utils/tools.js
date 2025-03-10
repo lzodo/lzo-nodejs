@@ -50,31 +50,6 @@ function sendResult(data) {
 exports.sendResult = sendResult;
 
 /**
- * 请求异常返回数据
- * @param {*} msg
- * @param {*} errCode
- * @returns
- */
-exports.sendErrResult = function (msg = '请求异常', errCode = 500, status = 'error', stack = {}) {
-	try {
-		let data = JSON.parse(msg);
-		return {
-			code: errCode,
-			status,
-			msg: data,
-			stack
-		};
-	} catch (error) {
-		return {
-			code: errCode,
-			status,
-			msg: msg,
-			stack
-		};
-	}
-};
-
-/**
  * 捕获异常通用封装，返回结果需要再次处理
  * @param {*} promise
  * @returns

@@ -1,6 +1,6 @@
 const path = require('path');
 const multer = require('multer');
-const { getImageFormat, getImageRealFormat, mkdir } = require('../utils/tools-file');
+const { getImageFormat, getImageRealFormat, mkdir } = require('../utils/FileTools');
 const Jimp = require('jimp');
 const { validationResult } = require('express-validator');
 

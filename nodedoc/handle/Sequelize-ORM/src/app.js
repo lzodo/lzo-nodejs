@@ -13,7 +13,7 @@ const { useAuth } = require('./middleware/Third-party-middle/auth');
 const { useCros } = require('./middleware/Third-party-middle/cros');
 const { axios } = require('./middleware/request');
 const morgan = require('morgan');
-const { mkdir } = require('./utils/tools-file');
+const { mkdir } = require('./utils/FileTools');
 const Joi = require('joi');
 
 // 图片防盗链

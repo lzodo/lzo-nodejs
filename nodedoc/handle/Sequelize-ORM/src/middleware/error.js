@@ -1,5 +1,6 @@
-const { sendErrResult } = require('../utils/tools');
+// const { sendErrResult } = require('../utils/tools');
 const { apiLogger } = require('../logger');
+const AppError = require('../utils/AppError');
 
 module.exports = function () {
 	return function (err, req, res, next) {
@@ -18,6 +19,6 @@ module.exports = function () {
 				headers: req.headers
 			}
 		});
-		res.status(200).send(sendErrResult(err instanceof Error ? err.message : err, err.statusCode, err.status, err.stack));
+		res.status(200).send(AppError.sendErrResult(err instanceof Error ? err.message : err, err.statusCode, err.status, err.stack));
 	};
 };

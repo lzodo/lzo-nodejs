@@ -1,6 +1,6 @@
 const path = require('path');
 const url = require('url');
-const { getImageFormat } = require('../utils/tools-file');
+const { getImageFormat } = require('../utils/FileTools');
 module.exports = function () {
 	return async (req, res, next) => {
 		let { host, referer } = req.headers;
