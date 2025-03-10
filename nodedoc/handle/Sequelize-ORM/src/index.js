@@ -27,8 +27,6 @@ if (servers.https === 'true') {
 		console.log(`server listen on ${port}`);
 	});
 } else {
-	console.log(333);
-
 	server = app.listen(port, () => {
 		console.log(`server listen on ${port}`);
 	});

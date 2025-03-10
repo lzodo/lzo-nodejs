@@ -27,6 +27,12 @@ sequelize
 	})
 	.catch((error) => {
 		// console.error('sequelize 连接异常：', error);
+		if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+			// 重新连接
+			setTimeout(() => {
+				sequelize.authenticate();
+			}, 5000); // 5 秒后重试
+		}
 	});
 
 module.exports = sequelize;
