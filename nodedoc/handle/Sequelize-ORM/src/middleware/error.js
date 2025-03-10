@@ -19,17 +19,5 @@ module.exports = function () {
 			}
 		});
 		res.status(200).send(sendErrResult(err instanceof Error ? err.message : err, err.statusCode, err.status, err.stack));
-
-		// apiLogger.error('Error occurred:', {
-		// 	message: err instanceof Error ? err.message : err,
-		// 	timestamp: new Date().toISOString(),
-		// 	request: {
-		// 		method: req.method,
-		// 		url: req.url,
-		// 		body: req.body,
-		// 		headers: req.headers
-		// 	}
-		// });
-		// res.status(200).send(sendErrResult(err instanceof Error ? err.message : err, 401));
 	};
 };

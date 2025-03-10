@@ -1,5 +1,5 @@
 const svgCaptcha = require('svg-captcha');
-const { sendResult, sendErrResult } = require('../utils/tools');
+const { sendResult } = require('../utils/tools');
 const AppError = require('../utils/AppError');
 exports.captcha = (req, res, next) => {
 	// 登录界面初始化调用，登录错误也调用，如果登录错误次数足够多，创建图形验证码，客户端能那到图形码就显示

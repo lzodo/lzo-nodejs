@@ -1,6 +1,6 @@
 const { whiteList, secretKey, servers } = require('../config');
 const { decrypt } = require('../utils/crypt');
-const { sendErrResult, sendResult } = require('../utils/tools');
+const { sendResult } = require('../utils/tools');
 const { pathToRegexp } = require('path-to-regexp');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');

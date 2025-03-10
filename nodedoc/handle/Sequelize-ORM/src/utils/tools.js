@@ -67,9 +67,9 @@ exports.sendErrResult = function (msg = '请求异常', errCode = 500, status = 
 	} catch (error) {
 		return {
 			code: errCode,
+			status,
 			msg: msg,
-			stack,
-			status
+			stack
 		};
 	}
 };
