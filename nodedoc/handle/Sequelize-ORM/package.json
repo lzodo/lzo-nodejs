@@ -47,7 +47,8 @@
     "start": "node ./swagger/swagger-autogen.js && cross-env NODE_ENV=development nodemon -x node --inspect ./src/index.js",
     "update": "node ./src/mock/extend/mockUpdatePrompt.js",
     "clear": "node ./src/utils/clear.js",
-    "test": "cross-env NODE_ENV=development jest --verbose --detectOpenHandles"
+    "test": "cross-env NODE_ENV=development jest --verbose --detectOpenHandles",
+    "pm2": "pm2 start pm2.json"
   },
   "author": "",
   "license": "ISC",
