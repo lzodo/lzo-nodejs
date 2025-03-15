@@ -8,7 +8,7 @@ const result = Mock.mock({
 			birthday: '@date',
 			'sex|1-2': true,
 			mobile: /^1\d{10}$/,
-			'ClassId|1-10': 0
+			'classId|1-10': 0
 		}
 	]
 }).datas;

@@ -25,9 +25,8 @@ router.post(
 	(req, res, next) => {
 		const schema = req.Joi.object({ keyFile: req.Joi.required() });
 		const { error } = schema.validate({ keyFile: req.body.keyFile });
-		if (error) {
-			return next(new AppError(error, 400));
-		}
+		if (error) return next(new AppError(error, 400));
+
 		next();
 	},
 	uploadSingle(),

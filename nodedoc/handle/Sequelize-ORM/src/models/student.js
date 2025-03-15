@@ -1,7 +1,6 @@
 const sequelize = require('./db');
 const { DataTypes } = require('sequelize');
 const moment = require('moment');
-const Class = require('./class');
 
 const Student = sequelize.define(
 	'Student',
@@ -43,5 +42,5 @@ const Student = sequelize.define(
 		paranoid: true
 	}
 );
-Student.belongsTo(Class);
+
 module.exports = Student;
