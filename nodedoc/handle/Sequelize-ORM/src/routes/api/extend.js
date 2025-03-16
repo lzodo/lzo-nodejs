@@ -6,7 +6,7 @@ const { to } = require('../../utils/tools');
 const { uploadArray, uploadSingle, visRealPicture, pictureResize, addWatermark } = require('../../middleware/upload');
 const { captcha } = require('../../middleware/captcha');
 const { oauthLoginGitee, oauthLoginCallback } = require('../../middleware/auth');
-const { prompt, jsonp, upload, downlaod, sendMail } = require('../../controller/extend');
+const { prompt, jsonp, upload, downlaod, sendMail, joiTest } = require('../../controller/extend');
 const { mkdir } = require('../../utils/FileTools');
 const AppError = require('../../utils/AppError');
 
@@ -20,26 +20,16 @@ router.get('/jsonp', jsonp);
 router.get('/download/:filename', downlaod);
 
 // 单文件上传
-router.post(
-	'/singleUpload',
-	(req, res, next) => {
-		const schema = req.Joi.object({ keyFile: req.Joi.required() });
-		const { error } = schema.validate({ keyFile: req.body.keyFile });
-		if (error) return next(new AppError(error, 400));
-
-		next();
-	},
-	uploadSingle(),
-	pictureResize,
-	addWatermark,
-	upload
-);
+router.post('/singleUpload', uploadSingle(), pictureResize, addWatermark, upload);
 
 // 多文件上传
 router.post('/arrayUpload', uploadArray(), pictureResize, upload);
 
 // 发送邮件功能
 router.post('/email', sendMail);
+
+// joi测试
+router.post('/joiTest', joiTest);
 
 // oauth 授权登录，拦截前端的a链接跳转
 router.get('/oauth/login/gitee', oauthLoginGitee());

@@ -14,7 +14,7 @@ const { useCros } = require('./middleware/Third-party-middle/cros');
 const { axios } = require('./middleware/request');
 const morgan = require('morgan');
 const { mkdir } = require('./utils/FileTools');
-const Joi = require('joi');
+const { joiConfig } = require('./middleware/joi');
 
 // 图片防盗链
 app.use(securityChain());
@@ -57,10 +57,7 @@ useCros(app);
 // app.use(morgan('combined', { stream: accessLogStream }));
 
 // 注入参数校验插件
-app.use((req, res, next) => {
-	req.Joi = Joi;
-	next();
-});
+app.use(joiConfig);
 
 // axios api请求
 app.use(axios());

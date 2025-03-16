@@ -119,6 +119,35 @@ class ExtendController {
 			}
 		});
 	}
+
+	// joi使用测试
+	async joiTest(req, res, next) {
+		// 对象
+		const schema = req.joi
+			.object({
+				a: {
+					b: req.joi.string(),
+					c: req.joi.number()
+				},
+				d: {
+					e: req.joi.any()
+				}
+			})
+			.assert('.d.e', req.joi.ref('a.c'), 'equal to a.c')
+			.length(3);
+		const { error: failed } = schema.validate({
+			a: {
+				b: 'c',
+				c: 2025
+			},
+			d: {
+				e: 2025
+			}
+		});
+		if (failed) return next(new AppError(failed, 400));
+
+		res.send('pass');
+	}
 }
 
 module.exports = new ExtendController();
