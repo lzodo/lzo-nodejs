@@ -119,6 +119,11 @@ class ExtendController {
 			}
 		});
 	}
+
+	// joi使用测试
+	async joiTest(req, res, next) {
+		res.send('pass');
+	}
 }
 
 module.exports = new ExtendController();

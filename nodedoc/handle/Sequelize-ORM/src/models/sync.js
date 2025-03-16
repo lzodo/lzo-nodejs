@@ -18,8 +18,14 @@ const md5 = require('md5');
 	studentModel.belongsTo(classModel, { foreignKey: 'classId', targetKey: 'id' });
 
 	// 模型变化再进行同步(alter: true 更新模型更改的部分,频繁保存会生成很多连接线, 使用 force: true 重置数据库)
-	// await sequelize.sync({ force: true });
-	// console.log('统一同步完成');
+
+	if (process.env.NODE_ENV == 'test') {
+		await sequelize.sync({ force: true });
+		console.log('统一同步完成');
+	} else {
+		// await sequelize.sync({ force: true });
+		// console.log('统一同步完成');
+	}
 
 	// setTimeout(async () => {
 	const adminCount = await adminModel.count();
