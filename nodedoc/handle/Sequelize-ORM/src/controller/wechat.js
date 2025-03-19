@@ -4,7 +4,8 @@
 const { weChatApplet } = require('../config');
 const { createToken } = require('../middleware/auth');
 const AppError = require('../utils/AppError');
-const { sendResult } = require('../utils/tools');
+const { sendResult, toi } = require('../utils/tools');
+const { wexinInfoParse } = require('../utils/wexinInfoParse');
 
 class WeChatController {
 	// 登录
@@ -44,6 +45,19 @@ class WeChatController {
 		} catch (error) {
 			return next(new AppError('Internal server error', 500));
 		}
+	}
+
+	// 解析登录信息
+	async parseUserInfo(req, res, next) {
+		const schema = req.joi.object({
+			encryptedData: req.joi.string().required(),
+			iv: req.joi.string().required()
+		});
+		const { error: failed } = schema.validate(req.body);
+		if (failed) return next(new AppError(failed, 400));
+
+		await toi(wexinInfoParse(req.userInfo.session_key, req.body.encryptedData, req.body.iv), res, next);
+		// res.send(sendResult(parseInfo));
 	}
 }
 
