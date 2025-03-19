@@ -77,26 +77,26 @@ exports.authByJwt = function () {
 };
 
 // 创建jwt
-exports.createToken = function () {
-	return (req, res, next) => {
-		const data = req.userInfo || {};
+exports.createToken = async function (userInfo) {
+	// return (req, res, next) => {
+	const data = userInfo || {};
 
-		// jwt 签名
-		jwt.sign(data, secretKey, { algorithm: 'HS256', expiresIn: 60 * 60 * 1000 }, function (err, token) {
-			if (err) return next(new AppError(err));
+	// jwt 签名
+	const token = jwt.sign(data, secretKey, { algorithm: 'HS256', expiresIn: 60 * 60 * 1000 });
 
-			/**
-			 *  Authorization 头部字段支持多种授权方案，例如：
-			 *    Basic：用于基本认证（用户名和密码）。
-			 *    Bearer：用于持有者令牌（如 JWT）。
-			 *    Digest：用于摘要认证。
-			 */
+	/**
+	 *  Authorization 头部字段支持多种授权方案，例如：
+	 *    Basic：用于基本认证（用户名和密码）。
+	 *    Bearer：用于持有者令牌（如 JWT）。
+	 *    Digest：用于摘要认证。
+	 */
 
-			res.cookie('token', token);
-			res.header('authorization', token);
-			res.send(sendResult(token));
-		});
-	};
+	// res.cookie('token', token);
+	// res.header('authorization', token);
+	// res.send(sendResult(token));
+	// };
+
+	return token;
 };
 
 /**

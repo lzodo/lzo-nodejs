@@ -7,7 +7,7 @@ if (process.env.NODE_ENV === 'test') {
 }
 
 // 环境变量管理器
-const { PORT, MYSQL_DATABASE, MYSQL_ACCOUNT, MYSQL_PASSWD, MYSQL_HOST, PROXY_LIST_CODER, AUTH_SECRET_KEY, REDIS_PASSWD, REDIS_URL, SERVER_HTTPS } = process.env;
+const { PORT, MYSQL_DATABASE, MYSQL_ACCOUNT, MYSQL_PASSWD, MYSQL_HOST, PROXY_LIST_CODER, AUTH_SECRET_KEY, REDIS_PASSWD, REDIS_URL, SERVER_HTTPS, APP_SECRET, APP_ID } = process.env;
 
 // 鉴权白名单
 const whiteList = [
@@ -19,7 +19,8 @@ const whiteList = [
 	{ method: 'GET', path: '/' },
 	{ path: '/coder', type: 'before' },
 	{ path: '/api-docs', type: 'before' },
-	{ path: '/api/extend', type: 'before' }
+	{ path: '/api/extend', type: 'before' },
+	{ method: 'POST', path: '/api/wechat/login' }
 ];
 
 // 对称加密秘钥
@@ -50,11 +51,18 @@ const redisConfig = {
 	passwd: REDIS_PASSWD
 };
 
+// 微信小程序配置
+const weChatApplet = {
+	AppSecret: APP_SECRET,
+	AppId: APP_ID
+};
+
 module.exports = {
 	whiteList,
 	secretKey,
 	proxyList,
 	servers,
 	mysqlConfig,
-	redisConfig
+	redisConfig,
+	weChatApplet
 };

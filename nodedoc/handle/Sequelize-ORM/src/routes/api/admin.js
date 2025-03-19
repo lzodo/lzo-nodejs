@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router(); //获取路由实例|路由中间件
 const { create, findByPage, findById, update, remove, loginByCookie, loginBySession, loginByJwt } = require('../../controller/admin');
 const { redisCatch } = require('../../middleware/catch');
-const { createToken } = require('../../middleware/auth');
+// const { createToken } = require('../../middleware/auth');
 const { visCaptcha } = require('../../middleware/captcha');
 // const { authByCookie } = require("../../middleware/auth");
 
@@ -21,6 +21,6 @@ router.post('/loginByCookie', loginByCookie);
 // 登录(session)
 router.post('/loginBySession', loginBySession);
 // 登录(jwt)
-router.post('/loginByJwt', visCaptcha, loginByJwt, createToken());
+router.post('/loginByJwt', visCaptcha, loginByJwt);
 
 module.exports = router;

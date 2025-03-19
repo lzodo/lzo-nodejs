@@ -2,6 +2,7 @@ const adminServ = require('../services/adminService');
 const AppError = require('../utils/AppError');
 const { encrypt } = require('../utils/crypt');
 const { to, sendResult, toi } = require('../utils/tools');
+const { createToken } = require('../middleware/auth');
 // const { to } = require("lzo-utils");
 
 class AdminController {
@@ -99,8 +100,12 @@ class AdminController {
 
 		req.session.captcha = '';
 		req.session.loginRecord = [];
-		req.userInfo = data;
-		next();
+		// req.userInfo = data;
+
+		const token = await createToken(data);
+		res.cookie('token', token);
+		res.header('authorization', token);
+		res.send(sendResult(token));
 	}
 }
 
