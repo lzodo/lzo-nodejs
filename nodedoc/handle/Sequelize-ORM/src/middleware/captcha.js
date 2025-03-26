@@ -13,6 +13,12 @@ exports.captcha = (req, res, next) => {
 			color: true // 五颜六色
 		});
 		req.session.captcha = captcha.text; // 把验证码的文本存到session，登录的时候校验与用户输入是否一致
+
+		// 将 SVG 转换为 Base64
+		// const svg = captcha.data; // SVG 字符串
+		// const base64Image = Buffer.from(svg).toString('base64');
+		// const base64DataUrl = `data:image/svg+xml;base64,${base64Image}`;
+
 		res.type('svg');
 		res.send(captcha.data); // 把验证码图形响应到客户端
 	} else {
