@@ -14,7 +14,8 @@ export class UserController {
   @Get()
   getUser(): any {
     const db = this.configService.get<string>(ConfigEnum.HOST);
-    console.log(db);
+    const yamlDb = this.configService.get<string>('db');
+    console.log(db, yamlDb);
 
     return this.userService.getUser();
   }

@@ -318,7 +318,9 @@ export class AppModule {}
     
     // =======使用 
     // cross-env NODE_ENV=production 运行
-    const config = require('config');
+    const config = require('config'); 
+    import * as config from 'config'
+    
     const dbConfig = config.get('db');
     console.log(dbConfig);
     {
