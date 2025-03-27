@@ -9,8 +9,26 @@ export class UserService {
   constructor(
     @InjectRepository(User) private readonly userRepository: Repository<User>,
   ) {}
-  async getUser() {
-    const res = await this.userRepository.find();
-    return { code: 0, msg: res };
+
+  async findAll() {
+    return await this.userRepository.find();
+  }
+
+  async find(username: string) {
+    return await this.userRepository.findOne({ where: { username } });
+  }
+
+  async create(user: User) {
+    const userTmp = this.userRepository.create(user);
+    return this.userRepository.save(userTmp);
+  }
+
+  // Partial<User> ：user 会取 User 上的一些属性，但不一定都有
+  async update(id: number, user: Partial<User>) {
+    return await this.userRepository.update(id, user);
+  }
+
+  async remove(id: number) {
+    return await this.userRepository.delete(id);
   }
 }
