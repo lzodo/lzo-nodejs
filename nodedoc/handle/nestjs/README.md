@@ -371,3 +371,9 @@ export class AppModule {}
 > 对象关系映射器 (ORM)
 
 [TypeORM中文网](https://www.typeorm.org/) [官网](https://nest.nodejs.cn/techniques/database)
+
+#### TypeORM 生成器
+
+> 根据已有数据生成模型
+
+[typeorm-model-generator](https://www.npmjs.com/package/typeorm-model-generator)
