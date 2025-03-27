@@ -59,8 +59,8 @@ module.exports = {
     // 自定义 scope（范围）
     scopes: [
       { name: "默认" },
-      { name: "nestjs" },
-      { name: "express-orm" },
+      { name: "NestJS" },
+      { name: "ExpressORM" },
       { name: "其他" },
     ],
     allowCustomScopes: true, // 允许手动输入范围
