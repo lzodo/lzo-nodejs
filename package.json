@@ -2,6 +2,11 @@
   "scripts": {
     "commit": "git-cz"
   },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
+  },
   "dependencies": {
     "art-template": "^4.13.2",
     "body-parser": "^1.20.2",
