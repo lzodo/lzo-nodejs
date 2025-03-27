@@ -1,5 +1,13 @@
 import { Logs } from 'src/logs/entity/logs.entity';
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Roles } from 'src/roles/entity/roles.entity';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToMany,
+  ManyToMany,
+  JoinTable,
+} from 'typeorm';
 
 // 指定表名（可选，默认使用类名小写）
 @Entity()
@@ -22,5 +30,12 @@ export class User {
    *             logs.user  就是去logs表找userId=当前id的记录
    */
   @OneToMany(() => Logs, (logs) => logs.user)
-  logs: Logs;
+  logs: Logs[];
+
+  /**
+   * 用户和角色的多对多关系
+   */
+  @ManyToMany(() => Roles, (roles) => roles.user)
+  @JoinTable({ name: 'users_roles' }) // 创建关联表(不需要id，联合主键，联合索引)
+  roles: Roles[];
 }
