@@ -26,6 +26,7 @@
     "@nestjs/platform-express": "^11.0.1",
     "@types/js-yaml": "^4.0.9",
     "cross-env": "^7.0.3",
+    "joi": "^17.13.3",
     "js-yaml": "^4.1.0",
     "lodash": "^4.17.21",
     "reflect-metadata": "^0.2.2",
