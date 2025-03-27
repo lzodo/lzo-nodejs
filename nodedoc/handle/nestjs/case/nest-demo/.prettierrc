@@ -1,4 +1,6 @@
 {
+  "singleAttributePerLine": false,
   "singleQuote": true,
-  "trailingComma": "all"
+  "trailingComma": "all",
+  "printWidth": 250
 }

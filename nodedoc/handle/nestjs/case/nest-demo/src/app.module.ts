@@ -8,6 +8,7 @@ import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import Configuration from './config/configuration';
 import * as Joi from 'joi';
 import { ConfigEnum } from './enum/config.enum';
+import { User } from './user/user.entity';
 
 /**
  * nestjs 中所有东西都与模块相关联，所有服务，路由都是模块的分支
@@ -46,7 +47,7 @@ import { ConfigEnum } from './enum/config.enum';
           username: configService.get(ConfigEnum.DB_ACCOUNT),
           password: configService.get(ConfigEnum.DB_PASSWD),
           database: configService.get(ConfigEnum.DB_DATABASE),
-          entities: [],
+          entities: [User],
           // 同步，不应在生产中使用 - 否则你可能会丢失生产数据。
           synchronize: configService.get(ConfigEnum.DB_SYNC),
           logging: ['error'],
