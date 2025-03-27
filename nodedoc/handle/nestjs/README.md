@@ -294,6 +294,37 @@ export class AppModule {}
     }
     ```
 
-- [config]() + [js-yarm]()
+- [config]() + [js-yaml]()  + [cross-env]()
 
-- 
+    ```javascript
+    // config/default.json
+    {
+      "db": {
+        "host": "localhost",
+        "prot": "3000"
+      }
+    }
+    // config/production.js
+    {
+      "db": {
+        "host": "192.168.203.132"
+      }
+    }
+    // 如何是 yaml 配置文件
+    // config/production.yaml
+    db:
+    	host:"192.168.203.132"
+    
+    
+    // =======使用 
+    // cross-env NODE_ENV=production 运行
+    const config = require('config');
+    const dbConfig = config.get('db');
+    console.log(dbConfig);
+    {
+        "host": "192.168.203.132"
+        "prot": "3000"
+     }
+    ```
+
+- nestjs 的环境配置 `@nestjs/config`
