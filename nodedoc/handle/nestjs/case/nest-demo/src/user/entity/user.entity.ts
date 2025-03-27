@@ -1,10 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 // 指定表名（可选，默认使用类名小写）
-@Entity('users')
+@Entity()
 export class User {
   // UUID 主键(没传 uuid 默认正常数字递增id)
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn()
   id: string;
 
   // 类型、长度、
