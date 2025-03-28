@@ -13,6 +13,9 @@ import { Roles } from './roles/entity/roles.entity';
 import { Logs } from './logs/entity/logs.entity';
 import { Profile } from './user/entity/profile.entity';
 import { MockModule } from './mock/mock.module';
+import { LoggerModule } from 'nestjs-pino';
+import { join } from 'path';
+import { mkdir } from 'fs';
 
 /**
  * nestjs 中所有东西都与模块相关联，所有服务，路由都是模块的分支
@@ -58,6 +61,28 @@ import { MockModule } from './mock/mock.module';
           // 关闭 TypeORM 日志
           logging: false,
         }) as TypeOrmModuleOptions,
+    }),
+    LoggerModule.forRoot({
+      pinoHttp: {
+        transport: {
+          // target: 'pino-pretty',
+          // options: {
+          //   colorize: true,
+          // },
+          targets: [
+            {
+              level: 'info',
+              target: 'pino-roll',
+              options: {
+                file: join('logs', 'log.txt'), // 日志输出文件位置
+                frequency: 'daily',
+                size: '5m', // 文件滚动，日志文件不会超过5m
+                mkdir: true, // 自动创建文件夹
+              },
+            },
+          ],
+        },
+      },
     }),
     UserModule,
     RangerModule,

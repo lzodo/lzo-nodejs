@@ -1,23 +1,27 @@
-import { Controller, Get, Logger, Post } from '@nestjs/common';
+import { Controller, Get, Post } from '@nestjs/common';
 import { UserService } from './user.service';
 import { ConfigService } from '@nestjs/config';
 import { ConfigEnum } from 'src/enum/config.enum';
 import { User } from './entity/user.entity';
+import { Logger } from 'nestjs-pino';
 
 @Controller('user')
 export class UserController {
   // 官方提供的日志工具
-  logger = new Logger(UserController.name);
+  // logger = new Logger(UserController.name);
+
   constructor(
     private userService: UserService,
     private configService: ConfigService,
+    private logger: Logger,
   ) {}
   // const userService = new UserService()
 
   @Get()
   async getUsers(): Promise<User[]> {
     const result = await this.userService.findAll();
-    this.logger.log('result');
+    // 使用 pino 日志
+    // this.logger.log('result', 333444);
     return result;
   }
 
