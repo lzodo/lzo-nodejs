@@ -74,7 +74,17 @@ import { GlobalModule } from './common/global/global.module';
               level: 'info',
               target: 'pino-roll',
               options: {
-                file: join('logs', 'log.txt'), // 日志输出文件位置
+                file: join('logs', 'log.info.txt'), // 日志输出文件位置
+                frequency: 'daily',
+                size: '5m', // 文件滚动，日志文件不会超过5m
+                mkdir: true, // 自动创建文件夹
+              },
+            },
+            {
+              level: 'error',
+              target: 'pino-roll',
+              options: {
+                file: join('logs', 'log.error.txt'), // 日志输出文件位置
                 frequency: 'daily',
                 size: '5m', // 文件滚动，日志文件不会超过5m
                 mkdir: true, // 自动创建文件夹
