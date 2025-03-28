@@ -3,19 +3,14 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { RangerModule } from './ranger/ranger.module';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { ConfigModule } from '@nestjs/config';
 import Configuration from './config/configuration';
 import * as Joi from 'joi';
-import { ConfigEnum } from './enum/config.enum';
-import { User } from './user/entity/user.entity';
-import { Roles } from './roles/entity/roles.entity';
-import { Logs } from './logs/entity/logs.entity';
-import { Profile } from './user/entity/profile.entity';
+
 import { MockModule } from './mock/mock.module';
-import { LoggerModule } from 'nestjs-pino';
-import { join } from 'path';
 import { GlobalModule } from './common/global/global.module';
+import { LoggerModule } from './common/logger/logger.module';
+import { TypeormModule } from './common/typeorm/typeorm.module';
 
 /**
  * nestjs 中所有东西都与模块相关联，所有服务，路由都是模块的分支
@@ -43,57 +38,9 @@ import { GlobalModule } from './common/global/global.module';
         DB_SYNC: Joi.boolean().default(false),
       }),
     }),
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: (configService: ConfigService) =>
-        ({
-          type: configService.get(ConfigEnum.DB_TYPE),
-          host: configService.get(ConfigEnum.DB_HOST),
-          port: configService.get(ConfigEnum.DB_PORT),
-          username: configService.get(ConfigEnum.DB_ACCOUNT),
-          password: configService.get(ConfigEnum.DB_PASSWD),
-          database: configService.get(ConfigEnum.DB_DATABASE),
-          entities: [User, Roles, Logs, Profile],
-          // 同步，不应在生产中使用 - 否则你可能会丢失生产数据。
-          synchronize: configService.get(ConfigEnum.DB_SYNC),
-          // logging: ['error'],
-          // 关闭 TypeORM 日志
-          logging: false,
-        }) as TypeOrmModuleOptions,
-    }),
-    LoggerModule.forRoot({
-      pinoHttp: {
-        transport: {
-          // target: 'pino-pretty',
-          // options: {
-          //   colorize: true,
-          // },
-          targets: [
-            {
-              level: 'info',
-              target: 'pino-roll',
-              options: {
-                file: join('logs', 'log.info.txt'), // 日志输出文件位置
-                frequency: 'daily',
-                size: '5m', // 文件滚动，日志文件不会超过5m
-                mkdir: true, // 自动创建文件夹
-              },
-            },
-            {
-              level: 'error',
-              target: 'pino-roll',
-              options: {
-                file: join('logs', 'log.error.txt'), // 日志输出文件位置
-                frequency: 'daily',
-                size: '5m', // 文件滚动，日志文件不会超过5m
-                mkdir: true, // 自动创建文件夹
-              },
-            },
-          ],
-        },
-      },
-    }),
+
+    TypeormModule,
+    LoggerModule,
     UserModule,
     RangerModule,
     MockModule,
