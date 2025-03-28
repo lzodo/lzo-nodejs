@@ -27,6 +27,11 @@ export class UserController {
     } as User);
   }
 
+  @Get('groupby')
+  findLogsByGroup() {
+    return this.userService.findLogsByGroup();
+  }
+
   getUser(): any {
     const db = this.configService.get<string>(ConfigEnum.HOST);
     const yamlDb = this.configService.get<string>('db');
