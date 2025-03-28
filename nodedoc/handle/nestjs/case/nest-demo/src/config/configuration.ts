@@ -13,5 +13,5 @@ const envConfig = yaml.load(
 
 // ConfigModules 的 load 方法，需要接收一个函数
 export default () => {
-  return _.merge(baseConfig, envConfig) as Record<string, any>;
+  return _.merge(baseConfig, envConfig);
 };
