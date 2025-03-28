@@ -11,7 +11,13 @@ export class UserService {
   ) {}
 
   async findAll() {
-    return await this.userRepository.find();
+    return await this.userRepository.find({
+      relations: {
+        // 两边必须建立 profile 与 User的关联关系
+        profile_xx: true,
+        logs_xxx: true,
+      },
+    });
   }
 
   async find(username: string) {
