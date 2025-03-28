@@ -1,4 +1,4 @@
-import { Global, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
@@ -15,12 +15,12 @@ import { Profile } from './user/entity/profile.entity';
 import { MockModule } from './mock/mock.module';
 import { LoggerModule } from 'nestjs-pino';
 import { join } from 'path';
+import { GlobalModule } from './common/global/global.module';
 
 /**
  * nestjs 中所有东西都与模块相关联，所有服务，路由都是模块的分支
  * 最终 main.js 也是从这里导入使用
  */
-// @Global() // 装饰器用于将模块声明为全局模块，使其提供的服务、控制器等可以在整个应用中直接使用，而无需在每个需要的地方显式导入
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -87,6 +87,7 @@ import { join } from 'path';
     UserModule,
     RangerModule,
     MockModule,
+    GlobalModule, // 只需在此导入一次
   ],
   controllers: [AppController],
   providers: [AppService],
