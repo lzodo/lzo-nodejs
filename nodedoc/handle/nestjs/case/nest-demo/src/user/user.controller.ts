@@ -3,7 +3,7 @@ import { UserService } from './user.service';
 import { ConfigService } from '@nestjs/config';
 import { ConfigEnum } from 'src/enum/config.enum';
 import { User } from './entity/user.entity';
-import { Logger } from 'nestjs-pino';
+// import { Logger } from 'nestjs-pino';
 
 @Controller('user')
 export class UserController {
@@ -13,7 +13,7 @@ export class UserController {
   constructor(
     private userService: UserService,
     private configService: ConfigService,
-    private logger: Logger,
+    // private logger: Logger,
   ) {}
   // const userService = new UserService()
 
