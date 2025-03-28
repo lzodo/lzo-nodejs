@@ -12,7 +12,6 @@ import { Logger } from 'nestjs-pino';
 @Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {
   constructor(@Inject(Logger) private logger: Logger) {}
-
   catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp(); // 获取上下文
     const response = ctx.getResponse<Response>(); // 获取响应对象
@@ -21,9 +20,9 @@ export class HttpExceptionFilter implements ExceptionFilter {
 
     const errorInfo = {
       statusCode: status,
+      message: exception.message || exception.name,
       timestamp: new Date().toISOString(),
       path: request.url,
-      message: exception.message || exception.name,
     };
     this.logger.error(errorInfo);
     response.status(status).json(errorInfo);

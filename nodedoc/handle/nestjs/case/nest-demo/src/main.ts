@@ -6,6 +6,7 @@ import { ExpressAdapter } from '@nestjs/platform-express';
 import { setupSwagger } from './swagger/index';
 import { HttpExceptionFilter } from './filter/http-exception.filter';
 import { Logger } from 'nestjs-pino';
+import { AllExceptionsFilter } from './filter/all-exception.filter';
 
 async function bootstrap(): Promise<NestExpressApplication> {
   // const logger = new Logger();
@@ -26,6 +27,7 @@ async function bootstrap(): Promise<NestExpressApplication> {
 
   // 全局过滤器
   app.useLogger(app.get(Logger));
+  app.useGlobalFilters(new AllExceptionsFilter(app.get(Logger)));
   app.useGlobalFilters(new HttpExceptionFilter(app.get(Logger)));
 
   await app.listen(process.env.PORT ?? 3000);

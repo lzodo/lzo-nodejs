@@ -5,12 +5,11 @@ import { UserModule } from './user/user.module';
 import { RangerModule } from './ranger/ranger.module';
 import { ConfigModule } from '@nestjs/config';
 import Configuration from './config/configuration';
-import * as Joi from 'joi';
-
 import { MockModule } from './mock/mock.module';
 import { GlobalModule } from './common/global/global.module';
 import { LoggerModule } from './common/logger/logger.module';
 import { TypeormModule } from './common/typeorm/typeorm.module';
+import * as Joi from 'joi';
 
 /**
  * nestjs 中所有东西都与模块相关联，所有服务，路由都是模块的分支
