@@ -4,8 +4,10 @@ import { ConfigService } from '@nestjs/config';
 import { ConfigEnum } from 'src/enum/config.enum';
 import { User } from './entity/user.entity';
 import { GlobalService } from 'src/common/global/global.service';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 // import { Logger } from 'nestjs-pino';
 
+@ApiTags('用户')
 @Controller('user')
 export class UserController {
   // 官方提供的日志工具
@@ -20,6 +22,7 @@ export class UserController {
   // const userService = new UserService()
 
   @Get()
+  @ApiOperation({ summary: '获取全部用户' })
   async getUsers(): Promise<User[]> {
     console.log(this.globalService.getGlobal());
 
@@ -30,6 +33,7 @@ export class UserController {
   }
 
   @Post()
+  @ApiOperation({ summary: '创建用户' })
   async createUser() {
     return await this.userService.create({
       username: 'test-1',
@@ -38,6 +42,7 @@ export class UserController {
   }
 
   @Get('groupby')
+  @ApiOperation({ summary: '分组查询测试' })
   findLogsByGroup() {
     return this.userService.findLogsByGroup();
   }
@@ -45,7 +50,6 @@ export class UserController {
   getUser(): any {
     const db = this.configService.get<string>(ConfigEnum.HOST);
     const yamlDb = this.configService.get<string>('db');
-    const aaa = this.globalService;
     console.log(db, yamlDb);
   }
 }
