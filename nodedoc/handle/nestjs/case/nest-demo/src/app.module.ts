@@ -4,11 +4,11 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { RangerModule } from './ranger/ranger.module';
 import { ConfigModule } from '@nestjs/config';
-import Configuration from './config/configuration';
 import { MockModule } from './mock/mock.module';
 import { GlobalModule } from './common/global/global.module';
-import { LoggerModule } from './common/logger/logger.module';
+import { LoggerModule } from './logs/logger.module';
 import { TypeormModule } from './common/typeorm/typeorm.module';
+import Configuration from './config/configuration';
 import * as Joi from 'joi';
 
 /**
