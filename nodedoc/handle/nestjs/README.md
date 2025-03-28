@@ -397,3 +397,83 @@ export class AppModule {}
 <img src=".\statis\images\image-20250327223412463.png" alt="image-20250327223412463" style="zoom:80%;" />
 
 - 在 `UserService` 注册 `TypeORM Repository`，就能在 `UserService` 使用它的 `create()` 、`find()` 等方法
+
+
+
+### TypeORM QueryBuilder
+
+> TypeORM 的 QueryBuilder 是一个强大的工具，允许你以编程方式构建 SQL 查询。它比使用简单的 find 方法提供了更多的灵活性和控制力。
+
+```javascript
+// 复杂语句转换 select logs.result,count(*) count from logs,user u WHERE u.id=logs.userId and u.id=1 GROUP BY logs.result ORDER BY logs.result DESC;
+
+this.logsRepository
+// 查询表logs
+    .createQueryBuilder('logs')
+// 查询属性 logs.result as 别名位result
+    .select('logs.result', 'result')
+// 添加聚合属性统计 result 分类的记录综合，并命别名位count
+    .addSelect('count(logs.result)', 'count')
+// 关联用户表, 并设置关联关系 logs.user 其实就是 userId，指向对应的用户
+    .leftJoinAndSelect('logs.user', 'user')
+// 找到指定id的用户
+    .where('user.id = :id', { id })
+// 分组
+    .groupBy('logs.result')
+// 排序,降序
+    .orderBy('logs.result', 'DESC')
+// 偏移
+    .offset(1)
+// 限制数量
+    .limit(3)
+// 结束
+    .getRawMany()
+```
+
+
+
+
+
+## 9、日志
+
+### 日志分类与应用场景
+
+一般分类
+
+- `log`：通用日志
+- `warning`：警告日志
+- `error`：严重错误日志
+- `debug`：调试日志
+- `verbose`：详细日志
+
+功能分类
+
+- 错误日志 - 定位问题
+- 调试日志 - 方便开发
+- 请求日志 - 记录敏感信息
+
+日志位置
+
+- 控制台（方便开发环境调试）
+- 文件 （方便追踪）
+- 数据库（敏感操作，敏感数据记录）
+
+### Nestjs的日志推荐
+
+<img src=".\statis\images\image-20250328152516480.png" alt="image-20250328152516480" style="zoom: 67%;" />
+
+### 官方推荐的日志工具
+
+#### [pino](https://www.npmjs.com/package/pino)
+
+提供了对nestjs的支持 [nest-pino](https://github.com/pinojs/pino/blob/HEAD/docs/web.md#nest)
+
+项目中只要导入了模块 `LoggerModule` 自动打印请求日志
+
+开发环境日志美化 [pino-pretty]()
+
+生产环境日志处理 [pino-roll]()
+
+### [winston](https://www.npmjs.com/package/winston)
+
+nest 可以用 [nest-winston](https://www.npmjs.com/package/nest-winston)
