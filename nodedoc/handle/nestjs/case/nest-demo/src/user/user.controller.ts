@@ -1,4 +1,4 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get, Logger, Post } from '@nestjs/common';
 import { UserService } from './user.service';
 import { ConfigService } from '@nestjs/config';
 import { ConfigEnum } from 'src/enum/config.enum';
@@ -6,6 +6,8 @@ import { User } from './entity/user.entity';
 
 @Controller('user')
 export class UserController {
+  // 官方提供的日志工具
+  logger = new Logger(UserController.name);
   constructor(
     private userService: UserService,
     private configService: ConfigService,
@@ -15,7 +17,7 @@ export class UserController {
   @Get()
   async getUsers(): Promise<User[]> {
     const result = await this.userService.findAll();
-    // console.log(result);
+    this.logger.log('result');
     return result;
   }
 

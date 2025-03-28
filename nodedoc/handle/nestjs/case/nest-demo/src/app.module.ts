@@ -54,7 +54,9 @@ import { MockModule } from './mock/mock.module';
           entities: [User, Roles, Logs, Profile],
           // 同步，不应在生产中使用 - 否则你可能会丢失生产数据。
           synchronize: configService.get(ConfigEnum.DB_SYNC),
-          logging: ['error'],
+          // logging: ['error'],
+          // 关闭 TypeORM 日志
+          logging: false,
         }) as TypeOrmModuleOptions,
     }),
     UserModule,
