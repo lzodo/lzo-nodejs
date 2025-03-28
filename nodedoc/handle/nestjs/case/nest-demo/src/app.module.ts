@@ -12,6 +12,7 @@ import { User } from './user/entity/user.entity';
 import { Roles } from './roles/entity/roles.entity';
 import { Logs } from './logs/entity/logs.entity';
 import { Profile } from './user/entity/profile.entity';
+import { MockModule } from './mock/mock.module';
 
 /**
  * nestjs 中所有东西都与模块相关联，所有服务，路由都是模块的分支
@@ -58,6 +59,7 @@ import { Profile } from './user/entity/profile.entity';
     }),
     UserModule,
     RangerModule,
+    MockModule,
   ],
   controllers: [AppController],
   providers: [AppService],

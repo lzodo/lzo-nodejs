@@ -27,11 +27,9 @@ export class UserController {
     } as User);
   }
 
-  // getUser(): any {
-  //   const db = this.configService.get<string>(ConfigEnum.HOST);
-  //   const yamlDb = this.configService.get<string>('db');
-  //   console.log(db, yamlDb);
-
-  //   return this.userService.getUser();
-  // }
+  getUser(): any {
+    const db = this.configService.get<string>(ConfigEnum.HOST);
+    const yamlDb = this.configService.get<string>('db');
+    console.log(db, yamlDb);
+  }
 }
