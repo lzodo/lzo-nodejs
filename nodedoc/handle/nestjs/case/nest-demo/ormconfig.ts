@@ -12,7 +12,6 @@ import * as dotenv from 'dotenv';
 import { ConfigEnum } from 'src/enum/config.enum';
 
 // 根据环境加载对应的 .env 文件
-console.log(process.env.NODE_ENV);
 
 if (process.env.NODE_ENV === 'development') {
   dotenv.config({ path: '.env.development' }); // 默认加载 .env
@@ -22,6 +21,7 @@ if (process.env.NODE_ENV === 'development') {
   dotenv.config();
 }
 
+console.log(process.env.NODE_ENV, typeof process.env[ConfigEnum.DB_SYNC]);
 export const connnectionParams = {
   type: process.env[ConfigEnum.DB_TYPE],
   host: process.env[ConfigEnum.DB_HOST],
@@ -29,14 +29,26 @@ export const connnectionParams = {
   username: process.env[ConfigEnum.DB_ACCOUNT],
   password: process.env[ConfigEnum.DB_PASSWD],
   database: process.env[ConfigEnum.DB_DATABASE],
-  // ...其他配置同上面js版本
-  entities: [join(__dirname, 'src/**/*.entity{.ts,.js}')], // 动态加载数据库实体模型,.js 是为了兼容生产环境的commonjs文件
+  // 动态加载数据库实体模型,.js 是为了兼容生产环境的commonjs文件
+  entities: [join(__dirname, 'src/**/*.entity{.ts,.js}')],
   // entities: [User, Logs, Roles, Profile],
-  synchronize: process.env[ConfigEnum.DB_SYNC], //  生产环境必须设为 false !
+  //  生产环境必须设为 false,通常不希望自动修改数据库架构，除非你明确执行迁移或手动更改数据库
+  synchronize: process.env[ConfigEnum.DB_SYNC] == 'true',
   logging: false,
 } as TypeOrmModuleOptions;
 
 export default new DataSource({
   ...connnectionParams,
-  migrations: [join(__dirname, 'migrations/*{.ts,.js}')],
+  // 迁移文件目录
+  migrations: [join(__dirname, 'src/migrations/*{.ts,.js}')],
 } as DataSourceOptions);
+
+//1.修改字段名
+// ALTER TABLE “post” ALTER COLUMN "title” RENAME TO “name”;
+//2.创建新的迁移
+// typeorm migration:create ./src/migrations/PostRefactoring
+//3.执行迁移操作ts
+// npx typeorm-ts-node-commonjs migration:run -d./src/data-source.ts
+//4.生成迁移
+// typeorm migration:generate PostRefactoring -d./src/data-source.ts
+// npx·ts-node../node_modules/typeorm/cli.migration:generate../src/migrations/init.-d·./src/data-source.ts

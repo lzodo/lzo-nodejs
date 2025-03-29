@@ -38,5 +38,5 @@ import DataSourceOptionsParams, { connnectionParams } from '../../../ormconfig';
   ],
 })
 export class TypeormModule {
-  // constructor(private dataSource: DataSource) {}
+  constructor(private dataSource: DataSource) {}
 }
