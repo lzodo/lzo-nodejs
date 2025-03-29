@@ -25,7 +25,7 @@ export class UserController {
   @ApiOperation({ summary: '获取全部用户' })
   async getUsers(): Promise<User[]> {
     console.log(this.globalService.getGlobal());
-    throw new Error('测试错误');
+    // throw new Error('测试错误');
     const result = await this.userService.findAll();
     // 使用 pino 日志
     // this.logger.log('result', 333444);

@@ -8,7 +8,7 @@ import { MockModule } from './mock/mock.module';
 import { GlobalModule } from './common/global/global.module';
 import { LoggerModule } from './logs/logger.module';
 import { TypeormModule } from './common/typeorm/typeorm.module';
-import Configuration from './config/configuration';
+// import Configuration from './config/configuration';
 import * as Joi from 'joi';
 
 /**
@@ -23,7 +23,7 @@ import * as Joi from 'joi';
       // 前面的优先级高，.env 的配置进行共享
       envFilePath: [`.env.${process.env.NODE_ENV}`, '.env'],
       // 如果使用yml配置文件复杂数据
-      load: [Configuration],
+      // load: [Configuration],
       // 环境变量校验
       validationSchema: Joi.object({
         NODE_ENV: Joi.string().valid('development', 'production'),
