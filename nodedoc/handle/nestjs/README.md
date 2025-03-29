@@ -432,7 +432,23 @@ this.logsRepository
 
 
 
+### TypeORM CLI
 
+> TypeORM CLI 是 TypeORM 提供的命令行工具，用于高效管理数据库结构和数据变更。在 NestJS 项目中，它的核心作用是通过代码控制数据库的演进，避免手动操作数据库带来的风险和不一致。
+
+#### **1. 数据库迁移（Migrations）**
+
+##### **是什么？**
+
+- 数据库迁移就像数据库的「版本控制系统」，用代码文件记录所有表结构变更（如创建表、修改字段、添加索引等）。
+- 每次变更生成一个迁移文件，按时间顺序执行或回滚。
+
+#### **2. 实体管理（Entities）**
+
+##### **是什么？**
+
+- 实体是 TypeORM 中映射数据库表的 TypeScript 类。
+- CLI 提供快捷命令创建和管理实体。
 
 ## 9、日志
 
@@ -474,6 +490,20 @@ this.logsRepository
 
 生产环境日志处理 [pino-roll]()
 
-### [winston](https://www.npmjs.com/package/winston)
+#### [winston](https://www.npmjs.com/package/winston)
 
 nest 可以用 [nest-winston](https://www.npmjs.com/package/nest-winston)
+
+[9.4] 未实操
+
+
+
+### 异常过滤器
+
+[exception-filters](https://nest.nodejs.cn/exception-filters)
+
+> 内置的异常层，处理引用程序中所有的抛出异常
+
+
+
+9.8,9.9 暂时跳过
