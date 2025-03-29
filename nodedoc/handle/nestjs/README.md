@@ -491,7 +491,7 @@ this.logsRepository
 
     ```shell
     # 当一个新版本上线，你改变了实体Roles的表结构，或新创建了实体Roles
-    # 注意关联关系引入新的实体时需要用相对路径才成功的
+    # 注意关联关系引入新的实体时需要用相对路径才成功的【遗留问题】
     # 创建版本
     npm run migration:generate src/migrations/change-roles
     
@@ -572,4 +572,20 @@ nest 可以用 [nest-winston](https://www.npmjs.com/package/nest-winston)
 
 
 
-9.8,9.9 暂时跳过
+## 10、前端
+
+### bootstrap 响应式布局
+
+```html
+<!--
+    col-11：可视区宽度小于576px时，占据11列
+    col-sm-8：（可视区宽度大于等于576px,小于768）== sm，占据8列
+    col-md-6：（可视区宽度大于等于768px,小于992）== md，占据6列
+    col-lg-4：（可视区宽度大于等于992px,小于1200）== lg，占据4列
+    col-xl-3：（可视区宽度大于等于1200px,小于1400）== xl，占据3列
+    col-xxl-2：（可视区宽度大于等于1400px）== xxl，占据2列
+-->
+<div class="col-11 col-sm-8 col-md-6 col-lg-4 col-xl-4 col-xxl-4"></div>
+```
+
+...bootstrap项目，先跳过
