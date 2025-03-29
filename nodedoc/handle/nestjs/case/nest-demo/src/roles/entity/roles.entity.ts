@@ -1,4 +1,4 @@
-import { User } from '@/user/entity/user.entity';
+import { User } from '../../user/entity/user.entity';
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -15,6 +15,12 @@ export class Roles {
 
   @Column()
   name3311: string;
+
+  @Column()
+  name: string;
+
+  @Column()
+  code: string;
 
   @CreateDateColumn({
     name: 'create_time',

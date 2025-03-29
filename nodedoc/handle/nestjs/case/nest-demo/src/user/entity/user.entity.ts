@@ -1,5 +1,5 @@
-import { Logs } from 'src/logs/entity/logs.entity';
-import { Roles } from 'src/roles/entity/roles.entity';
+import { Logs } from '../../logs/entity/logs.entity';
+import { Roles } from '../../roles/entity/roles.entity';
 import {
   Entity,
   PrimaryGeneratedColumn,

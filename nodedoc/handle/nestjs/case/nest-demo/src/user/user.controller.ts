@@ -1,9 +1,9 @@
 import { Controller, Get, Post } from '@nestjs/common';
 import { UserService } from './user.service';
 import { ConfigService } from '@nestjs/config';
-import { ConfigEnum } from 'src/enum/config.enum';
+import { ConfigEnum } from '@/enum/config.enum';
 import { User } from './entity/user.entity';
-import { GlobalService } from 'src/common/global/global.service';
+import { GlobalService } from '@/common/global/global.service';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 // import { Logger } from 'nestjs-pino';
 

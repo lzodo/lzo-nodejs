@@ -3,7 +3,7 @@ import { UserController } from './user.controller';
 import { UserService } from './user.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './entity/user.entity';
-import { Logs } from 'src/logs/entity/logs.entity';
+import { Logs } from '@/logs/entity/logs.entity';
 
 @Module({
   // 这个东西可以对对应模块进行依赖

@@ -128,6 +128,9 @@ src/
  # 创建一个逻辑层
  $ nest g service user  # 创建逻辑层
 
+
+ # 一次性创建(生成新的CRUD一整套资源)
+ $ nest g res user --no-spec
 ```
 
 ### 控制器调用逻辑层的方法
@@ -436,19 +439,82 @@ this.logsRepository
 
 > TypeORM CLI 是 TypeORM 提供的命令行工具，用于高效管理数据库结构和数据变更。在 NestJS 项目中，它的核心作用是通过代码控制数据库的演进，避免手动操作数据库带来的风险和不一致。
 
-#### **1. 数据库迁移（Migrations）**
+#### **1. 数据库迁移**
+
+> 数据库迁移（Migrations）
 
 ##### **是什么？**
 
 - 数据库迁移就像数据库的「版本控制系统」，用代码文件记录所有表结构变更（如创建表、修改字段、添加索引等）。
 - 每次变更生成一个迁移文件，按时间顺序执行或回滚。
 
-#### **2. 实体管理（Entities）**
+#### **2. 实体管理**
+
+> 实体管理（Entities）
 
 ##### **是什么？**
 
 - 实体是 TypeORM 中映射数据库表的 TypeScript 类。
 - CLI 提供快捷命令创建和管理实体。
+
+
+
+#### 3、Nest用TypeORM CLI
+
+> 生产环境 synchronize 设置 false，TypeORM 实体的变化不会实时同步到数据库中，通过这些指令可以对表数据库的行为进行记录、同步、回退
+
+```json
+{
+    scripts:{
+        "typeorm": "typeorm-ts-node-commonjs -d ormconfig.ts",
+        "migration:generate": "f() { npm run typeorm migration:generate -p \"./src/migrations/$@\"; }; f",
+        "migration:create": "typeorm-ts-node-commonjs migration:create",
+        "migration:run": "npm run typeorm migration:run",
+        "migration:revert": "npm run typeorm migration:revert",
+        "schema:drop": "npm run typeorm schema:drop",
+        "schema:sync": "npm run typeorm schema:sync"
+    }
+}
+```
+
+1. `migration:create` 创建迁移目录
+
+    ```shell
+    # 创建目录 src/migrations
+    
+    # 创建迁移，并重命名为init
+    npm run migration:create src/migrations/init
+    # 生成 src/migrations/时间戳-init.ts 文件，记录数据库当前状态（相当于 git init）
+    ```
+
+2. `migration:generate` 根据对本地TypeORM实体的修改产生新的版本
+
+    ```shell
+    # 当一个新版本上线，你改变了实体Roles的表结构，或新创建了实体Roles
+    # 注意关联关系引入新的实体时需要用相对路径才成功的
+    # 创建版本
+    npm run migration:generate src/migrations/change-roles
+    
+    # 生成一些SQL语句，指明了上个版本到这个版本发生了什么变化
+    ```
+
+    
+
+3. `migration:run` 将新版本的变化执行到数据库中
+
+    ```shell
+    npm run migration:run
+    ```
+
+    
+
+4. `migration:revert` 将当前数据库的版本进行回退
+
+    ```shell
+    npm run migration:revert
+    ```
+
+    
 
 ## 9、日志
 
