@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from '@/user/entity/user.entity';
+import { User } from '@/user/entities/user.entity';
 import { Repository } from 'typeorm';
 import * as Mock from 'mockjs';
 import { hashPassword } from '@/utils/bcrypt';
-import { Profile } from '@/user/entity/profile.entity';
+import { Profile } from '@/user/entities/profile.entity';
 import { Logs } from '@/logs/entity/logs.entity';
 
 @Injectable()

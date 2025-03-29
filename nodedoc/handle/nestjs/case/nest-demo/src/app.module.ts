@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
-import { RangerModule } from './ranger/ranger.module';
 import { ConfigModule } from '@nestjs/config';
 import { MockModule } from './mock/mock.module';
 import { GlobalModule } from './common/global/global.module';
@@ -41,7 +40,6 @@ import * as Joi from 'joi';
     TypeormModule,
     LoggerModule,
     UserModule,
-    RangerModule,
     MockModule,
     GlobalModule, // 只需在此导入一次
   ],

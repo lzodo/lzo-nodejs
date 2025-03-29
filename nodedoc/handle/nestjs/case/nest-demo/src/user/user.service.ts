@@ -1,8 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from './entity/user.entity';
+import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
 import { Logs } from '@/logs/entity/logs.entity';
+import { CreateUserDto } from './dto/create-user.dto';
+import { hashPassword } from '@/utils/bcrypt';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UserService {
@@ -12,7 +15,20 @@ export class UserService {
     @InjectRepository(Logs) private readonly logsRepository: Repository<Logs>,
   ) {}
 
+  // 创建用户
+  async create(user: CreateUserDto) {
+    // 创建用户实例，并设置密码
+    const userTmp = this.userRepository.create({
+      ...user,
+      password: await hashPassword(user.password),
+    });
+    // 保存用户实例
+    return this.userRepository.save(userTmp);
+  }
+
+  // 异步方法，查找所有用户
   async findAll() {
+    // 返回用户仓库中所有用户，并建立 profile 与 User的关联关系
     return await this.userRepository.find({
       relations: {
         // 两边必须建立 profile 与 User的关联关系
@@ -22,21 +38,21 @@ export class UserService {
     });
   }
 
-  async find(username: string) {
-    return await this.userRepository.findOne({ where: { username } });
+  // 根据id查找一个用户
+  async findOne(id: string) {
+    // 从用户仓库中查找id等于传入id的用户
+    return await this.userRepository.findOne({ where: { id } });
   }
 
-  async create(user: User) {
-    const userTmp = this.userRepository.create(user);
-    return this.userRepository.save(userTmp);
-  }
-
-  // Partial<User> ：user 会取 User 上的一些属性，但不一定都有
-  async update(id: number, user: Partial<User>) {
+  // 更新用户信息 Partial<UpdateDemoTestDto> ：user 会取 User 上的一些属性，但不一定都有
+  async update(id: string, user: Partial<UpdateUserDto>) {
+    // 根据id和用户信息更新用户信息
     return await this.userRepository.update(id, user);
   }
 
-  async remove(id: number) {
+  // 异步删除用户
+  async remove(id: string) {
+    // 调用用户仓库的删除方法，传入用户id
     return await this.userRepository.delete(id);
   }
 
